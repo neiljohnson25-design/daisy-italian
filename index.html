@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Daisy's Italian Adventure!</title>
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- iOS Web App (Add to Home Screen) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Daisy Italian">
+  <meta name="theme-color" content="#A855F7">
+
+  <!-- Prevent phone number detection -->
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Google Fonts - Nunito (rounded, child-friendly) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/themes.css">
+
+  <!-- Favicon (data URI so no external file needed) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇹</text></svg>">
+
+  <style>
+    /* Loading screen */
+    .loading-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 1rem;
+      font-family: 'Nunito', sans-serif;
+    }
+    .loading-screen .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #FFB3CC;
+      border-top-color: #A855F7;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Persistent header (hidden on home screen) -->
+  <header id="app-header" class="app-header hidden">
+    <button id="btn-back" class="btn-icon" aria-label="Go back">&#8592;</button>
+    <div id="star-counter" class="star-counter">
+      <span class="star-icon">&#9733;</span>
+      <span id="star-count">0</span>
+    </div>
+  </header>
+
+  <!-- Main app container -->
+  <main id="app">
+    <div class="loading-screen">
+      <div class="spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </main>
+
+  <!-- ========== Data Files ========== -->
+  <script src="js/data/topics.js"></script>
+  <script src="js/data/colori.js"></script>
+  <script src="js/data/saluti.js"></script>
+  <script src="js/data/animali.js"></script>
+  <script src="js/data/cibo.js"></script>
+  <script src="js/data/famiglia.js"></script>
+  <script src="js/data/numeri.js"></script>
+  <script src="js/data/giorni-mesi.js"></script>
+  <script src="js/data/corpo.js"></script>
+  <script src="js/data/conversazioni.js"></script>
+
+  <!-- ========== Core Modules ========== -->
+  <script src="js/state.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/router.js"></script>
+
+  <!-- ========== Components ========== -->
+  <script src="js/components/daisy-avatar.js"></script>
+  <script src="js/components/star-counter.js"></script>
+  <script src="js/components/progress-bar.js"></script>
+  <script src="js/components/exercise-types.js"></script>
+
+  <!-- ========== Screens ========== -->
+  <script src="js/screens/home.js"></script>
+  <script src="js/screens/topics.js"></script>
+  <script src="js/screens/lesson.js"></script>
+  <script src="js/screens/exercise.js"></script>
+  <script src="js/screens/results.js"></script>
+  <script src="js/screens/progress.js"></script>
+  <script src="js/screens/parent.js"></script>
+
+  <!-- ========== App Entry Point (must be last) ========== -->
+  <script src="js/app.js"></script>
+
+</body>
+</html>

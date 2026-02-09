@@ -1,0 +1,107 @@
+/* ============================================
+   Show-themed Styles
+   ============================================ */
+
+/* K-Pop Demon Hunters - neon, energetic */
+.theme-kpop-demon-hunters {
+  --theme-primary: #FF2D95;
+  --theme-secondary: #7C3AED;
+  --theme-accent: #00F5FF;
+}
+
+.theme-kpop-demon-hunters .card-topic {
+  background: linear-gradient(135deg, rgba(255,45,149,0.05), rgba(0,245,255,0.05));
+  border-color: rgba(255,45,149,0.2);
+}
+
+.theme-kpop-demon-hunters .theme-bg {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255,45,149,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0,245,255,0.08) 0%, transparent 50%),
+    var(--white);
+}
+
+/* Disney Princesses - magical, sparkly */
+.theme-disney-princesses {
+  --theme-primary: #FFD700;
+  --theme-secondary: #FF69B4;
+  --theme-accent: #87CEEB;
+}
+
+.theme-disney-princesses .card-topic {
+  background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(135,206,235,0.05));
+  border-color: rgba(255,215,0,0.3);
+}
+
+.theme-disney-princesses .theme-bg {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,215,0,0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255,105,180,0.03) 0%, rgba(135,206,235,0.03) 100%),
+    var(--white);
+}
+
+/* Loud House - colourful, chaotic, fun */
+.theme-loud-house {
+  --theme-primary: #FF6B35;
+  --theme-secondary: #4ECDC4;
+  --theme-accent: #FFE66D;
+}
+
+.theme-loud-house .card-topic {
+  background: linear-gradient(135deg, rgba(255,107,53,0.05), rgba(78,205,196,0.05));
+  border-color: rgba(255,107,53,0.2);
+}
+
+.theme-loud-house .theme-bg {
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,107,53,0.02) 30px, rgba(255,107,53,0.02) 60px),
+    var(--white);
+}
+
+/* Sam and Cat - warm, playful */
+.theme-sam-and-cat {
+  --theme-primary: #E91E8C;
+  --theme-secondary: #FF6F3C;
+  --theme-accent: #FFC93C;
+}
+
+.theme-sam-and-cat .card-topic {
+  background: linear-gradient(135deg, rgba(233,30,140,0.05), rgba(255,201,60,0.05));
+  border-color: rgba(233,30,140,0.2);
+}
+
+.theme-sam-and-cat .theme-bg {
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(233,30,140,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(255,201,60,0.05) 0%, transparent 50%),
+    var(--white);
+}
+
+/* Theme-specific exercise header bars */
+.exercise-theme-bar {
+  width: 100%;
+  padding: var(--gap-sm) var(--gap-md);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  color: var(--white);
+}
+
+.theme-kpop-demon-hunters .exercise-theme-bar {
+  background: linear-gradient(135deg, #FF2D95, #7C3AED);
+}
+
+.theme-disney-princesses .exercise-theme-bar {
+  background: linear-gradient(135deg, #FF69B4, #87CEEB);
+}
+
+.theme-loud-house .exercise-theme-bar {
+  background: linear-gradient(135deg, #FF6B35, #4ECDC4);
+}
+
+.theme-sam-and-cat .exercise-theme-bar {
+  background: linear-gradient(135deg, #E91E8C, #FFC93C);
+}
