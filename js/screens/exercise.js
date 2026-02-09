@@ -200,6 +200,22 @@ window.renderExerciseScreen = function(container, params) {
             finish();
           }
         }, 2000);
+      } else {
+        // Re-enable buttons so the child can try again
+        var exerciseArea = document.getElementById('exercise-area');
+        if (exerciseArea) {
+          setTimeout(function() {
+            var disabledBtns = exerciseArea.querySelectorAll('.option-btn.disabled');
+            disabledBtns.forEach(function(b) {
+              // Re-enable all except the one that was wrong
+              if (!b.classList.contains('incorrect')) {
+                b.classList.remove('disabled');
+              }
+              // Remove the "revealed" highlight from the correct answer
+              b.classList.remove('revealed');
+            });
+          }, 900);
+        }
       }
     }
   }
