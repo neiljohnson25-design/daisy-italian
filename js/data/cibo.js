@@ -39,7 +39,7 @@ window.CIBO_DATA = {
        Lesson 1 - Yummy Italian Food (vocabIndices 0-4)
        -------------------------------------------------- */
     {
-      id: 'lesson-1',
+      id: 'cibo-1',
       title: 'Yummy Italian Food',
       vocabIndices: [0, 1, 2, 3, 4],
       exercises: [
@@ -138,7 +138,7 @@ window.CIBO_DATA = {
        Lesson 2 - Fruit and Drinks (vocabIndices 5-9)
        -------------------------------------------------- */
     {
-      id: 'lesson-2',
+      id: 'cibo-2',
       title: 'Fruit and Drinks',
       vocabIndices: [5, 6, 7, 8, 9],
       exercises: [
@@ -237,7 +237,7 @@ window.CIBO_DATA = {
        Lesson 3 - All the Food! (vocabIndices 0-11, review)
        -------------------------------------------------- */
     {
-      id: 'lesson-3',
+      id: 'cibo-3',
       title: 'All the Food!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
       exercises: [

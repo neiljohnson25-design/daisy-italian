@@ -98,7 +98,7 @@ window.SALUTI_DATA = {
     // LESSON 1: Hello & Goodbye (vocabIndices 0-4)
     // =============================================
     {
-      id: 'hello-goodbye',
+      id: 'saluti-1',
       title: 'Hello & Goodbye',
       vocabIndices: [0, 1, 2, 3, 4],
       exercises: [
@@ -179,7 +179,7 @@ window.SALUTI_DATA = {
     // LESSON 2: Being Polite (vocabIndices 5-8)
     // =============================================
     {
-      id: 'being-polite',
+      id: 'saluti-2',
       title: 'Being Polite',
       vocabIndices: [5, 6, 7, 8],
       exercises: [
@@ -260,7 +260,7 @@ window.SALUTI_DATA = {
     // LESSON 3: Talking to People (vocabIndices 0-11 mixed)
     // =============================================
     {
-      id: 'talking-to-people',
+      id: 'saluti-3',
       title: 'Talking to People',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
       exercises: [
