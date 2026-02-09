@@ -37,6 +37,28 @@ window.renderLessonScreen = function(container, params) {
     html += '<p class="lesson-subtitle">' + topic.titleEN + '</p>';
     html += '</div>';
 
+    // Reward teaser - show what Daisy is working towards
+    var reward = window.app.state.getReward(topicId);
+    var topicComplete = window.app.state.isTopicComplete(topicId);
+    if (reward && reward.text && !topicComplete && currentIndex === 0) {
+      // Work out how many lessons are left
+      var lessonsLeft = 0;
+      for (var li = 1; li <= 3; li++) {
+        var lp = window.app.state.getLessonProgress(topicId, topicId + '-' + li);
+        if (!lp || !lp.completed) lessonsLeft++;
+      }
+      html += '<div style="background: linear-gradient(135deg, var(--yellow-light), var(--orange-light)); border-radius: var(--radius-md); padding: var(--gap-sm) var(--gap-md); text-align: center; animation: fadeInUp 0.4s ease; max-width: 400px; width: 100%;">';
+      html += '<span style="font-size: 1.2rem;">&#127873;</span> ';
+      html += '<span style="font-weight: 700; font-size: var(--font-size-small); color: var(--dark);">';
+      if (lessonsLeft === 1) {
+        html += 'Last lesson! Complete it to earn: <strong>' + reward.text + '</strong>';
+      } else {
+        html += lessonsLeft + ' lessons to go for: <strong>' + reward.text + '</strong>';
+      }
+      html += '</span>';
+      html += '</div>';
+    }
+
     // Daisy with speech bubble
     html += '<div id="daisy-lesson"></div>';
 

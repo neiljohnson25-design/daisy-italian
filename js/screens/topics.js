@@ -19,9 +19,19 @@ window.renderTopicsScreen = function(container) {
     if (!unlocked) classes += ' locked';
     if (complete) classes += ' completed';
 
+    // Find the next uncompleted lesson (or default to lesson 1)
+    var nextLesson = topic.id + '-1';
+    for (var nl = 1; nl <= 3; nl++) {
+      var nlProgress = state.getLessonProgress(topic.id, topic.id + '-' + nl);
+      if (!nlProgress || !nlProgress.completed) {
+        nextLesson = topic.id + '-' + nl;
+        break;
+      }
+    }
+
     html += '<div class="' + classes + ' animate-fadeInUp stagger-' + (index + 1) + '" ';
     if (unlocked) {
-      html += 'onclick="window.app.router.navigate(\'/lesson/' + topic.id + '/' + topic.id + '-1\')" ';
+      html += 'onclick="window.app.router.navigate(\'/lesson/' + topic.id + '/' + nextLesson + '\')" ';
     }
     html += 'style="cursor: ' + (unlocked ? 'pointer' : 'not-allowed') + ';">';
 
@@ -53,6 +63,14 @@ window.renderTopicsScreen = function(container) {
       html += '<span class="star' + (lessonStars > 0 ? ' earned' : '') + '">&#9733;</span>';
     }
     html += '</div>';
+
+    // Reward teaser on topic card
+    var reward = state.getReward(topic.id);
+    if (reward && reward.text && unlocked && !complete) {
+      html += '<div style="font-size: 0.7rem; color: var(--gold-dark); font-weight: 700; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">&#127873; ' + reward.text + '</div>';
+    } else if (complete && reward && reward.text && !reward.claimed) {
+      html += '<div style="font-size: 0.7rem; color: var(--green); font-weight: 700; margin-top: 2px;">&#127873; Reward earned!</div>';
+    }
 
     html += '</div>';
   });
