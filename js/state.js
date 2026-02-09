@@ -271,6 +271,33 @@ window.StateManager = class StateManager {
     return this.parentState.speechRate || 0.85;
   }
 
+  // ---- Say to Mummy Phrase Tracking ----
+
+  getMummyPhrasesDone(topicId, count) {
+    var topic = this.state.topics[topicId];
+    if (!topic || !topic.mummyPhrasesDone) {
+      // Return array of false values
+      var arr = [];
+      for (var i = 0; i < count; i++) arr.push(false);
+      return arr;
+    }
+    // Ensure correct length
+    var result = topic.mummyPhrasesDone.slice();
+    while (result.length < count) result.push(false);
+    return result;
+  }
+
+  setMummyPhraseDone(topicId, index, isDone, count) {
+    var topic = this.state.topics[topicId];
+    if (!topic) return;
+    if (!topic.mummyPhrasesDone) {
+      topic.mummyPhrasesDone = [];
+      for (var i = 0; i < count; i++) topic.mummyPhrasesDone.push(false);
+    }
+    topic.mummyPhrasesDone[index] = isDone;
+    this.save();
+  }
+
   resetTopicProgress(topicId) {
     var topic = this.state.topics[topicId];
     if (!topic) return;
@@ -284,6 +311,11 @@ window.StateManager = class StateManager {
 
     if (this.parentState.rewards[topicId]) {
       this.parentState.rewards[topicId].claimed = false;
+    }
+
+    // Reset mummy phrases
+    if (topic.mummyPhrasesDone) {
+      topic.mummyPhrasesDone = null;
     }
 
     this.save();

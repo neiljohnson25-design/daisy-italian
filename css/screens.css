@@ -456,3 +456,195 @@
   min-width: 50px;
   text-align: center;
 }
+
+/* ---- Say to Mummy Screen ---- */
+.screen-say-to-mummy {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+  padding-bottom: var(--gap-xl);
+  animation: fadeIn 0.4s ease;
+  min-height: 100vh;
+}
+
+.mummy-header {
+  text-align: center;
+  width: 100%;
+}
+
+.mummy-title {
+  font-size: var(--font-size-title);
+  font-weight: 900;
+  color: var(--purple);
+}
+
+.mummy-subtitle {
+  font-size: var(--font-size-body);
+  color: var(--grey-dark);
+  margin-top: var(--gap-xs);
+  font-weight: 600;
+}
+
+.mummy-progress {
+  background: linear-gradient(135deg, var(--purple-light), var(--pink-light));
+  border-radius: var(--radius-full);
+  padding: var(--gap-xs) var(--gap-lg);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  color: var(--purple);
+}
+
+.mummy-phrases {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  width: 100%;
+  max-width: 500px;
+  padding: 0 var(--gap-md);
+}
+
+.mummy-phrase-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--gap-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border-left: 5px solid var(--purple);
+  animation: fadeInUp 0.4s ease;
+}
+
+.mummy-phrase-card.done {
+  border-left-color: var(--green);
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.phrase-content {
+  margin-bottom: var(--gap-md);
+}
+
+.phrase-italian {
+  font-size: var(--font-size-large);
+  font-weight: 800;
+  color: var(--purple);
+  line-height: 1.3;
+  margin-bottom: var(--gap-xs);
+}
+
+.mummy-phrase-card.done .phrase-italian {
+  color: var(--green);
+}
+
+.phrase-english {
+  font-size: var(--font-size-body);
+  color: var(--grey-dark);
+  font-weight: 600;
+}
+
+.phrase-context {
+  font-size: var(--font-size-small);
+  color: var(--grey);
+  font-style: italic;
+  margin-top: var(--gap-sm);
+}
+
+.phrase-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  justify-content: space-between;
+}
+
+.phrase-speaker {
+  flex-shrink: 0;
+}
+
+.phrase-tick {
+  font-size: var(--font-size-small) !important;
+  padding: var(--gap-xs) var(--gap-md) !important;
+  white-space: nowrap;
+}
+
+.btn-done {
+  background: var(--green) !important;
+  color: white !important;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--gap-xs) var(--gap-md);
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-done:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
+
+.btn-mummy {
+  background: linear-gradient(135deg, var(--pink), var(--purple)) !important;
+  color: white !important;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--gap-sm) var(--gap-lg);
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  animation: pulse-glow 2s infinite;
+}
+
+.btn-mummy:hover {
+  transform: scale(1.05);
+}
+
+.mummy-celebration {
+  text-align: center;
+  padding: var(--gap-lg);
+  background: linear-gradient(135deg, var(--yellow-light), var(--orange-light));
+  border-radius: var(--radius-xl);
+  max-width: 400px;
+  width: 100%;
+  animation: scaleIn 0.5s ease;
+}
+
+.mummy-celebration .celebration-text {
+  font-size: var(--font-size-large);
+  font-weight: 900;
+  color: var(--purple);
+  margin: var(--gap-sm) 0;
+}
+
+.mummy-actions {
+  padding: var(--gap-md);
+}
+
+/* "Say to Mummy" badge on topic cards */
+.mummy-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.mummy-badge:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Stagger animation for phrase cards */
+.mummy-phrase-card:nth-child(1) { animation-delay: 0.05s; }
+.mummy-phrase-card:nth-child(2) { animation-delay: 0.1s; }
+.mummy-phrase-card:nth-child(3) { animation-delay: 0.15s; }
+.mummy-phrase-card:nth-child(4) { animation-delay: 0.2s; }
+.mummy-phrase-card:nth-child(5) { animation-delay: 0.25s; }

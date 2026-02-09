@@ -86,6 +86,11 @@ window.renderResultsScreen = function(container, params) {
   } else {
     html += '<button class="btn btn-primary" onclick="window.app.router.navigate(\'/topics\')">Back to Topics</button>';
   }
+
+  // "Say to Mummy!" button when topic is complete
+  if (topicComplete && window.SAY_TO_MUMMY && window.SAY_TO_MUMMY[topicId]) {
+    html += '<button class="btn btn-mummy" onclick="window.app.router.navigate(\'/say-to-mummy/' + topicId + '\')">🗣️ Say to Mummy!</button>';
+  }
   html += '</div>';
 
   container.innerHTML = html;

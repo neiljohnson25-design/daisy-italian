@@ -72,6 +72,11 @@ window.renderTopicsScreen = function(container) {
       html += '<div style="font-size: 0.7rem; color: var(--green); font-weight: 700; margin-top: 2px;">&#127873; Reward earned!</div>';
     }
 
+    // "Say to Mummy!" badge on completed topics
+    if (complete && window.SAY_TO_MUMMY && window.SAY_TO_MUMMY[topic.id]) {
+      html += '<div class="mummy-badge" onclick="event.stopPropagation(); window.app.router.navigate(\'/say-to-mummy/' + topic.id + '\')">🗣️ Say to Mummy!</div>';
+    }
+
     html += '</div>';
   });
 
