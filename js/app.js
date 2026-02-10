@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     { path: '/results/:topicId/:lessonId', handler: renderResultsScreen },
     { path: '/progress', handler: renderProgressScreen },
     { path: '/parent', handler: renderParentScreen },
-    { path: '/say-to-mummy/:topicId', handler: renderSayToMummyScreen }
+    { path: '/say-to-mummy/:topicId', handler: renderSayToMummyScreen },
+    { path: '/rewards', handler: renderRewardsScreen }
   ];
 
   // Initialise router and resolve current route

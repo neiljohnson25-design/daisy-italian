@@ -33,6 +33,35 @@ window.CIBO_DATA = {
     { italian: 'biscotto',   english: 'biscuit',    emoji: '\uD83C\uDF6A', hint: 'Cat loves to bake these as a treat!' }
   ],
 
+  /* ------------------------------------------
+     Phrases (for L2 and L3 progression)
+     ------------------------------------------ */
+  phrases: [
+    // L2 - Short food phrases (adjective + noun combos)
+    // 0
+    { italian: 'la pizza buona', english: 'the good pizza', emoji: '\uD83C\uDF55\uD83D\uDC4D', hint: 'Sam says the pizza is yummy!' },
+    // 1
+    { italian: 'il gelato freddo', english: 'the cold ice cream', emoji: '\uD83C\uDF66\u2744\uFE0F', hint: 'Cat keeps her ice cream nice and chilly!' },
+    // 2
+    { italian: 'il pane fresco', english: 'the fresh bread', emoji: '\uD83C\uDF5E\u2728', hint: 'Sam and Cat just baked this - smells amazing!' },
+    // 3
+    { italian: 'l\'acqua fresca', english: 'the cool water', emoji: '\uD83D\uDCA7\u2744\uFE0F', hint: 'On a hot day, Cat grabs a glass of this!' },
+    // 4
+    { italian: 'la mela rossa', english: 'the red apple', emoji: '\uD83C\uDF4E\uD83D\uDD34', hint: 'Cat packs this bright fruit in her lunchbox!' },
+
+    // L3 - Full sentences
+    // 5
+    { italian: 'Voglio la pizza!', english: 'I want pizza!', emoji: '\uD83C\uDF55\u2764\uFE0F', hint: 'Sam shouts this at dinner time!' },
+    // 6
+    { italian: 'Mi piace il gelato!', english: 'I like ice cream!', emoji: '\uD83C\uDF66\uD83D\uDE0D', hint: 'Cat tells everyone her favourite treat!' },
+    // 7
+    { italian: 'Ho fame!', english: 'I\'m hungry!', emoji: '\uD83D\uDE0B', hint: 'Sam\'s tummy is rumbling!' },
+    // 8
+    { italian: 'Posso avere l\'acqua?', english: 'Can I have water?', emoji: '\uD83D\uDCA7\uD83D\uDE4F', hint: 'Cat asks politely for a drink!' },
+    // 9
+    { italian: 'La pizza \u00E8 buona!', english: 'The pizza is good!', emoji: '\uD83C\uDF55\uD83D\uDE0B', hint: 'Sam takes a big bite and says this!' }
+  ],
+
   lessons: [
 
     /* --------------------------------------------------
@@ -135,200 +164,192 @@ window.CIBO_DATA = {
     },
 
     /* --------------------------------------------------
-       Lesson 2 - Fruit and Drinks (vocabIndices 5-9)
+       Lesson 2 - Food Phrases (vocabIndices 5-9)
+       Now we combine food words into short phrases!
        -------------------------------------------------- */
     {
       id: 'cibo-2',
-      title: 'Fruit and Drinks',
+      title: 'Food Phrases',
       vocabIndices: [5, 6, 7, 8, 9],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
 
-        // 1. Picture match - pomodoro
-        {
-          type: 'picture-match',
-          prompt: 'Tap the picture that matches "pomodoro"!',
-          speakWord: 'pomodoro',
-          correctAnswer: 'pomodoro',
-          options: [
-            { value: 'pomodoro', emoji: '\uD83C\uDF45', label: 'pomodoro' },
-            { value: 'mela',    emoji: '\uD83C\uDF4E', label: 'mela' },
-            { value: 'banana',  emoji: '\uD83C\uDF4C', label: 'banana' },
-            { value: 'latte',   emoji: '\uD83E\uDD5B', label: 'latte' }
-          ]
-        },
-
-        // 2. Multiple choice - mela
+        // 1. Multiple choice - phrase translation: la pizza buona
         {
           type: 'multiple-choice',
-          prompt: 'What does "mela" mean in English?',
-          correctAnswer: 'apple',
-          options: ['apple', 'banana', 'tomato', 'water'],
-          daisySays: 'Cat packed a healthy snack! What is a mela?',
-          speakWord: 'mela'
+          prompt: 'What does "la pizza buona" mean?',
+          correctAnswer: 'the good pizza',
+          options: ['the good pizza', 'the cold ice cream', 'the fresh bread', 'the red apple'],
+          daisySays: 'Sam just tasted the pizza and loves it!',
+          speakWord: 'la pizza buona'
         },
 
-        // 3. Listen and pick - banana
+        // 2. Multiple choice - phrase translation: il gelato freddo
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "the cold ice cream" in Italian?',
+          correctAnswer: 'il gelato freddo',
+          options: ['il gelato freddo', 'la pizza buona', 'il pane fresco', 'la mela rossa'],
+          daisySays: 'Cat keeps her treat in the freezer!',
+          speakWord: 'il gelato freddo'
+        },
+
+        // 3. Listen-pick - hear a phrase: il pane fresco
         {
           type: 'listen-pick',
-          prompt: 'Listen carefully! Which word do you hear?',
-          speakWord: 'banana',
-          correctAnswer: 'banana',
-          options: ['banana', 'mela', 'acqua', 'pomodoro']
+          prompt: 'Listen! What food phrase do you hear?',
+          speakWord: 'il pane fresco',
+          correctAnswer: 'il pane fresco',
+          options: ['il pane fresco', 'la pizza buona', 'il gelato freddo', 'la mela rossa']
         },
 
-        // 4. Multiple choice - latte
+        // 4. Listen-pick - hear a phrase: l'acqua fresca
         {
-          type: 'multiple-choice',
-          prompt: 'How do you say "milk" in Italian?',
-          correctAnswer: 'latte',
-          options: ['latte', 'acqua', 'banana', 'mela'],
-          daisySays: 'Sam is pouring a big glass of milk! What is it in Italian?',
-          speakWord: 'latte'
+          type: 'listen-pick',
+          prompt: 'Sam is thirsty! Listen - what does he ask for?',
+          speakWord: 'l\'acqua fresca',
+          correctAnswer: 'l\'acqua fresca',
+          options: ['l\'acqua fresca', 'il pane fresco', 'la pizza buona', 'il gelato freddo']
         },
 
-        // 5. Fill in the blank - acqua
+        // 5. Fill-blank - single word missing: la pizza ____
         {
           type: 'fill-blank',
-          prompt: 'Spell the Italian word for "water"!',
-          correctAnswer: 'acqua',
-          sentence: 'Cat is thirsty and needs some ____.',
-          hint: 'It starts with A and has 5 letters!'
+          prompt: 'The pizza is good! Fill in the missing word!',
+          correctAnswer: 'buona',
+          sentence: 'La pizza ____!',
+          hint: 'It means "good" - starts with B!'
         },
 
-        // 6. Matching - all five words
+        // 6. Fill-blank - single word missing: il gelato ____
+        {
+          type: 'fill-blank',
+          prompt: 'The ice cream is cold! What word is missing?',
+          correctAnswer: 'freddo',
+          sentence: 'Il gelato ____.',
+          hint: 'It means "cold" - starts with F!'
+        },
+
+        // 7. Matching - Italian phrases to English
         {
           type: 'matching',
-          prompt: 'Match the Italian words to English!',
+          prompt: 'Match the Italian food phrases to English!',
           pairs: [
+            { left: 'la pizza buona', right: 'the good pizza' },
+            { left: 'il gelato freddo', right: 'the cold ice cream' },
+            { left: 'il pane fresco', right: 'the fresh bread' },
+            { left: 'l\'acqua fresca', right: 'the cool water' }
+          ]
+        },
+
+        // 8. Matching - more food phrases
+        {
+          type: 'matching',
+          prompt: 'Sam and Cat are shopping! Match the rest!',
+          pairs: [
+            { left: 'la mela rossa', right: 'the red apple' },
             { left: 'pomodoro', right: 'tomato' },
-            { left: 'mela',    right: 'apple' },
-            { left: 'banana',  right: 'banana' },
-            { left: 'latte',   right: 'milk' },
-            { left: 'acqua',   right: 'water' }
+            { left: 'banana', right: 'banana' },
+            { left: 'latte', right: 'milk' }
           ]
-        },
-
-        // 7. Picture match - acqua
-        {
-          type: 'picture-match',
-          prompt: 'Sam needs a drink! Tap "acqua"!',
-          speakWord: 'acqua',
-          correctAnswer: 'acqua',
-          options: [
-            { value: 'acqua',    emoji: '\uD83D\uDCA7', label: 'acqua' },
-            { value: 'latte',    emoji: '\uD83E\uDD5B', label: 'latte' },
-            { value: 'pomodoro', emoji: '\uD83C\uDF45', label: 'pomodoro' },
-            { value: 'banana',   emoji: '\uD83C\uDF4C', label: 'banana' }
-          ]
-        },
-
-        // 8. Listen and pick - pomodoro
-        {
-          type: 'listen-pick',
-          prompt: 'Listen and pick the right word!',
-          speakWord: 'pomodoro',
-          correctAnswer: 'pomodoro',
-          options: ['pomodoro', 'mela', 'latte', 'acqua']
         }
       ]
     },
 
     /* --------------------------------------------------
-       Lesson 3 - All the Food! (vocabIndices 0-11, review)
+       Lesson 3 - Food Sentences! (vocabIndices 0-11, review)
+       Full sentences using food words + conversation
        -------------------------------------------------- */
     {
       id: 'cibo-3',
-      title: 'All the Food!',
+      title: 'Food Sentences!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      phraseIndices: [5, 6, 7, 8, 9],
       exercises: [
 
-        // 1. Picture match - cioccolato
+        // 1. Conversation order - Sam and Cat order dinner
         {
-          type: 'picture-match',
-          prompt: 'Tap the picture that matches "cioccolato"!',
-          speakWord: 'cioccolato',
-          correctAnswer: 'cioccolato',
-          options: [
-            { value: 'cioccolato', emoji: '\uD83C\uDF6B', label: 'cioccolato' },
-            { value: 'biscotto',   emoji: '\uD83C\uDF6A', label: 'biscotto' },
-            { value: 'gelato',     emoji: '\uD83C\uDF66', label: 'gelato' },
-            { value: 'pane',       emoji: '\uD83C\uDF5E', label: 'pane' }
+          type: 'conversation-order',
+          prompt: 'Put Sam and Cat\'s restaurant visit in order!',
+          scenario: 'Sam and Cat go to an Italian restaurant for dinner!',
+          correctOrder: [
+            'Ciao!',
+            'Ho fame!',
+            'Voglio la pizza, per favore.',
+            'Posso avere l\'acqua?',
+            'La pizza \u00E8 buona!',
+            'Grazie!'
           ]
         },
 
-        // 2. Multiple choice - biscotto
+        // 2. Multiple choice - sentence translation: Voglio la pizza!
         {
           type: 'multiple-choice',
-          prompt: 'What does "biscotto" mean in English?',
-          correctAnswer: 'biscuit',
-          options: ['biscuit', 'chocolate', 'bread', 'ice cream'],
-          daisySays: 'Cat just baked a batch of treats! What is a biscotto?',
-          speakWord: 'biscotto'
+          prompt: 'What does "Voglio la pizza!" mean?',
+          correctAnswer: 'I want pizza!',
+          options: ['I want pizza!', 'I like ice cream!', 'I\'m hungry!', 'The pizza is good!'],
+          daisySays: 'Sam is ready to order at the restaurant!',
+          speakWord: 'Voglio la pizza'
         },
 
-        // 3. Listen and pick - cioccolato
+        // 3. Multiple choice - sentence translation: Mi piace il gelato!
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "I like ice cream!" in Italian?',
+          correctAnswer: 'Mi piace il gelato!',
+          options: ['Mi piace il gelato!', 'Voglio la pizza!', 'Ho fame!', 'Posso avere l\'acqua?'],
+          daisySays: 'Cat tells everyone about her favourite dessert!',
+          speakWord: 'Mi piace il gelato'
+        },
+
+        // 4. Listen-pick - hear a sentence: Ho fame!
         {
           type: 'listen-pick',
-          prompt: 'Listen carefully! Which word do you hear?',
-          speakWord: 'cioccolato',
-          correctAnswer: 'cioccolato',
-          options: ['cioccolato', 'biscotto', 'pomodoro', 'formaggio']
+          prompt: 'Sam\'s tummy is rumbling! What sentence do you hear?',
+          speakWord: 'Ho fame',
+          correctAnswer: 'Ho fame!',
+          options: ['Ho fame!', 'Voglio la pizza!', 'Mi piace il gelato!', 'La pizza \u00E8 buona!']
         },
 
-        // 4. Fill in the blank - biscotto
+        // 5. Fill-blank - single word in sentence: Voglio la ____!
         {
           type: 'fill-blank',
-          prompt: 'Spell the Italian word for "biscuit"!',
-          correctAnswer: 'biscotto',
-          sentence: 'Cat baked a yummy ____ for Sam.',
-          hint: 'It starts with B and has 8 letters!'
+          prompt: 'Sam wants pizza! Fill in the missing word!',
+          correctAnswer: 'pizza',
+          sentence: 'Voglio la ____!',
+          hint: 'Sam\'s favourite Italian food! Starts with P.'
         },
 
-        // 5. Matching - mixed review set 1
+        // 6. Fill-blank - single word in sentence: La pizza è ____!
+        {
+          type: 'fill-blank',
+          prompt: 'The pizza is good! What word is missing?',
+          correctAnswer: 'buona',
+          sentence: 'La pizza \u00E8 ____!',
+          hint: 'It means "good" - starts with B!'
+        },
+
+        // 7. Matching - sentences to English
         {
           type: 'matching',
-          prompt: 'Match all the food words! You know these!',
+          prompt: 'Match the Italian sentences to their meanings!',
           pairs: [
+            { left: 'Voglio la pizza!', right: 'I want pizza!' },
+            { left: 'Mi piace il gelato!', right: 'I like ice cream!' },
+            { left: 'Ho fame!', right: 'I\'m hungry!' },
+            { left: 'La pizza \u00E8 buona!', right: 'The pizza is good!' }
+          ]
+        },
+
+        // 8. Matching - more sentences and review
+        {
+          type: 'matching',
+          prompt: 'Last match! You are a food sentence superstar!',
+          pairs: [
+            { left: 'Posso avere l\'acqua?', right: 'Can I have water?' },
             { left: 'cioccolato', right: 'chocolate' },
-            { left: 'biscotto',   right: 'biscuit' },
-            { left: 'pizza',      right: 'pizza' },
-            { left: 'gelato',     right: 'ice cream' }
-          ]
-        },
-
-        // 6. Multiple choice - review pomodoro
-        {
-          type: 'multiple-choice',
-          prompt: 'How do you say "tomato" in Italian?',
-          correctAnswer: 'pomodoro',
-          options: ['pomodoro', 'formaggio', 'cioccolato', 'banana'],
-          daisySays: 'Sam is making pizza sauce! What is tomato in Italian?',
-          speakWord: 'pomodoro'
-        },
-
-        // 7. Picture match - review mix
-        {
-          type: 'picture-match',
-          prompt: 'Sam is hungry! Tap "pane"!',
-          speakWord: 'pane',
-          correctAnswer: 'pane',
-          options: [
-            { value: 'pane',       emoji: '\uD83C\uDF5E', label: 'pane' },
-            { value: 'cioccolato', emoji: '\uD83C\uDF6B', label: 'cioccolato' },
-            { value: 'mela',       emoji: '\uD83C\uDF4E', label: 'mela' },
-            { value: 'acqua',      emoji: '\uD83D\uDCA7', label: 'acqua' }
-          ]
-        },
-
-        // 8. Matching - mixed review set 2
-        {
-          type: 'matching',
-          prompt: 'One more match! You are a food superstar!',
-          pairs: [
-            { left: 'pane',    right: 'bread' },
-            { left: 'latte',   right: 'milk' },
-            { left: 'acqua',   right: 'water' },
-            { left: 'mela',    right: 'apple' }
+            { left: 'biscotto', right: 'biscuit' },
+            { left: 'formaggio', right: 'cheese' }
           ]
         }
       ]

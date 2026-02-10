@@ -171,6 +171,77 @@ window.NUMERI_DATA = {
   ],
 
   /* ------------------------------------------
+     Phrases & Sentences
+     ------------------------------------------ */
+  phrases: [
+    // L2 phrases (indices 0-4)
+    // 0
+    {
+      italian: 'Ho tre gatti',
+      english: 'I have three cats',
+      emoji: '\uD83D\uDC31\uD83D\uDC31\uD83D\uDC31',
+      hint: 'The demon hunter keeps three cats as spirit guardians!'
+    },
+    // 1
+    {
+      italian: 'Vedo cinque stelle',
+      english: 'I see five stars',
+      emoji: '\u2B50\u2B50\u2B50\u2B50\u2B50',
+      hint: 'Five glowing stars light up the demon hunter\u2019s sky!'
+    },
+    // 2
+    {
+      italian: 'Ho due mani',
+      english: 'I have two hands',
+      emoji: '\u270B\u270B',
+      hint: 'Two powerful hands to cast demon-banishing spells!'
+    },
+    // 3
+    {
+      italian: 'Ci sono quattro fiori',
+      english: 'There are four flowers',
+      emoji: '\uD83C\uDF38\uD83C\uDF38\uD83C\uDF38\uD83C\uDF38',
+      hint: 'Four magical flowers grow where the demons were defeated!'
+    },
+    // 4
+    {
+      italian: 'Ho dieci dita',
+      english: 'I have ten fingers',
+      emoji: '\uD83D\uDD1F\u270B',
+      hint: 'Ten fingers ready to play the K-Pop demon-fighting anthem!'
+    },
+    // L3 sentences (indices 5-8)
+    // 5
+    {
+      italian: 'Quanti anni hai?',
+      english: 'How old are you?',
+      emoji: '\uD83C\uDF82',
+      hint: 'Even demon hunters have birthdays!'
+    },
+    // 6
+    {
+      italian: 'Ho sei anni!',
+      english: 'I am six years old!',
+      emoji: '6\uFE0F\u20E3\uD83C\uDF89',
+      hint: 'The youngest demon hunter on the squad!'
+    },
+    // 7
+    {
+      italian: 'Uno, due, tre, via!',
+      english: 'One, two, three, go!',
+      emoji: '\uD83C\uDFC3',
+      hint: 'The demon hunters\u2019 battle countdown!'
+    },
+    // 8
+    {
+      italian: 'Conta con me!',
+      english: 'Count with me!',
+      emoji: '\uD83E\uDD1D',
+      hint: 'The squad leader rallies everyone to count together!'
+    }
+  ],
+
+  /* ------------------------------------------
      Lessons
      ------------------------------------------ */
   lessons: [
@@ -268,113 +339,172 @@ window.NUMERI_DATA = {
     },
 
     /* ==========================================
-       LESSON 2 - Numbers 11-20
+       LESSON 2 - Number Phrases
        ========================================== */
     {
       id: 'numeri-2',
-      title: 'Numbers 11-20',
+      title: 'Number Phrases',
       vocabIndices: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
 
-        // 1. Multiple choice: undici
+        // 1. Multiple choice: phrase translation
         {
           type: 'multiple-choice',
-          prompt: 'The demon hunter squad has 11 members! What is "undici" in English?',
-          correctAnswer: 'eleven',
-          options: ['eleven', 'twelve', 'thirteen', 'fifteen'],
-          daisySays: 'Undici brave hunters ready for battle! That\'s eleven!',
-          speakWord: 'undici'
+          prompt: 'The demon hunter checks on the spirit guardians! What does "Ho tre gatti" mean?',
+          correctAnswer: 'I have three cats',
+          options: ['I have three cats', 'I see three cats', 'There are three cats', 'I want three cats'],
+          daisySays: 'Ho tre gatti! Three spirit-guardian cats protect the base!',
+          speakWord: 'Ho tre gatti'
         },
 
-        // 2. Listen and pick: tredici
+        // 2. Multiple choice: phrase translation
+        {
+          type: 'multiple-choice',
+          prompt: 'The hunters look up at the night sky! What does "Vedo cinque stelle" mean?',
+          correctAnswer: 'I see five stars',
+          options: ['I see five stars', 'I have five stars', 'There are five stars', 'I want five stars'],
+          daisySays: 'Cinque stelle! Five stars guide the demon hunters through the night!',
+          speakWord: 'Vedo cinque stelle'
+        },
+
+        // 3. Listen and pick: hear a phrase
         {
           type: 'listen-pick',
-          prompt: 'Spooky! The demons appear at this number! Which one do you hear?',
-          speakWord: 'tredici',
-          correctAnswer: 'tredici',
-          options: ['tredici', 'undici', 'quindici', 'dodici']
+          prompt: 'The squad leader shouts a command! Which phrase do you hear?',
+          speakWord: 'Ho due mani',
+          correctAnswer: 'Ho due mani',
+          options: ['Ho due mani', 'Ho tre gatti', 'Ho dieci dita', 'Vedo cinque stelle']
         },
 
-        // 3. Multiple choice: quindici
+        // 4. Listen and pick: hear a phrase
         {
-          type: 'multiple-choice',
-          prompt: 'The K-Pop concert starts in quindici minutes! How many is that?',
-          correctAnswer: 'fifteen',
-          options: ['fifteen', 'fourteen', 'sixteen', 'thirteen'],
-          daisySays: 'Quindici! That\'s fifteen minutes to showtime! Get your glow sticks ready!',
-          speakWord: 'quindici'
+          type: 'listen-pick',
+          prompt: 'A hunter reports what they found after the battle! Which phrase do you hear?',
+          speakWord: 'Ci sono quattro fiori',
+          correctAnswer: 'Ci sono quattro fiori',
+          options: ['Ci sono quattro fiori', 'Ho tre gatti', 'Vedo cinque stelle', 'Ho dieci dita']
         },
 
-        // 4. Matching: 11-14
+        // 5. Fill in the blank: single word missing
+        {
+          type: 'fill-blank',
+          prompt: 'The demon hunter counts their cats! Fill in the missing number word!',
+          correctAnswer: 'tre',
+          sentence: 'Ho ____ gatti.',
+          hint: 'How many spirit-guardian cats? It\u2019s the number 3 in Italian!'
+        },
+
+        // 6. Fill in the blank: single word missing
+        {
+          type: 'fill-blank',
+          prompt: 'The hunter wiggles all their fingers! Fill in the missing number word!',
+          correctAnswer: 'dieci',
+          sentence: 'Ho ____ dita.',
+          hint: 'How many fingers do you have? It\u2019s the number 10 in Italian!'
+        },
+
+        // 7. Matching: Italian phrases to English
         {
           type: 'matching',
-          prompt: 'The hunters found a number puzzle on the demon\'s door! Match them up!',
+          prompt: 'The demon hunters need to decode the ancient scroll! Match each phrase!',
           pairs: [
-            { left: 'undici', right: 'eleven' },
-            { left: 'dodici', right: 'twelve' },
-            { left: 'tredici', right: 'thirteen' },
-            { left: 'quattordici', right: 'fourteen' }
+            { left: 'Ho tre gatti', right: 'I have three cats' },
+            { left: 'Vedo cinque stelle', right: 'I see five stars' },
+            { left: 'Ho due mani', right: 'I have two hands' },
+            { left: 'Ci sono quattro fiori', right: 'There are four flowers' }
           ]
         },
 
-        // 5. Fill in the blank: venti
-        {
-          type: 'fill-blank',
-          prompt: 'Spell the biggest number the hunters can count to!',
-          correctAnswer: 'venti',
-          sentence: 'There are ____ levels in the demon tower.',
-          hint: 'It means 20! Starts with V. The final boss level!'
-        },
-
-        // 6. Listen and pick: diciotto
-        {
-          type: 'listen-pick',
-          prompt: 'The hunters count their trophies! Which number do you hear?',
-          speakWord: 'diciotto',
-          correctAnswer: 'diciotto',
-          options: ['diciotto', 'diciannove', 'sedici', 'diciassette']
-        },
-
-        // 7. Multiple choice: diciassette
-        {
-          type: 'multiple-choice',
-          prompt: 'The demon hunters have diciassette dance moves! How many is that?',
-          correctAnswer: 'seventeen',
-          options: ['seventeen', 'eighteen', 'sixteen', 'nineteen'],
-          daisySays: 'Diciassette epic moves! That\'s seventeen! Can you learn them all?',
-          speakWord: 'diciassette'
-        },
-
-        // 8. Matching: 17-20
+        // 8. Matching: more phrases
         {
           type: 'matching',
-          prompt: 'Almost there! Match these big numbers to defeat the final demon boss!',
+          prompt: 'Final challenge! Match these phrases to complete the demon hunter\u2019s training!',
           pairs: [
-            { left: 'diciassette', right: 'seventeen' },
-            { left: 'diciotto', right: 'eighteen' },
-            { left: 'diciannove', right: 'nineteen' },
-            { left: 'venti', right: 'twenty' }
+            { left: 'Ho dieci dita', right: 'I have ten fingers' },
+            { left: 'Ho tre gatti', right: 'I have three cats' },
+            { left: 'Ci sono quattro fiori', right: 'There are four flowers' },
+            { left: 'Vedo cinque stelle', right: 'I see five stars' }
           ]
         }
       ]
     },
 
     /* ==========================================
-       LESSON 3 - Italian Maths!
+       LESSON 3 - Number Sentences!
        ========================================== */
     {
       id: 'numeri-3',
-      title: 'Italian Maths!',
+      title: 'Number Sentences!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+      phraseIndices: [5, 6, 7, 8],
       exercises: [
+
+        // 1. Conversation order: demon hunter countdown
+        {
+          type: 'conversation-order',
+          prompt: 'The demon hunters are about to charge! Put the countdown in the right order!',
+          correctOrder: [
+            { speaker: 'leader', text: 'Pronti?' },
+            { speaker: 'hunter', text: 'Tre!' },
+            { speaker: 'hunter', text: 'Due!' },
+            { speaker: 'hunter', text: 'Uno!' },
+            { speaker: 'leader', text: 'Via!' },
+            { speaker: 'all', text: 'Andiamo!' }
+          ],
+          daisySays: 'Pronti? Tre, due, uno, VIA! The demon hunters charge into battle!'
+        },
+
+        // 2. Maths generator: 3 questions
         {
           type: 'maths',
           generatorConfig: {
             operations: ['+', '-'],
             maxResult: 20,
             minResult: 0,
-            count: 8
+            count: 3
           }
+        },
+
+        // 3. Multiple choice: sentence translation
+        {
+          type: 'multiple-choice',
+          prompt: 'The youngest demon hunter introduces herself! What does "Ho sei anni" mean?',
+          correctAnswer: 'I am six years old',
+          options: ['I am six years old', 'I have six cats', 'I see six stars', 'There are six flowers'],
+          daisySays: 'Ho sei anni! She\u2019s six years old and already fighting demons!',
+          speakWord: 'Ho sei anni'
+        },
+
+        // 4. Multiple choice: sentence translation
+        {
+          type: 'multiple-choice',
+          prompt: 'The squad leader asks a question! What does "Quanti anni hai?" mean?',
+          correctAnswer: 'How old are you?',
+          options: ['How old are you?', 'How are you?', 'What is your name?', 'Where are you?'],
+          daisySays: 'Quanti anni hai? The leader wants to know your age for the team roster!',
+          speakWord: 'Quanti anni hai?'
+        },
+
+        // 5. Fill in the blank: single word in sentence
+        {
+          type: 'fill-blank',
+          prompt: 'The little demon hunter tells everyone her age! Fill in the missing number!',
+          correctAnswer: 'sei',
+          sentence: 'Ho ____ anni.',
+          hint: 'She\u2019s 6 years old! What\u2019s the Italian word for six?'
+        },
+
+        // 6. Matching: number sentences to English
+        {
+          type: 'matching',
+          prompt: 'Decode the demon hunter\u2019s secret messages! Match each sentence!',
+          pairs: [
+            { left: 'Quanti anni hai?', right: 'How old are you?' },
+            { left: 'Ho sei anni!', right: 'I am six years old!' },
+            { left: 'Uno, due, tre, via!', right: 'One, two, three, go!' },
+            { left: 'Conta con me!', right: 'Count with me!' }
+          ]
         }
       ]
     }

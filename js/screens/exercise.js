@@ -41,8 +41,30 @@ window.renderExerciseScreen = function(container, params) {
     }
   });
 
-  // Shuffle exercises for variety
-  exercises = ExerciseTypes.shuffleArray(exercises);
+  // Generate revision exercises from previously completed topics
+  var revisionExercises = generateRevisionExercises(topicId, lessonId, 5);
+
+  if (revisionExercises.length > 0) {
+    // Split: first ~60% as warm-up at the start, rest sprinkled into main exercises
+    var warmUpCount = Math.min(3, Math.ceil(revisionExercises.length * 0.6));
+    var warmUp = revisionExercises.slice(0, warmUpCount);
+    var sprinkled = revisionExercises.slice(warmUpCount);
+
+    // Shuffle only the main lesson exercises
+    exercises = ExerciseTypes.shuffleArray(exercises);
+
+    // Insert sprinkled revision exercises at random positions within the main exercises
+    sprinkled.forEach(function(revEx) {
+      var insertAt = Math.floor(Math.random() * (exercises.length + 1));
+      exercises.splice(insertAt, 0, revEx);
+    });
+
+    // Prepend warm-up exercises at the very start
+    exercises = warmUp.concat(exercises);
+  } else {
+    // No revision available (first topic/lesson) -- just shuffle as before
+    exercises = ExerciseTypes.shuffleArray(exercises);
+  }
 
   var currentIndex = 0;
   var score = 0;
@@ -75,6 +97,13 @@ window.renderExerciseScreen = function(container, params) {
 
     // Daisy
     html += '<div id="daisy-exercise"></div>';
+
+    // Revision badge
+    if (exercise._isRevision) {
+      html += '<div style="text-align:center; margin-bottom: var(--gap-xs);">' +
+        '<span style="background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; font-size: var(--font-size-small); font-weight: 700; padding: 3px 12px; border-radius: 99px; display: inline-block;">&#x1F504; Revision!</span>' +
+        '</div>';
+    }
 
     // Question
     html += '<p class="exercise-question">' + exercise.prompt + '</p>';
@@ -273,4 +302,161 @@ function generateMathsQuestion(config) {
     result: result,
     correctAnswer: String(result)
   };
+}
+
+// Revision exercise generator - creates review exercises from previously completed topics
+function generateRevisionExercises(currentTopicId, currentLessonId, count) {
+  var topicOrder = window.TOPICS ? window.TOPICS.map(function(t) { return t.id; }) : [];
+  var currentTopicIndex = topicOrder.indexOf(currentTopicId);
+  var currentLessonNum = parseInt(currentLessonId.split('-').pop()) || 1;
+
+  if (currentTopicIndex < 0) return [];
+
+  // 1. Collect all learned vocab from completed lessons
+  var pool = [];
+
+  for (var t = 0; t <= currentTopicIndex; t++) {
+    var tid = topicOrder[t];
+    var tData = window.getTopicData(tid);
+    if (!tData) continue;
+
+    // Skip numeri - its vocab has a 'number' field and is used for maths exercises
+    if (tid === 'numeri') continue;
+
+    for (var l = 1; l <= 3; l++) {
+      var lid = tid + '-' + l;
+
+      // If this is the current topic, only include earlier lessons
+      if (tid === currentTopicId && l >= currentLessonNum) continue;
+
+      var progress = window.app.state.getLessonProgress(tid, lid);
+      if (!progress || !progress.completed) continue;
+
+      // Find the lesson definition to get its vocabIndices
+      var lessonDef = tData.lessons.find(function(ls) { return ls.id === lid; });
+      if (!lessonDef) continue;
+
+      // Collect vocab items
+      if (lessonDef.vocabIndices && tData.vocabulary) {
+        lessonDef.vocabIndices.forEach(function(idx) {
+          var v = tData.vocabulary[idx];
+          if (v && v.emoji) {
+            pool.push({ italian: v.italian, english: v.english, emoji: v.emoji, topicId: tid });
+          }
+        });
+      }
+
+      // Collect phrase items too
+      if (lessonDef.phraseIndices && tData.phrases) {
+        lessonDef.phraseIndices.forEach(function(idx) {
+          var p = tData.phrases[idx];
+          if (p && p.emoji) {
+            pool.push({ italian: p.italian, english: p.english, emoji: p.emoji, topicId: tid });
+          }
+        });
+      }
+    }
+  }
+
+  // 2. Need at least 4 items for meaningful multiple-choice distractors
+  if (pool.length < 4) return [];
+
+  // 3. Deduplicate by italian word (in case same word appears in multiple lessons)
+  var seen = {};
+  pool = pool.filter(function(item) {
+    if (seen[item.italian]) return false;
+    seen[item.italian] = true;
+    return true;
+  });
+
+  if (pool.length < 4) return [];
+
+  // 4. Shuffle the pool
+  pool = ExerciseTypes.shuffleArray(pool);
+
+  // 5. Generate exercises
+  var exerciseCount = Math.min(count, pool.length);
+  var exercises = [];
+  var usedWords = {};
+
+  function getDistractors(target) {
+    var candidates = pool.filter(function(item) {
+      return item.italian !== target.italian && item.english !== target.english;
+    });
+    candidates = ExerciseTypes.shuffleArray(candidates);
+    return candidates.slice(0, 3);
+  }
+
+  var templates = ['multiple-choice', 'listen-pick', 'picture-match'];
+
+  var mcPrompts = [
+    'Quick revision! What does "WORD" mean?',
+    'Do you remember? What is "WORD" in English?',
+    'Think back! What does "WORD" mean?'
+  ];
+  var lpPrompts = [
+    'Revision time! Listen - which word do you hear?',
+    'Do you remember this sound? Which word is it?',
+    'Listen carefully! What word do you hear?'
+  ];
+  var pmPrompts = [
+    'Do you remember? Which picture matches "WORD"?',
+    'Revision! Tap the right picture for "WORD"!',
+    'Which one is "WORD"?'
+  ];
+
+  for (var i = 0; i < exerciseCount; i++) {
+    var word = pool[i];
+
+    if (usedWords[word.italian]) continue;
+    usedWords[word.italian] = true;
+
+    var distractors = getDistractors(word);
+    if (distractors.length < 3) continue;
+
+    var template = templates[Math.floor(Math.random() * templates.length)];
+    var exercise;
+
+    if (template === 'multiple-choice') {
+      var prompt = mcPrompts[Math.floor(Math.random() * mcPrompts.length)].replace('WORD', word.italian);
+      exercise = {
+        type: 'multiple-choice',
+        prompt: prompt,
+        correctAnswer: word.english,
+        options: ExerciseTypes.shuffleArray([word.english, distractors[0].english, distractors[1].english, distractors[2].english]),
+        speakWord: word.italian,
+        daisySays: 'Do you remember this one? ' + word.emoji,
+        _isRevision: true
+      };
+    } else if (template === 'listen-pick') {
+      var prompt = lpPrompts[Math.floor(Math.random() * lpPrompts.length)];
+      exercise = {
+        type: 'listen-pick',
+        prompt: prompt,
+        speakWord: word.italian,
+        correctAnswer: word.italian,
+        options: ExerciseTypes.shuffleArray([word.italian, distractors[0].italian, distractors[1].italian, distractors[2].italian]),
+        _isRevision: true
+      };
+    } else {
+      var prompt = pmPrompts[Math.floor(Math.random() * pmPrompts.length)].replace('WORD', word.italian);
+      exercise = {
+        type: 'picture-match',
+        prompt: prompt,
+        speakWord: word.italian,
+        correctAnswer: word.italian,
+        options: ExerciseTypes.shuffleArray([
+          { value: word.italian, emoji: word.emoji, label: word.italian },
+          { value: distractors[0].italian, emoji: distractors[0].emoji, label: distractors[0].italian },
+          { value: distractors[1].italian, emoji: distractors[1].emoji, label: distractors[1].italian },
+          { value: distractors[2].italian, emoji: distractors[2].emoji, label: distractors[2].italian }
+        ]),
+        _isRevision: true
+      };
+    }
+
+    exercises.push(exercise);
+  }
+
+  return exercises;
 }

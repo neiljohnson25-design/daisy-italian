@@ -33,6 +33,38 @@ window.ANIMALI_DATA = {
     { italian: 'elefante', english: 'elephant', emoji: '\uD83D\uDC18', hint: 'Jasmine sees these amazing big animals in Agrabah!' }
   ],
 
+  /* ------------------------------------------
+     Phrases (for L2 and L3 progression)
+     ------------------------------------------ */
+  phrases: [
+    // L2 - Short phrases (indices 0-4)
+    // 0
+    { italian: 'il gatto piccolo', english: 'the small cat', emoji: '\uD83D\uDC31', hint: 'Cinderella\'s little furry friend in the castle!' },
+    // 1
+    { italian: 'il cane grande', english: 'the big dog', emoji: '\uD83D\uDC36', hint: 'Ariel\'s friend Max is a big brave pup!' },
+    // 2
+    { italian: 'il cavallo bianco', english: 'the white horse', emoji: '\uD83D\uDC34', hint: 'Every princess has a beautiful white steed!' },
+    // 3
+    { italian: 'l\'uccello blu', english: 'the blue bird', emoji: '\uD83D\uDC26', hint: 'Snow White\'s little songbird is this colour!' },
+    // 4
+    { italian: 'il pesce rosso', english: 'the goldfish', emoji: '\uD83D\uDC1F', hint: 'A little red fish swimming round and round!' },
+
+    // L3 - Full sentences (indices 5-9)
+    // 5
+    { italian: 'Mi piace il gatto!', english: 'I like the cat!', emoji: '\uD83D\uDC31\u2764\uFE0F', hint: 'Tell everyone which animal you love!' },
+    // 6
+    { italian: 'Ho un cane grande', english: 'I have a big dog', emoji: '\uD83D\uDC36', hint: 'Ariel tells her friends about her pet!' },
+    // 7
+    { italian: 'Il cavallo \u00E8 bianco', english: 'The horse is white', emoji: '\uD83D\uDC34\u26AA', hint: 'Rapunzel describes Maximus!' },
+    // 8
+    { italian: 'Vedo un uccello blu!', english: 'I see a blue bird!', emoji: '\uD83D\uDC26\uD83D\uDD35', hint: 'Snow White spots one in the forest!' },
+    // 9
+    { italian: 'Il pesce nuota', english: 'The fish swims', emoji: '\uD83D\uDC1F\uD83C\uDF0A', hint: 'Flounder does this all day under the sea!' }
+  ],
+
+  /* ------------------------------------------
+     Lessons
+     ------------------------------------------ */
   lessons: [
     /* ==========================================
        Lesson 1: Pet Animals (vocabIndices 0-4)
@@ -132,195 +164,191 @@ window.ANIMALI_DATA = {
     },
 
     /* ==========================================
-       Lesson 2: Wild Animals (vocabIndices 5-9)
+       Lesson 2: Animal Phrases (phraseIndices 0-4)
        ========================================== */
     {
       id: 'animali-2',
-      title: 'Wild Animals',
+      title: 'Animal Phrases',
       vocabIndices: [5, 6, 7, 8, 9],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
-        // Exercise 1: Picture match - rana
-        {
-          type: 'picture-match',
-          prompt: 'Tiana kissed one of these! Which animal is a "rana"?',
-          speakWord: 'rana',
-          correctAnswer: 'rana',
-          options: [
-            { value: 'rana', emoji: '\uD83D\uDC38', label: 'rana' },
-            { value: 'topo', emoji: '\uD83D\uDC2D', label: 'topo' },
-            { value: 'coniglio', emoji: '\uD83D\uDC30', label: 'coniglio' },
-            { value: 'orso', emoji: '\uD83D\uDC3B', label: 'orso' }
-          ]
-        },
 
-        // Exercise 2: Multiple choice - coniglio
+        // Exercise 1: Multiple choice - phrase translation
         {
           type: 'multiple-choice',
-          prompt: 'What is "rabbit" in Italian?',
-          correctAnswer: 'coniglio',
-          options: ['coniglio', 'rana', 'topo', 'farfalla'],
-          daisySays: 'Think of the fluffy friends hopping in Snow White\'s forest!',
-          speakWord: 'coniglio'
+          prompt: 'What does "il gatto piccolo" mean?',
+          correctAnswer: 'the small cat',
+          options: ['the small cat', 'the big dog', 'the white horse', 'the blue bird'],
+          daisySays: 'Cinderella\'s little furry friend in the castle!',
+          speakWord: 'il gatto piccolo'
         },
 
-        // Exercise 3: Listen and pick - farfalla
+        // Exercise 2: Multiple choice - phrase translation
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "the white horse" in Italian?',
+          correctAnswer: 'il cavallo bianco',
+          options: ['il cavallo bianco', 'il cane grande', 'il gatto piccolo', 'il pesce rosso'],
+          daisySays: 'Every princess rides a beautiful white steed!',
+          speakWord: 'il cavallo bianco'
+        },
+
+        // Exercise 3: Listen-pick - hear a phrase
         {
           type: 'listen-pick',
-          prompt: 'Listen! Which beautiful creature do you hear?',
-          speakWord: 'farfalla',
-          correctAnswer: 'farfalla',
-          options: ['farfalla', 'coniglio', 'rana', 'orso']
+          prompt: 'Listen! Which animal phrase do you hear?',
+          speakWord: 'il cane grande',
+          correctAnswer: 'il cane grande',
+          options: ['il cane grande', 'il gatto piccolo', 'il pesce rosso', 'l\'uccello blu']
         },
 
-        // Exercise 4: Picture match - topo
+        // Exercise 4: Listen-pick - hear a phrase
         {
-          type: 'picture-match',
-          prompt: 'Cinderella\'s tiny helpers! Which one is a "topo"?',
-          speakWord: 'topo',
-          correctAnswer: 'topo',
-          options: [
-            { value: 'topo', emoji: '\uD83D\uDC2D', label: 'topo' },
-            { value: 'rana', emoji: '\uD83D\uDC38', label: 'rana' },
-            { value: 'farfalla', emoji: '\uD83E\uDD8B', label: 'farfalla' },
-            { value: 'orso', emoji: '\uD83D\uDC3B', label: 'orso' }
-          ]
+          type: 'listen-pick',
+          prompt: 'Snow White hears something! What phrase is it?',
+          speakWord: 'l\'uccello blu',
+          correctAnswer: 'l\'uccello blu',
+          options: ['l\'uccello blu', 'il cavallo bianco', 'il cane grande', 'il gatto piccolo']
         },
 
-        // Exercise 5: Multiple choice - orso
-        {
-          type: 'multiple-choice',
-          prompt: 'Merida\'s mum was turned into one! What is "bear" in Italian?',
-          correctAnswer: 'orso',
-          options: ['orso', 'topo', 'coniglio', 'rana'],
-          daisySays: 'Remember Brave? Merida\'s mum became big and fluffy!',
-          speakWord: 'orso'
-        },
-
-        // Exercise 6: Fill in the blank - rana
+        // Exercise 5: Fill-blank - single word missing from phrase
         {
           type: 'fill-blank',
-          prompt: 'Spell the Italian word for "frog"!',
-          correctAnswer: 'rana',
-          sentence: 'Tiana kissed the ____ and it turned into a prince!',
-          hint: 'A little green friend - only 4 letters starting with "r"!'
+          prompt: 'What kind of cat? Fill in the missing word!',
+          correctAnswer: 'piccolo',
+          sentence: 'Il gatto \u00E8 ____.',
+          hint: 'It means small! Cinderella\'s little cat - starts with P.'
         },
 
-        // Exercise 7: Matching - wild animals
+        // Exercise 6: Fill-blank - single word missing from phrase
+        {
+          type: 'fill-blank',
+          prompt: 'What colour is the fish? Fill in the missing word!',
+          correctAnswer: 'rosso',
+          sentence: 'Il pesce \u00E8 ____.',
+          hint: 'It means red! Like a goldfish - starts with R.'
+        },
+
+        // Exercise 7: Matching - Italian phrases to English
         {
           type: 'matching',
-          prompt: 'Match the Italian animals to the English words!',
+          prompt: 'Match the Italian animal phrases to English!',
           pairs: [
-            { left: 'coniglio', right: 'rabbit' },
-            { left: 'farfalla', right: 'butterfly' },
-            { left: 'rana', right: 'frog' },
-            { left: 'topo', right: 'mouse' }
+            { left: 'il gatto piccolo', right: 'the small cat' },
+            { left: 'il cane grande', right: 'the big dog' },
+            { left: 'il cavallo bianco', right: 'the white horse' },
+            { left: 'l\'uccello blu', right: 'the blue bird' }
           ]
         },
 
-        // Exercise 8: Listen and pick - orso
+        // Exercise 8: Matching - more phrase pairs
         {
-          type: 'listen-pick',
-          prompt: 'Listen to the word! Can you pick the right one?',
-          speakWord: 'orso',
-          correctAnswer: 'orso',
-          options: ['orso', 'farfalla', 'topo', 'coniglio']
+          type: 'matching',
+          prompt: 'Match the rest of the princess animal phrases!',
+          pairs: [
+            { left: 'il pesce rosso', right: 'the goldfish' },
+            { left: 'il cane grande', right: 'the big dog' },
+            { left: 'l\'uccello blu', right: 'the blue bird' },
+            { left: 'il cavallo bianco', right: 'the white horse' }
+          ]
         }
       ]
     },
 
     /* ==========================================
-       Lesson 3: All the Animals! (vocabIndices 0-11)
+       Lesson 3: Animal Sentences! (phraseIndices 5-9)
        ========================================== */
     {
       id: 'animali-3',
-      title: 'All the Animals!',
+      title: 'Animal Sentences!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      phraseIndices: [5, 6, 7, 8, 9],
       exercises: [
-        // Exercise 1: Picture match - leone
+
+        // Exercise 1: Conversation order - Snow White meets forest animals
         {
-          type: 'picture-match',
-          prompt: 'Which animal is a "leone"? The king of the jungle!',
-          speakWord: 'leone',
-          correctAnswer: 'leone',
-          options: [
-            { value: 'leone', emoji: '\uD83E\uDD81', label: 'leone' },
-            { value: 'orso', emoji: '\uD83D\uDC3B', label: 'orso' },
-            { value: 'cavallo', emoji: '\uD83D\uDC34', label: 'cavallo' },
-            { value: 'elefante', emoji: '\uD83D\uDC18', label: 'elefante' }
+          type: 'conversation-order',
+          prompt: 'Put Snow White\'s forest adventure in order!',
+          scenario: 'Snow White walks through the enchanted forest and meets the animals!',
+          correctOrder: [
+            'Ciao, animali!',
+            'Vedo un uccello blu!',
+            'Mi piace il gatto!',
+            'Il cavallo \u00E8 bianco.',
+            'Il pesce nuota!',
+            'Che bello!'
           ]
         },
 
-        // Exercise 2: Multiple choice - elefante
+        // Exercise 2: Multiple choice - sentence translation
         {
           type: 'multiple-choice',
-          prompt: 'Jasmine sees these big animals! What is "elephant" in Italian?',
-          correctAnswer: 'elefante',
-          options: ['elefante', 'leone', 'cavallo', 'orso'],
-          daisySays: 'Think about the amazing animals in Agrabah!',
-          speakWord: 'elefante'
+          prompt: 'What does "Mi piace il gatto!" mean?',
+          correctAnswer: 'I like the cat!',
+          options: ['I like the cat!', 'I see the cat!', 'I have a cat!', 'The cat is small!'],
+          daisySays: 'This is how you tell a princess which animal you love!',
+          speakWord: 'Mi piace il gatto'
         },
 
-        // Exercise 3: Listen and pick - farfalla (review)
+        // Exercise 3: Multiple choice - sentence translation
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "The horse is white" in Italian?',
+          correctAnswer: 'Il cavallo \u00E8 bianco',
+          options: ['Il cavallo \u00E8 bianco', 'Ho un cane grande', 'Mi piace il gatto', 'Il pesce nuota'],
+          daisySays: 'Think about Rapunzel\'s beautiful horse Maximus!',
+          speakWord: 'Il cavallo \u00E8 bianco'
+        },
+
+        // Exercise 4: Listen-pick - hear a sentence
         {
           type: 'listen-pick',
-          prompt: 'Listen! This pretty creature flies around Aurora\'s garden!',
-          speakWord: 'farfalla',
-          correctAnswer: 'farfalla',
-          options: ['farfalla', 'uccello', 'pesce', 'rana']
+          prompt: 'Ariel is talking about her pet! What sentence do you hear?',
+          speakWord: 'Ho un cane grande',
+          correctAnswer: 'Ho un cane grande',
+          options: ['Ho un cane grande', 'Mi piace il gatto', 'Il pesce nuota', 'Vedo un uccello blu']
         },
 
-        // Exercise 4: Multiple choice - topo (review)
-        {
-          type: 'multiple-choice',
-          prompt: 'Jaq and Gus help Cinderella! What is "mouse" in Italian?',
-          correctAnswer: 'topo',
-          options: ['topo', 'coniglio', 'gatto', 'rana'],
-          daisySays: 'Cinderella\'s little helpers who made her beautiful dress!',
-          speakWord: 'topo'
-        },
-
-        // Exercise 5: Picture match - mixed review
-        {
-          type: 'picture-match',
-          prompt: 'Rapunzel rides one of these! Which one is a "cavallo"?',
-          speakWord: 'cavallo',
-          correctAnswer: 'cavallo',
-          options: [
-            { value: 'cavallo', emoji: '\uD83D\uDC34', label: 'cavallo' },
-            { value: 'cane', emoji: '\uD83D\uDC36', label: 'cane' },
-            { value: 'leone', emoji: '\uD83E\uDD81', label: 'leone' },
-            { value: 'elefante', emoji: '\uD83D\uDC18', label: 'elefante' }
-          ]
-        },
-
-        // Exercise 6: Matching - big review mix
-        {
-          type: 'matching',
-          prompt: 'Match all the princess animals to the English words!',
-          pairs: [
-            { left: 'leone', right: 'lion' },
-            { left: 'elefante', right: 'elephant' },
-            { left: 'pesce', right: 'fish' },
-            { left: 'farfalla', right: 'butterfly' }
-          ]
-        },
-
-        // Exercise 7: Fill in the blank - leone
+        // Exercise 5: Fill-blank - single word in sentence
         {
           type: 'fill-blank',
-          prompt: 'Spell the Italian word for "lion"!',
-          correctAnswer: 'leone',
-          sentence: 'The brave ____ is the king of the jungle!',
-          hint: 'A big cat with a golden mane - starts with "l"!'
+          prompt: 'What does the fish do? Fill in the missing word!',
+          correctAnswer: 'nuota',
+          sentence: 'Il pesce ____.',
+          hint: 'Flounder does this all day! It means swims - starts with N.'
         },
 
-        // Exercise 8: Listen and pick - elefante
+        // Exercise 6: Fill-blank - single word in sentence
         {
-          type: 'listen-pick',
-          prompt: 'Listen! Can you pick the animal Jasmine loves?',
-          speakWord: 'elefante',
-          correctAnswer: 'elefante',
-          options: ['elefante', 'cavallo', 'leone', 'orso']
+          type: 'fill-blank',
+          prompt: 'What colour is the horse? Fill in the missing word!',
+          correctAnswer: 'bianco',
+          sentence: 'Il cavallo \u00E8 ____.',
+          hint: 'Maximus is this colour! It means white - starts with B.'
+        },
+
+        // Exercise 7: Matching - sentences to English
+        {
+          type: 'matching',
+          prompt: 'Match the Italian animal sentences to English!',
+          pairs: [
+            { left: 'Mi piace il gatto', right: 'I like the cat' },
+            { left: 'Ho un cane grande', right: 'I have a big dog' },
+            { left: 'Il pesce nuota', right: 'The fish swims' },
+            { left: 'Vedo un uccello blu', right: 'I see a blue bird' }
+          ]
+        },
+
+        // Exercise 8: Matching - more sentence pairs
+        {
+          type: 'matching',
+          prompt: 'Match the rest of the princess animal sentences!',
+          pairs: [
+            { left: 'Il cavallo \u00E8 bianco', right: 'The horse is white' },
+            { left: 'Il pesce nuota', right: 'The fish swims' },
+            { left: 'Ho un cane grande', right: 'I have a big dog' },
+            { left: 'Mi piace il gatto', right: 'I like the cat' }
+          ]
         }
       ]
     }

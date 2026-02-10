@@ -379,15 +379,18 @@ window.CONVERSAZIONI_DATA = {
           options: ['Quanti anni hai?', 'Come ti chiami?', 'Come stai?', 'Posso avere...?']
         },
 
-        // 8. Matching: greetings and introductions review
+        // 8. Conversation order: Meeting a new friend at the park
         {
-          type: 'matching',
-          prompt: 'Final challenge! Match these phrases to show Nonna how much you\'ve learned!',
-          pairs: [
-            { left: 'Come stai?', right: 'How are you?' },
-            { left: 'Mi chiamo Daisy', right: 'My name is Daisy' },
-            { left: 'Ho sei anni', right: 'I am six years old' },
-            { left: 'Sto bene, grazie', right: 'I\'m fine, thank you' }
+          type: 'conversation-order',
+          prompt: 'Put the conversation in order!',
+          scenario: 'Daisy meets a new friend at the park!',
+          correctOrder: [
+            'Ciao!',
+            'Come ti chiami?',
+            'Mi chiamo Daisy!',
+            'Quanti anni hai?',
+            'Ho sei anni!',
+            'Giochiamo!'
           ]
         }
       ]

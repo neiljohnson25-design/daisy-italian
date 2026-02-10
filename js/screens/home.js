@@ -39,6 +39,17 @@ window.renderHomeScreen = function(container) {
     html += '<button class="btn btn-secondary animate-fadeInUp" style="animation-delay: 0.4s; font-size: var(--font-size-body);" onclick="window.app.router.navigate(\'/progress\')">My Progress</button>';
   }
 
+  // My Rewards button (if any rewards are set)
+  var hasAnyReward = false;
+  var topics = window.TOPICS || [];
+  topics.forEach(function(topic) {
+    var reward = state.getReward(topic.id);
+    if (reward && reward.text) hasAnyReward = true;
+  });
+  if (hasAnyReward) {
+    html += '<button class="btn btn-rewards animate-fadeInUp" style="animation-delay: 0.5s;" onclick="window.app.router.navigate(\'/rewards\')">My Rewards \uD83C\uDF81</button>';
+  }
+
   // Parent zone link (subtle)
   html += '<button class="parent-link" onclick="window.app.router.navigate(\'/parent\')" title="Parent Zone">&#9881;</button>';
 

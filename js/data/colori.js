@@ -109,12 +109,41 @@ window.COLORI_DATA = {
   ],
 
   /* ------------------------------------------
+     Phrases (for L2 and L3 progression)
+     ------------------------------------------ */
+  phrases: [
+    // L2 - Short phrases (adjective + noun combos)
+    // 0
+    { italian: 'il cielo blu', english: 'the blue sky', emoji: '\uD83D\uDD35\u2601\uFE0F', hint: 'Look up! The sky after the battle!' },
+    // 1
+    { italian: 'la rosa rossa', english: 'the red rose', emoji: '\uD83C\uDF39', hint: 'A beautiful flower - it is this colour!' },
+    // 2
+    { italian: 'l\'erba verde', english: 'the green grass', emoji: '\uD83C\uDF3F', hint: 'The ground in the park is covered in this!' },
+    // 3
+    { italian: 'il sole giallo', english: 'the yellow sun', emoji: '\u2600\uFE0F', hint: 'It shines bright in the sky!' },
+    // 4
+    { italian: 'il gatto nero', english: 'the black cat', emoji: '\uD83D\uDC08\u200D\u2B1B', hint: 'A spooky animal the colour of the demon\'s cloak!' },
+
+    // L3 - Full sentences
+    // 5
+    { italian: 'Mi piace il rosso!', english: 'I like red!', emoji: '\u2764\uFE0F\uD83D\uDD34', hint: 'Tell everyone your favourite!' },
+    // 6
+    { italian: 'Il cielo \u00E8 azzurro.', english: 'The sky is light blue.', emoji: '\uD83C\uDF24\uFE0F', hint: 'Describe what you see above!' },
+    // 7
+    { italian: 'Vedo un fiore arancione!', english: 'I see an orange flower!', emoji: '\uD83C\uDF3C', hint: 'The hunters spot something colourful!' },
+    // 8
+    { italian: 'Il mio colore preferito \u00E8 il rosa!', english: 'My favourite colour is pink!', emoji: '\uD83C\uDF38\u2764\uFE0F', hint: 'Tell Mummy which colour you love most!' },
+    // 9
+    { italian: 'La mia maglietta \u00E8 viola.', english: 'My T-shirt is purple.', emoji: '\uD83D\uDC55\uD83D\uDFE3', hint: 'Describe what you\'re wearing!' }
+  ],
+
+  /* ------------------------------------------
      Lessons
      ------------------------------------------ */
   lessons: [
 
     /* ==========================================
-       LESSON 1 - Basic Colours
+       LESSON 1 - Basic Colours (UNCHANGED)
        ========================================== */
     {
       id: 'colori-1',
@@ -212,199 +241,191 @@ window.COLORI_DATA = {
     },
 
     /* ==========================================
-       LESSON 2 - More Colours
+       LESSON 2 - Colour Phrases
+       Now we combine colours with things!
        ========================================== */
     {
       id: 'colori-2',
-      title: 'More Colours',
+      title: 'Colour Phrases',
       vocabIndices: [5, 6, 7, 8],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
 
-        // 1. Multiple choice: viola
+        // 1. Multiple choice: phrase translation
         {
           type: 'multiple-choice',
-          prompt: 'What does "viola" mean in English?',
-          correctAnswer: 'purple',
-          options: ['purple', 'pink', 'black', 'white'],
-          daisySays: 'The magical portal is this colour! Whoooosh!',
-          speakWord: 'viola'
+          prompt: 'What does "il cielo blu" mean?',
+          correctAnswer: 'the blue sky',
+          options: ['the blue sky', 'the green grass', 'the yellow sun', 'the red rose'],
+          daisySays: 'The demon hunters look up after the battle!',
+          speakWord: 'il cielo blu'
         },
 
-        // 2. Picture match: rosa
+        // 2. Listen-pick: hear a phrase
         {
-          type: 'picture-match',
-          prompt: 'Which picture matches "rosa"?',
-          speakWord: 'rosa',
-          correctAnswer: 'rosa',
-          options: [
-            { value: 'rosa', emoji: '\uD83C\uDF38', label: 'rosa' },
-            { value: 'viola', emoji: '\uD83D\uDFE3', label: 'viola' },
-            { value: 'nero', emoji: '\u26AB', label: 'nero' },
-            { value: 'bianco', emoji: '\u26AA', label: 'bianco' }
+          type: 'listen-pick',
+          prompt: 'Listen! What colour phrase do you hear?',
+          speakWord: 'la rosa rossa',
+          correctAnswer: 'la rosa rossa',
+          options: ['la rosa rossa', 'il sole giallo', 'l\'erba verde', 'il cielo blu']
+        },
+
+        // 3. Multiple choice: what is the yellow sun?
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "the yellow sun" in Italian?',
+          correctAnswer: 'il sole giallo',
+          options: ['il sole giallo', 'il cielo blu', 'la rosa rossa', 'il gatto nero'],
+          daisySays: 'It shines bright after the demons are gone!',
+          speakWord: 'il sole giallo'
+        },
+
+        // 4. Fill-blank: single word in phrase context
+        {
+          type: 'fill-blank',
+          prompt: 'What colour is the sky? Fill in the missing word!',
+          correctAnswer: 'blu',
+          sentence: 'Il cielo \u00E8 ____.',
+          hint: 'The sky is... what colour? Starts with B!'
+        },
+
+        // 5. Matching: phrases to English
+        {
+          type: 'matching',
+          prompt: 'Match the Italian colour phrases to English!',
+          pairs: [
+            { left: 'il cielo blu', right: 'the blue sky' },
+            { left: 'il sole giallo', right: 'the yellow sun' },
+            { left: 'la rosa rossa', right: 'the red rose' },
+            { left: 'l\'erba verde', right: 'the green grass' }
           ]
         },
 
-        // 3. Listen and pick: nero
+        // 6. Listen-pick: il gatto nero
         {
           type: 'listen-pick',
-          prompt: 'Uh oh, a spooky colour! Listen and pick the right one!',
-          speakWord: 'nero',
-          correctAnswer: 'nero',
-          options: ['nero', 'bianco', 'viola', 'rosa']
+          prompt: 'A spooky animal! What phrase do you hear?',
+          speakWord: 'il gatto nero',
+          correctAnswer: 'il gatto nero',
+          options: ['il gatto nero', 'il cielo blu', 'la rosa rossa', 'il sole giallo']
         },
 
-        // 4. Multiple choice: bianco
-        {
-          type: 'multiple-choice',
-          prompt: 'Angel wings are "bianco". What colour is that?',
-          correctAnswer: 'white',
-          options: ['white', 'black', 'grey', 'pink'],
-          daisySays: 'So bright and sparkly, like angel wings!',
-          speakWord: 'bianco'
-        },
-
-        // 5. Fill in the blank: viola
+        // 7. Fill-blank: the green grass
         {
           type: 'fill-blank',
-          prompt: 'Spell the colour of the magical portal!',
-          correctAnswer: 'viola',
-          sentence: 'The portal is ____.',
-          hint: 'It means purple! Starts with V.'
+          prompt: 'The grass in the park is green! Fill in the colour!',
+          correctAnswer: 'verde',
+          sentence: 'L\'erba \u00E8 ____.',
+          hint: 'It\'s the colour of the healing potion! Starts with V.'
         },
 
-        // 6. Matching: new colours
+        // 8. Matching: single colour words review (viola, rosa, nero, bianco)
         {
           type: 'matching',
-          prompt: 'Match the Italian colours to their English names!',
+          prompt: 'You also learned new colours! Match them up!',
           pairs: [
             { left: 'viola', right: 'purple' },
             { left: 'rosa', right: 'pink' },
             { left: 'nero', right: 'black' },
             { left: 'bianco', right: 'white' }
           ]
-        },
-
-        // 7. Picture match: nero
-        {
-          type: 'picture-match',
-          prompt: 'The demon\'s cloak is this colour! Which one is "nero"?',
-          speakWord: 'nero',
-          correctAnswer: 'nero',
-          options: [
-            { value: 'nero', emoji: '\u26AB', label: 'nero' },
-            { value: 'bianco', emoji: '\u26AA', label: 'bianco' },
-            { value: 'rosa', emoji: '\uD83C\uDF38', label: 'rosa' },
-            { value: 'viola', emoji: '\uD83D\uDFE3', label: 'viola' }
-          ]
-        },
-
-        // 8. Listen and pick: rosa
-        {
-          type: 'listen-pick',
-          prompt: 'The cherry blossom dance begins! What colour do you hear?',
-          speakWord: 'rosa',
-          correctAnswer: 'rosa',
-          options: ['rosa', 'viola', 'bianco', 'nero']
         }
       ]
     },
 
     /* ==========================================
-       LESSON 3 - All the Colours! (Mixed Review)
+       LESSON 3 - Colour Sentences!
+       Full sentences using colours + conversation
        ========================================== */
     {
       id: 'colori-3',
-      title: 'All the Colours!',
-      vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      title: 'Colour Sentences!',
+      vocabIndices: [9, 10, 11],
+      phraseIndices: [5, 6, 7, 8, 9],
       exercises: [
 
-        // 1. Matching: big mix
+        // 1. Conversation order: Demon hunters describe what they see
+        {
+          type: 'conversation-order',
+          prompt: 'Put the demon hunters\' adventure in order!',
+          scenario: 'The demon hunters explore after winning the battle!',
+          correctOrder: [
+            'Ciao!',
+            'Vedo il cielo blu!',
+            'L\'erba \u00E8 verde!',
+            'Mi piace il rosso!',
+            'Andiamo!'
+          ]
+        },
+
+        // 2. Multiple choice: sentence translation
+        {
+          type: 'multiple-choice',
+          prompt: 'What does "Mi piace il rosso!" mean?',
+          correctAnswer: 'I like red!',
+          options: ['I like red!', 'I see red!', 'It is red!', 'I want red!'],
+          daisySays: 'This is how you tell someone your favourite!',
+          speakWord: 'Mi piace il rosso'
+        },
+
+        // 3. Listen-pick: hear a sentence
+        {
+          type: 'listen-pick',
+          prompt: 'The hunters are talking! What sentence do you hear?',
+          speakWord: 'Il cielo \u00E8 azzurro',
+          correctAnswer: 'Il cielo \u00E8 azzurro',
+          options: ['Il cielo \u00E8 azzurro', 'L\'erba \u00E8 verde', 'Mi piace il rosso', 'Vedo un fiore arancione']
+        },
+
+        // 4. Fill-blank: word in sentence context
+        {
+          type: 'fill-blank',
+          prompt: 'What colour is your favourite? Fill in the missing word!',
+          correctAnswer: 'rosa',
+          sentence: 'Il mio colore preferito \u00E8 il ____!',
+          hint: 'It means pink! Starts with R.'
+        },
+
+        // 5. Matching: sentences to English
         {
           type: 'matching',
-          prompt: 'The demon hunters need ALL their colours! Match them up!',
+          prompt: 'Match the Italian sentences to their meanings!',
+          pairs: [
+            { left: 'Mi piace il rosso', right: 'I like red' },
+            { left: 'Il cielo \u00E8 azzurro', right: 'The sky is light blue' },
+            { left: 'L\'erba \u00E8 verde', right: 'The grass is green' },
+            { left: 'Il sole \u00E8 giallo', right: 'The sun is yellow' }
+          ]
+        },
+
+        // 6. Multiple choice: how do you say...
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "I see an orange flower!" in Italian?',
+          correctAnswer: 'Vedo un fiore arancione!',
+          options: ['Vedo un fiore arancione!', 'Mi piace il rosso!', 'Il cielo \u00E8 blu!', 'L\'erba \u00E8 verde!'],
+          daisySays: 'The hunters spot something beautiful!',
+          speakWord: 'Vedo un fiore arancione'
+        },
+
+        // 7. Fill-blank: word in sentence
+        {
+          type: 'fill-blank',
+          prompt: 'Describe what you see! Fill in the colour!',
+          correctAnswer: 'viola',
+          sentence: 'La mia maglietta \u00E8 ____.',
+          hint: 'The colour of the portal! Starts with V.'
+        },
+
+        // 8. Matching: new vocab (marrone, grigio, azzurro) + review
+        {
+          type: 'matching',
+          prompt: 'Final mission! Match ALL these colours!',
           pairs: [
             { left: 'marrone', right: 'brown' },
             { left: 'grigio', right: 'grey' },
             { left: 'azzurro', right: 'light blue' },
             { left: 'arancione', right: 'orange' }
-          ]
-        },
-
-        // 2. Multiple choice: marrone
-        {
-          type: 'multiple-choice',
-          prompt: 'The demon hunter\'s cool leather jacket is "marrone". What colour is that?',
-          correctAnswer: 'brown',
-          options: ['brown', 'grey', 'black', 'orange'],
-          daisySays: 'Looking cool in their jacket! What colour is it?',
-          speakWord: 'marrone'
-        },
-
-        // 3. Picture match: azzurro
-        {
-          type: 'picture-match',
-          prompt: 'The sky clears after the battle! Which colour is "azzurro"?',
-          speakWord: 'azzurro',
-          correctAnswer: 'azzurro',
-          options: [
-            { value: 'azzurro', emoji: '\uD83E\uDDE3', label: 'azzurro' },
-            { value: 'blu', emoji: '\uD83D\uDD35', label: 'blu' },
-            { value: 'verde', emoji: '\uD83D\uDFE2', label: 'verde' },
-            { value: 'viola', emoji: '\uD83D\uDFE3', label: 'viola' }
-          ]
-        },
-
-        // 4. Listen and pick: grigio
-        {
-          type: 'listen-pick',
-          prompt: 'The demon vanishes in smoke! What colour do you hear?',
-          speakWord: 'grigio',
-          correctAnswer: 'grigio',
-          options: ['grigio', 'bianco', 'nero', 'marrone']
-        },
-
-        // 5. Fill in the blank: azzurro
-        {
-          type: 'fill-blank',
-          prompt: 'Spell the colour of the sky after the hunters win!',
-          correctAnswer: 'azzurro',
-          sentence: 'The sky is ____.',
-          hint: 'It means light blue! Starts with A and has double Z.'
-        },
-
-        // 6. Multiple choice: grigio
-        {
-          type: 'multiple-choice',
-          prompt: 'Poof! The smoke is "grigio". What colour is that?',
-          correctAnswer: 'grey',
-          options: ['grey', 'brown', 'white', 'light blue'],
-          daisySays: 'When the demon goes POOF! the smoke is this colour!',
-          speakWord: 'grigio'
-        },
-
-        // 7. Matching: review mix
-        {
-          type: 'matching',
-          prompt: 'Final mission! Match all these colours to prove you\'re a true K-Pop Demon Hunter!',
-          pairs: [
-            { left: 'rosso', right: 'red' },
-            { left: 'viola', right: 'purple' },
-            { left: 'nero', right: 'black' },
-            { left: 'bianco', right: 'white' }
-          ]
-        },
-
-        // 8. Picture match: grand finale mix
-        {
-          type: 'picture-match',
-          prompt: 'The demon hunters power up! Pick the colour "verde"!',
-          speakWord: 'verde',
-          correctAnswer: 'verde',
-          options: [
-            { value: 'verde', emoji: '\uD83D\uDFE2', label: 'verde' },
-            { value: 'giallo', emoji: '\uD83D\uDFE1', label: 'giallo' },
-            { value: 'marrone', emoji: '\uD83D\uDFE4', label: 'marrone' },
-            { value: 'azzurro', emoji: '\uD83E\uDDE3', label: 'azzurro' }
           ]
         }
       ]

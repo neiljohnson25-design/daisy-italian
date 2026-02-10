@@ -25,6 +25,14 @@ window.renderLessonScreen = function(container, params) {
     vocab = lesson.vocabIndices.map(function(idx) { return topicData.vocabulary[idx]; }).filter(Boolean);
   }
 
+  // Get phrases for this lesson (L2/L3 progression)
+  if (lesson.phraseIndices && topicData.phrases) {
+    var phrases = lesson.phraseIndices.map(function(idx) { return topicData.phrases[idx]; }).filter(Boolean);
+    // Mark phrases so the card can show them differently
+    phrases.forEach(function(p) { p._isPhrase = true; });
+    vocab = vocab.concat(phrases);
+  }
+
   container.className = 'screen-lesson theme-' + topic.theme;
   var currentIndex = 0;
 
@@ -66,10 +74,13 @@ window.renderLessonScreen = function(container, params) {
       // Vocabulary card
       var word = vocab[currentIndex];
       html += '<div class="vocab-card">';
+      if (word._isPhrase) {
+        html += '<div style="font-size: var(--font-size-small); font-weight: 700; color: var(--pink); text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--gap-xs);">\uD83D\uDDE3\uFE0F Phrase</div>';
+      }
       if (word.emoji) {
         html += '<div class="vocab-image">' + word.emoji + '</div>';
       }
-      html += '<div class="vocab-italian">' + word.italian + '</div>';
+      html += '<div class="vocab-italian"' + (word._isPhrase ? ' style="font-size: var(--font-size-large);"' : '') + '>' + word.italian + '</div>';
       html += '<div class="vocab-english">' + word.english + '</div>';
 
       // Speaker button

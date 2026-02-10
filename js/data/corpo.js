@@ -97,6 +97,35 @@ window.CORPO_DATA = {
   ],
 
   /* ------------------------------------------
+     Phrases & Sentences
+     ------------------------------------------ */
+  phrases: [
+    // L2 - Short body phrases (possessive + body part)
+    // 0
+    { italian: 'le mie mani', english: 'my hands', emoji: '\uD83E\uDD32', hint: 'The demon hunters hold up their powerful hands!' },
+    // 1
+    { italian: 'i miei piedi', english: 'my feet', emoji: '\uD83E\uDDB6', hint: 'Stomp stomp! The hunters dance with these!' },
+    // 2
+    { italian: 'i miei occhi', english: 'my eyes', emoji: '\uD83D\uDC40', hint: 'The hunters use these to spot demons in the dark!' },
+    // 3
+    { italian: 'la mia testa', english: 'my head', emoji: '\uD83D\uDDE3\uFE0F', hint: 'The magic headband goes right on top of this!' },
+    // 4
+    { italian: 'la mia bocca', english: 'my mouth', emoji: '\uD83D\uDC44', hint: 'The hunters shout the battle cry with this!' },
+
+    // L3 - Full action sentences (commands)
+    // 5
+    { italian: 'Muovi le mani!', english: 'Move your hands!', emoji: '\uD83E\uDD32\u2728', hint: 'Wave those hands like a K-Pop star!' },
+    // 6
+    { italian: 'Batti i piedi!', english: 'Stamp your feet!', emoji: '\uD83E\uDDB6\uD83D\uDCA5', hint: 'Stomp the ground to scare the demons!' },
+    // 7
+    { italian: 'Tocca la testa!', english: 'Touch your head!', emoji: '\uD83D\uDDE3\uFE0F\u270B', hint: 'Tap your head to activate the headband!' },
+    // 8
+    { italian: 'Apri la bocca!', english: 'Open your mouth!', emoji: '\uD83D\uDC44\uD83D\uDE2E', hint: 'Open wide and roar like a hunter!' },
+    // 9
+    { italian: 'Alza le braccia!', english: 'Raise your arms!', emoji: '\uD83D\uDCAA\uD83D\uDE4C', hint: 'Reach for the sky \u2013 ultimate power move!' }
+  ],
+
+  /* ------------------------------------------
      Lessons
      ------------------------------------------ */
   lessons: [
@@ -200,199 +229,192 @@ window.CORPO_DATA = {
     },
 
     /* ==========================================
-       LESSON 2 - Move Your Body
+       LESSON 2 - Body Phrases
+       Short possessive phrases with body parts
        ========================================== */
     {
       id: 'corpo-2',
-      title: 'Move Your Body',
+      title: 'Body Phrases',
       vocabIndices: [6, 7, 8, 9, 10, 11],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
 
-        // 1. Multiple choice: piedi
+        // 1. Multiple choice: phrase translation
         {
           type: 'multiple-choice',
-          prompt: 'What does "piedi" mean in English?',
-          correctAnswer: 'feet',
-          options: ['feet', 'fingers', 'arms', 'legs'],
-          daisySays: 'Stomp stomp! The demon hunters dance with these!',
-          speakWord: 'piedi'
+          prompt: 'What does "le mie mani" mean?',
+          correctAnswer: 'my hands',
+          options: ['my hands', 'my feet', 'my eyes', 'my head'],
+          daisySays: 'The demon hunters hold up their powerful hands!',
+          speakWord: 'le mie mani'
         },
 
-        // 2. Picture match: braccia
+        // 2. Multiple choice: phrase translation
         {
-          type: 'picture-match',
-          prompt: 'Which picture matches "braccia"?',
-          speakWord: 'braccia',
-          correctAnswer: 'braccia',
-          options: [
-            { value: 'braccia', emoji: '\uD83D\uDCAA', label: 'braccia' },
-            { value: 'gambe', emoji: '\uD83E\uDDB5', label: 'gambe' },
-            { value: 'piedi', emoji: '\uD83E\uDDB6', label: 'piedi' },
-            { value: 'dita', emoji: '\uD83D\uDD90\uFE0F', label: 'dita' }
-          ]
+          type: 'multiple-choice',
+          prompt: 'How do you say "my eyes" in Italian?',
+          correctAnswer: 'i miei occhi',
+          options: ['i miei occhi', 'i miei piedi', 'la mia testa', 'la mia bocca'],
+          daisySays: 'The hunters need these to spot demons hiding in the shadows!',
+          speakWord: 'i miei occhi'
         },
 
-        // 3. Listen and pick: gambe
+        // 3. Listen-pick: hear a phrase
         {
           type: 'listen-pick',
-          prompt: 'The demon hunters jump super high! Which body part do you hear?',
-          speakWord: 'gambe',
-          correctAnswer: 'gambe',
-          options: ['gambe', 'braccia', 'piedi', 'pancia']
+          prompt: 'The demon hunter is getting ready! What phrase do you hear?',
+          speakWord: 'i miei piedi',
+          correctAnswer: 'i miei piedi',
+          options: ['i miei piedi', 'le mie mani', 'la mia testa', 'i miei occhi']
         },
 
-        // 4. Multiple choice: capelli
+        // 4. Listen-pick: hear a phrase
         {
-          type: 'multiple-choice',
-          prompt: 'Every K-Pop demon hunter has cool, colourful "capelli". What is that?',
-          correctAnswer: 'hair',
-          options: ['hair', 'tummy', 'fingers', 'arms'],
-          daisySays: 'K-Pop stars always have the coolest style on their head!',
-          speakWord: 'capelli'
+          type: 'listen-pick',
+          prompt: 'The hunter shouts a battle cry! What phrase do you hear?',
+          speakWord: 'la mia bocca',
+          correctAnswer: 'la mia bocca',
+          options: ['la mia bocca', 'la mia testa', 'le mie mani', 'i miei piedi']
         },
 
-        // 5. Fill in the blank: dita
+        // 5. Fill-blank: single word missing from phrase
         {
           type: 'fill-blank',
-          prompt: 'What do the demon hunters snap to cast a spell?',
-          correctAnswer: 'dita',
-          sentence: 'I snap my ____ to make magic!',
-          hint: 'It means fingers! Starts with D.'
+          prompt: 'The demon hunter wiggles their fingers! Fill in the body part!',
+          correctAnswer: 'mani',
+          sentence: 'Queste sono le mie ____!',
+          hint: 'It means hands! Starts with M.'
         },
 
-        // 6. Matching: body movement parts
+        // 6. Fill-blank: single word missing from phrase
+        {
+          type: 'fill-blank',
+          prompt: 'The hunter puts on the magic headband! Fill in the body part!',
+          correctAnswer: 'testa',
+          sentence: 'Questa \u00E8 la mia ____!',
+          hint: 'It means head! Starts with T.'
+        },
+
+        // 7. Matching: Italian phrases to English
         {
           type: 'matching',
-          prompt: 'Match the Italian body parts to their English names!',
+          prompt: 'Match the Italian body phrases to their English meanings!',
           pairs: [
-            { left: 'piedi', right: 'feet' },
-            { left: 'braccia', right: 'arms' },
-            { left: 'gambe', right: 'legs' },
-            { left: 'capelli', right: 'hair' }
+            { left: 'le mie mani', right: 'my hands' },
+            { left: 'i miei piedi', right: 'my feet' },
+            { left: 'i miei occhi', right: 'my eyes' },
+            { left: 'la mia testa', right: 'my head' }
           ]
         },
 
-        // 7. Picture match: pancia
+        // 8. Matching: more body phrases
         {
-          type: 'picture-match',
-          prompt: 'After training, the hunters are hungry! Which body part is "pancia"?',
-          speakWord: 'pancia',
-          correctAnswer: 'pancia',
-          options: [
-            { value: 'pancia', emoji: '\uD83D\uDE0A', label: 'pancia' },
-            { value: 'capelli', emoji: '\uD83D\uDC87', label: 'capelli' },
-            { value: 'braccia', emoji: '\uD83D\uDCAA', label: 'braccia' },
-            { value: 'gambe', emoji: '\uD83E\uDDB5', label: 'gambe' }
+          type: 'matching',
+          prompt: 'Final round! Match these demon hunter body phrases!',
+          pairs: [
+            { left: 'la mia bocca', right: 'my mouth' },
+            { left: 'le mie mani', right: 'my hands' },
+            { left: 'la mia testa', right: 'my head' },
+            { left: 'i miei piedi', right: 'my feet' }
           ]
-        },
-
-        // 8. Listen and pick: dita
-        {
-          type: 'listen-pick',
-          prompt: 'SNAP! The spell is cast! Which body part do you hear?',
-          speakWord: 'dita',
-          correctAnswer: 'dita',
-          options: ['dita', 'piedi', 'pancia', 'capelli']
         }
       ]
     },
 
     /* ==========================================
-       LESSON 3 - Body Master! (Mixed Review)
+       LESSON 3 - Body Sentences!
+       Full action sentences using body parts
        ========================================== */
     {
       id: 'corpo-3',
-      title: 'Body Master!',
+      title: 'Body Sentences!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      phraseIndices: [5, 6, 7, 8, 9],
       exercises: [
 
-        // 1. Matching: big mix
+        // 1. Conversation order: demon hunter dance training
         {
-          type: 'matching',
-          prompt: 'The demon hunters need to know ALL body parts! Match them up!',
-          pairs: [
-            { left: 'testa', right: 'head' },
-            { left: 'piedi', right: 'feet' },
-            { left: 'braccia', right: 'arms' },
-            { left: 'pancia', right: 'tummy' }
+          type: 'conversation-order',
+          prompt: 'Put the demon hunter dance training in order!',
+          scenario: 'The K-Pop demon hunters are practising their battle dance!',
+          correctOrder: [
+            'Pronti?',
+            'Alza le braccia!',
+            'Muovi le mani!',
+            'Batti i piedi!',
+            'Tocca la testa!',
+            'Bravissimo!'
           ]
         },
 
-        // 2. Multiple choice: gambe
+        // 2. Multiple choice: sentence translation
         {
           type: 'multiple-choice',
-          prompt: 'The demon hunters jump over a wall using their "gambe". What are those?',
-          correctAnswer: 'legs',
-          options: ['legs', 'arms', 'hands', 'feet'],
-          daisySays: 'JUMP! You need these to leap over walls!',
-          speakWord: 'gambe'
+          prompt: 'What does "Muovi le mani!" mean?',
+          correctAnswer: 'Move your hands!',
+          options: ['Move your hands!', 'Stamp your feet!', 'Touch your head!', 'Raise your arms!'],
+          daisySays: 'The demon hunters wave their hands like K-Pop stars!',
+          speakWord: 'Muovi le mani'
         },
 
-        // 3. Picture match: orecchie
+        // 3. Multiple choice: sentence translation
         {
-          type: 'picture-match',
-          prompt: 'Shhh! The hunter listens for demons. Which body part is "orecchie"?',
-          speakWord: 'orecchie',
-          correctAnswer: 'orecchie',
-          options: [
-            { value: 'orecchie', emoji: '\uD83D\uDC42', label: 'orecchie' },
-            { value: 'occhi', emoji: '\uD83D\uDC40', label: 'occhi' },
-            { value: 'naso', emoji: '\uD83D\uDC43', label: 'naso' },
-            { value: 'bocca', emoji: '\uD83D\uDC44', label: 'bocca' }
-          ]
+          type: 'multiple-choice',
+          prompt: 'How do you say "Raise your arms!" in Italian?',
+          correctAnswer: 'Alza le braccia!',
+          options: ['Alza le braccia!', 'Muovi le mani!', 'Batti i piedi!', 'Apri la bocca!'],
+          daisySays: 'Reach for the sky \u2013 ultimate demon hunter power move!',
+          speakWord: 'Alza le braccia'
         },
 
-        // 4. Listen and pick: mani
+        // 4. Listen-pick: hear a sentence
         {
           type: 'listen-pick',
-          prompt: 'The demon hunter grabs the magic sword! What body part do you hear?',
-          speakWord: 'mani',
-          correctAnswer: 'mani',
-          options: ['mani', 'dita', 'braccia', 'piedi']
+          prompt: 'The dance trainer gives a command! What sentence do you hear?',
+          speakWord: 'Batti i piedi',
+          correctAnswer: 'Batti i piedi!',
+          options: ['Batti i piedi!', 'Muovi le mani!', 'Tocca la testa!', 'Alza le braccia!']
         },
 
-        // 5. Fill in the blank: capelli
+        // 5. Fill-blank: single word in sentence
         {
           type: 'fill-blank',
-          prompt: 'What do K-Pop demon hunters style before a big show?',
-          correctAnswer: 'capelli',
-          sentence: 'My ____ are pink and sparkly!',
-          hint: 'It means hair! Starts with C.'
+          prompt: 'The trainer says to move something! Fill in the body part!',
+          correctAnswer: 'mani',
+          sentence: 'Muovi le ____!',
+          hint: 'It means hands! Starts with M.'
         },
 
-        // 6. Multiple choice: dita
+        // 6. Fill-blank: single word in sentence
         {
-          type: 'multiple-choice',
-          prompt: 'SNAP! The demon hunters snap their "dita" to cast a spell. What are those?',
-          correctAnswer: 'fingers',
-          options: ['fingers', 'tummy', 'head', 'ears'],
-          daisySays: 'Snap snap! You use these tiny wiggly things to make magic!',
-          speakWord: 'dita'
+          type: 'fill-blank',
+          prompt: 'The demon hunter must touch something! Fill in the body part!',
+          correctAnswer: 'testa',
+          sentence: 'Tocca la ____!',
+          hint: 'It means head! Starts with T.'
         },
 
-        // 7. Matching: review mix
+        // 7. Matching: action sentences to English
         {
           type: 'matching',
-          prompt: 'Final training round! Match all these body parts to prove you are a Body Master!',
+          prompt: 'Match the demon hunter commands to their English meanings!',
           pairs: [
-            { left: 'occhi', right: 'eyes' },
-            { left: 'dita', right: 'fingers' },
-            { left: 'capelli', right: 'hair' },
-            { left: 'gambe', right: 'legs' }
+            { left: 'Muovi le mani!', right: 'Move your hands!' },
+            { left: 'Batti i piedi!', right: 'Stamp your feet!' },
+            { left: 'Tocca la testa!', right: 'Touch your head!' },
+            { left: 'Alza le braccia!', right: 'Raise your arms!' }
           ]
         },
 
-        // 8. Picture match: grand finale
+        // 8. Matching: more sentence pairs
         {
-          type: 'picture-match',
-          prompt: 'The demon hunters flex! Which body part is "braccia"?',
-          speakWord: 'braccia',
-          correctAnswer: 'braccia',
-          options: [
-            { value: 'braccia', emoji: '\uD83D\uDCAA', label: 'braccia' },
-            { value: 'mani', emoji: '\uD83E\uDD32', label: 'mani' },
-            { value: 'piedi', emoji: '\uD83E\uDDB6', label: 'piedi' },
-            { value: 'pancia', emoji: '\uD83D\uDE0A', label: 'pancia' }
+          type: 'matching',
+          prompt: 'Final battle dance! Match all the commands!',
+          pairs: [
+            { left: 'Apri la bocca!', right: 'Open your mouth!' },
+            { left: 'Alza le braccia!', right: 'Raise your arms!' },
+            { left: 'Batti i piedi!', right: 'Stamp your feet!' },
+            { left: 'Muovi le mani!', right: 'Move your hands!' }
           ]
         }
       ]

@@ -93,6 +93,38 @@ window.SALUTI_DATA = {
     }
   ],
 
+  /* ------------------------------------------
+     Phrases (for L2 and L3 progression)
+     ------------------------------------------ */
+  phrases: [
+    // L2 - Short greeting phrases
+    // 0
+    { italian: 'Ciao, come stai?', english: 'Hi, how are you?', emoji: '\uD83D\uDC4B\uD83E\uDD14', hint: 'Lincoln bumps into Clyde at school and says this!' },
+    // 1
+    { italian: 'S\u00EC, per favore', english: 'Yes, please', emoji: '\u2705\uD83D\uDE4F', hint: 'What Lola says when Dad offers her a cookie!' },
+    // 2
+    { italian: 'No, grazie', english: 'No, thank you', emoji: '\u274C\uD83D\uDE0A', hint: 'Lori politely turns down Lincoln\'s offer to help!' },
+    // 3
+    { italian: 'Grazie mille', english: 'Thanks a lot', emoji: '\uD83D\uDE0A\u2764\uFE0F', hint: 'Lincoln is SO grateful when all his sisters help him!' },
+    // 4
+    { italian: 'Buongiorno, Mamma!', english: 'Good morning, Mum!', emoji: '\u2600\uFE0F\uD83D\uDC69', hint: 'What the Loud kids say when Mum comes downstairs!' },
+
+    // L3 - Full greeting sentences
+    // 5
+    { italian: 'Buongiorno, come stai?', english: 'Good morning, how are you?', emoji: '\u2600\uFE0F\uD83E\uDD14', hint: 'Clyde greets Lincoln at school every morning like this!' },
+    // 6
+    { italian: 'Sto bene, grazie!', english: 'I\'m fine, thank you!', emoji: '\uD83D\uDE0A\uD83D\uDC4D', hint: 'Lincoln always replies this way to Clyde!' },
+    // 7
+    { italian: 'Scusa, per favore', english: 'Excuse me, please', emoji: '\uD83D\uDE05\uD83D\uDE4F', hint: 'Lincoln squeezes past his sisters in the crowded hallway!' },
+    // 8
+    { italian: 'Ciao e arrivederci!', english: 'Hello and goodbye!', emoji: '\uD83D\uDC4B\uD83D\uDC4B', hint: 'Lincoln rushes in, grabs his comic, and rushes out again!' },
+    // 9
+    { italian: 'Come stai oggi?', english: 'How are you today?', emoji: '\uD83E\uDD14\u2600\uFE0F', hint: 'Clyde always adds "today" when he checks on Lincoln!' }
+  ],
+
+  /* ------------------------------------------
+     Lessons
+     ------------------------------------------ */
   lessons: [
     // =============================================
     // LESSON 1: Hello & Goodbye (vocabIndices 0-4)
@@ -176,165 +208,174 @@ window.SALUTI_DATA = {
     },
 
     // =============================================
-    // LESSON 2: Being Polite (vocabIndices 5-8)
+    // LESSON 2: Greeting Phrases (vocabIndices 5-8)
     // =============================================
     {
       id: 'saluti-2',
-      title: 'Being Polite',
+      title: 'Greeting Phrases',
       vocabIndices: [5, 6, 7, 8],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
-        // 1 - Multiple choice: grazie
+        // 1 - Multiple choice: phrase translation
         {
           type: 'multiple-choice',
-          prompt: 'Lincoln\'s sisters helped him with his homework! He wants to say "thank you." What is that in Italian?',
-          correctAnswer: 'grazie',
-          options: ['grazie', 'prego', 'scusa', 'ciao'],
-          daisySays: 'This is one of the most important words to know!',
-          speakWord: 'grazie'
+          prompt: 'Lincoln sees Clyde at school and says "Ciao, come stai?" What does that mean?',
+          correctAnswer: 'Hi, how are you?',
+          options: ['Hi, how are you?', 'Good morning, Mum!', 'No, thank you', 'Yes, please'],
+          daisySays: 'This is how best friends greet each other!',
+          speakWord: 'Ciao, come stai'
         },
-        // 2 - Listen-pick: per favore
+        // 2 - Multiple choice: phrase translation
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "Good morning, Mum!" in Italian?',
+          correctAnswer: 'Buongiorno, Mamma!',
+          options: ['Buongiorno, Mamma!', 'Ciao, come stai?', 'Grazie mille', 'No, grazie'],
+          daisySays: 'All the Loud kids say this when Mum comes downstairs!',
+          speakWord: 'Buongiorno, Mamma'
+        },
+        // 3 - Listen-pick: hear a phrase
         {
           type: 'listen-pick',
-          prompt: 'Lola wants a cookie. Listen to what she says politely!',
-          speakWord: 'per favore',
-          correctAnswer: 'per favore',
-          options: ['per favore', 'grazie', 'prego', 'scusa']
+          prompt: 'Lori does NOT want Lincoln\'s help! Listen - what does she say?',
+          speakWord: 'No, grazie',
+          correctAnswer: 'No, grazie',
+          options: ['No, grazie', 'S\u00EC, per favore', 'Ciao, come stai?', 'Grazie mille']
         },
-        // 3 - Matching: polite words
+        // 4 - Listen-pick: hear a phrase
+        {
+          type: 'listen-pick',
+          prompt: 'Dad offers Lola a cookie. Listen to what she says!',
+          speakWord: 'S\u00EC, per favore',
+          correctAnswer: 'S\u00EC, per favore',
+          options: ['S\u00EC, per favore', 'No, grazie', 'Grazie mille', 'Buongiorno, Mamma!']
+        },
+        // 5 - Fill-blank: single word missing from a phrase
+        {
+          type: 'fill-blank',
+          prompt: 'Lincoln is SO grateful for his sisters\' help. Fill in the missing word!',
+          correctAnswer: 'mille',
+          sentence: 'Lincoln says: "Grazie ____!"',
+          hint: 'It means "a lot" or "a thousand" - starts with M!'
+        },
+        // 6 - Fill-blank: single word missing from a phrase
+        {
+          type: 'fill-blank',
+          prompt: 'The Loud kids greet Mum in the morning. Fill in the missing word!',
+          correctAnswer: 'Buongiorno',
+          sentence: '____, Mamma!',
+          hint: 'It means "good morning" - starts with B!'
+        },
+        // 7 - Matching: Italian phrases to English
         {
           type: 'matching',
-          prompt: 'Match the polite Italian words to English!',
+          prompt: 'Match these Loud House greeting phrases!',
           pairs: [
-            { left: 'per favore', right: 'please' },
-            { left: 'grazie', right: 'thank you' },
-            { left: 'prego', right: "you're welcome" },
-            { left: 's\u00EC', right: 'yes' }
+            { left: 'Ciao, come stai?', right: 'Hi, how are you?' },
+            { left: 'S\u00EC, per favore', right: 'Yes, please' },
+            { left: 'No, grazie', right: 'No, thank you' },
+            { left: 'Grazie mille', right: 'Thanks a lot' }
           ]
         },
-        // 4 - Multiple choice: prego
+        // 8 - Matching: more phrase pairs
         {
-          type: 'multiple-choice',
-          prompt: 'Leni helps Lincoln pick out an outfit. He says "Grazie!" What does Leni reply?',
-          correctAnswer: 'prego',
-          options: ['prego', 'grazie', 'per favore', 'ciao'],
-          daisySays: 'When someone says thank you, you say this back!',
-          speakWord: 'prego'
-        },
-        // 5 - Fill-blank: grazie
-        {
-          type: 'fill-blank',
-          prompt: 'Luna gives Lincoln a guitar pick. What does he say?',
-          correctAnswer: 'grazie',
-          sentence: 'Lincoln smiles and says: "____!"',
-          hint: 'It means "thank you" - starts with G!'
-        },
-        // 6 - Multiple choice: yes in Italian
-        {
-          type: 'multiple-choice',
-          prompt: 'Dad asks: "Pizza for dinner?" All 11 kids shout... What is "yes" in Italian?',
-          correctAnswer: 's\u00EC',
-          options: ['s\u00EC', 'no', 'grazie', 'prego'],
-          daisySays: 'The Loud House loves pizza night!',
-          speakWord: 's\u00EC'
-        },
-        // 7 - Listen-pick: prego
-        {
-          type: 'listen-pick',
-          prompt: 'Listen carefully! What word is this?',
-          speakWord: 'prego',
-          correctAnswer: 'prego',
-          options: ['prego', 'per favore', 'grazie', 's\u00EC']
-        },
-        // 8 - Fill-blank: per favore
-        {
-          type: 'fill-blank',
-          prompt: 'Lola really wants a cookie. She asks politely!',
-          correctAnswer: 'per favore',
-          sentence: 'Lola says: "Can I have a cookie, ____?"',
-          hint: 'The magic word! It means "please" in Italian!'
+          type: 'matching',
+          prompt: 'Match the rest of the greeting phrases! You\'re doing great!',
+          pairs: [
+            { left: 'Buongiorno, Mamma!', right: 'Good morning, Mum!' },
+            { left: 'per favore', right: 'please' },
+            { left: 'grazie', right: 'thank you' },
+            { left: 's\u00EC', right: 'yes' }
+          ]
         }
       ]
     },
 
     // =============================================
-    // LESSON 3: Talking to People (vocabIndices 0-11 mixed)
+    // LESSON 3: Greeting Sentences! (vocabIndices 0-11 mixed)
     // =============================================
     {
       id: 'saluti-3',
-      title: 'Talking to People',
+      title: 'Greeting Sentences!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      phraseIndices: [5, 6, 7, 8, 9],
       exercises: [
-        // 1 - Multiple choice: come stai
+        // 1 - Conversation order: Lincoln & Clyde greeting sequence
+        {
+          type: 'conversation-order',
+          prompt: 'Put Lincoln and Clyde\'s morning greeting in order!',
+          scenario: 'Lincoln and Clyde meet at school and have a chat!',
+          correctOrder: [
+            'Ciao!',
+            'Buongiorno, come stai?',
+            'Sto bene, grazie!',
+            'Come stai oggi?',
+            'Bene! Arrivederci!'
+          ]
+        },
+        // 2 - Multiple choice: sentence translation
         {
           type: 'multiple-choice',
-          prompt: 'Clyde meets Lincoln at school. He wants to ask "how are you?" What does he say in Italian?',
-          correctAnswer: 'come stai?',
-          options: ['come stai?', 'ciao', 'grazie', 'scusa'],
-          daisySays: 'This is how you check on your best friend!',
-          speakWord: 'come stai'
+          prompt: 'Clyde says "Buongiorno, come stai?" to Lincoln. What does it mean?',
+          correctAnswer: 'Good morning, how are you?',
+          options: ['Good morning, how are you?', 'Hello and goodbye!', 'I\'m fine, thank you!', 'How are you today?'],
+          daisySays: 'Clyde always greets Lincoln like this at school!',
+          speakWord: 'Buongiorno, come stai'
         },
-        // 2 - Listen-pick: scusa
+        // 3 - Multiple choice: sentence translation
+        {
+          type: 'multiple-choice',
+          prompt: 'How do you say "I\'m fine, thank you!" in Italian?',
+          correctAnswer: 'Sto bene, grazie!',
+          options: ['Sto bene, grazie!', 'Scusa, per favore', 'Ciao e arrivederci!', 'Come stai oggi?'],
+          daisySays: 'Lincoln always replies this way when Clyde asks how he is!',
+          speakWord: 'Sto bene, grazie'
+        },
+        // 4 - Listen-pick: hear a sentence
         {
           type: 'listen-pick',
-          prompt: 'Lincoln bumps into Lynn in the hallway! Listen to what he says!',
-          speakWord: 'scusa',
-          correctAnswer: 'scusa',
-          options: ['scusa', 'grazie', 'ciao', 'prego']
+          prompt: 'Lincoln squeezes past his sisters in the hallway! Listen to what he says!',
+          speakWord: 'Scusa, per favore',
+          correctAnswer: 'Scusa, per favore',
+          options: ['Scusa, per favore', 'Sto bene, grazie!', 'Come stai oggi?', 'Ciao e arrivederci!']
         },
-        // 3 - Matching: big review mix
+        // 5 - Fill-blank: single word in sentence context
+        {
+          type: 'fill-blank',
+          prompt: 'Lincoln replies to Clyde\'s greeting. Fill in the missing word!',
+          correctAnswer: 'bene',
+          sentence: 'Sto ____, grazie!',
+          hint: 'It means "fine" or "well" - starts with B!'
+        },
+        // 6 - Fill-blank: single word in sentence context
+        {
+          type: 'fill-blank',
+          prompt: 'Clyde wants to know how Lincoln is TODAY. Fill in the missing word!',
+          correctAnswer: 'oggi',
+          sentence: 'Come stai ____?',
+          hint: 'It means "today" - starts with O!'
+        },
+        // 7 - Matching: sentence pairs
         {
           type: 'matching',
-          prompt: 'Match ALL these Italian words! You know them all!',
+          prompt: 'Match these Italian sentences to their English meanings!',
           pairs: [
+            { left: 'Buongiorno, come stai?', right: 'Good morning, how are you?' },
+            { left: 'Sto bene, grazie!', right: 'I\'m fine, thank you!' },
+            { left: 'Scusa, per favore', right: 'Excuse me, please' },
+            { left: 'Come stai oggi?', right: 'How are you today?' }
+          ]
+        },
+        // 8 - Matching: more sentence pairs + review
+        {
+          type: 'matching',
+          prompt: 'Final match! You are a Loud House Italian superstar!',
+          pairs: [
+            { left: 'Ciao e arrivederci!', right: 'Hello and goodbye!' },
             { left: 'scusa', right: 'sorry / excuse me' },
             { left: 'come stai?', right: 'how are you?' },
-            { left: 'no', right: 'no' },
-            { left: 'ciao', right: 'hello / bye' }
-          ]
-        },
-        // 4 - Multiple choice: no
-        {
-          type: 'multiple-choice',
-          prompt: 'Lincoln asks Lori: "Can I use your phone?" Lori says NO! What is "no" in Italian?',
-          correctAnswer: 'no',
-          options: ['no', 's\u00EC', 'scusa', 'prego'],
-          daisySays: 'This one is easy - it sounds the same in English!',
-          speakWord: 'no'
-        },
-        // 5 - Fill-blank: scusa
-        {
-          type: 'fill-blank',
-          prompt: 'Lincoln accidentally steps on Lola\'s dress. What does he say?',
-          correctAnswer: 'scusa',
-          sentence: 'Lincoln says: "Oh! ____!"',
-          hint: 'It means "sorry" - starts with S!'
-        },
-        // 6 - Listen-pick: come stai
-        {
-          type: 'listen-pick',
-          prompt: 'Listen! What is this Italian question?',
-          speakWord: 'come stai',
-          correctAnswer: 'come stai?',
-          options: ['come stai?', 'buongiorno', 'arrivederci', 'per favore']
-        },
-        // 7 - Matching: full review
-        {
-          type: 'matching',
-          prompt: 'One more big match! You are a Loud House Italian superstar!',
-          pairs: [
-            { left: 'buongiorno', right: 'good morning' },
-            { left: 'grazie', right: 'thank you' },
-            { left: 'per favore', right: 'please' },
             { left: 'arrivederci', right: 'goodbye' }
           ]
-        },
-        // 8 - Fill-blank: come stai
-        {
-          type: 'fill-blank',
-          prompt: 'Clyde sees Lincoln looking sad. He wants to ask how Lincoln is doing!',
-          correctAnswer: 'come stai',
-          sentence: 'Clyde asks: "Hey Lincoln, ____?"',
-          hint: '"How are you?" in Italian - come means how!'
         }
       ]
     }

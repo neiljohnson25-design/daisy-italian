@@ -86,6 +86,81 @@ window.FAMIGLIA_DATA = {
     }
   ],
 
+  phrases: [
+    // L2 phrases (indices 0-4): Short family phrases
+    // 0
+    {
+      italian: 'la mia mamma',
+      english: 'my mum',
+      emoji: '\uD83D\uDC69\u2764\uFE0F',
+      hint: 'In the Loud House, everyone loves la mia mamma - she keeps the whole family together!'
+    },
+    // 1
+    {
+      italian: 'il mio pap\u00E0',
+      english: 'my dad',
+      emoji: '\uD83D\uDC68\u2764\uFE0F',
+      hint: 'Lincoln always says il mio pap\u00E0 makes the best Lynn-sagna!'
+    },
+    // 2
+    {
+      italian: 'la mia sorella',
+      english: 'my sister',
+      emoji: '\uD83D\uDC67\u2764\uFE0F',
+      hint: 'Lincoln has TEN of these - la mia sorella times ten!'
+    },
+    // 3
+    {
+      italian: 'il mio fratello',
+      english: 'my brother',
+      emoji: '\uD83D\uDC66\u2764\uFE0F',
+      hint: 'The Loud sisters would say il mio fratello Lincoln is always up to something!'
+    },
+    // 4
+    {
+      italian: 'la mia nonna',
+      english: 'my grandma',
+      emoji: '\uD83D\uDC75\u2764\uFE0F',
+      hint: 'La mia nonna makes the best cookies - just like in the Loud House!'
+    },
+    // L3 sentences (indices 5-9): Full sentences
+    // 5
+    {
+      italian: 'Ti voglio bene, Mamma!',
+      english: 'I love you, Mum!',
+      emoji: '\u2764\uFE0F\uD83D\uDC69',
+      hint: 'This is how the Loud kids tell their mamma they love her - in Italian!'
+    },
+    // 6
+    {
+      italian: 'La mia famiglia \u00E8 grande!',
+      english: 'My family is big!',
+      emoji: '\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67\u2B50',
+      hint: 'The Loud House famiglia has 13 people - that is REALLY grande!'
+    },
+    // 7
+    {
+      italian: 'Ho una sorella',
+      english: 'I have a sister',
+      emoji: '\uD83D\uDC67\uD83D\uDCAC',
+      hint: 'Lincoln could say this TEN times! Ho una sorella, ho una sorella...'
+    },
+    // 8
+    {
+      italian: 'Ciao, Nonna!',
+      english: 'Hello, Grandma!',
+      emoji: '\uD83D\uDC75\uD83D\uDC4B',
+      hint: 'When the Loud family visits Nonna, everyone shouts Ciao!'
+    },
+    // 9
+    {
+      italian: 'Andiamo a casa!',
+      english: 'Let\'s go home!',
+      emoji: '\uD83C\uDFE0\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67',
+      hint: 'After a big Loud House adventure, it\'s time to go home - andiamo a casa!'
+    }
+  ],
+
   lessons: [
     // ==========================================
     // LESSON 1: My Family (mamma, papa, sorella, fratello, nonna)
@@ -178,179 +253,174 @@ window.FAMIGLIA_DATA = {
     },
 
     // ==========================================
-    // LESSON 2: More Family (nonno, zia, zio, cugina, bambina, famiglia)
+    // LESSON 2: Family Phrases (L2 short phrases)
     // ==========================================
     {
       id: 'famiglia-2',
-      title: 'More Family',
+      title: 'Family Phrases',
       vocabIndices: [5, 6, 7, 8, 9, 10],
+      phraseIndices: [0, 1, 2, 3, 4],
       exercises: [
-        // 1 - Multiple choice: nonno
+        // 1 - Multiple choice: la mia mamma
         {
           type: 'multiple-choice',
-          prompt: 'What does "nonno" mean in English?',
-          correctAnswer: 'grandpa',
-          options: ['grandpa', 'grandma', 'uncle', 'dad'],
-          daisySays: 'Think of Albert from the Loud House - he\'s Lincoln\'s nonno!',
-          speakWord: 'nonno'
+          prompt: 'What does "la mia mamma" mean in English?',
+          correctAnswer: 'my mum',
+          options: ['my mum', 'my dad', 'my sister', 'my grandma'],
+          daisySays: 'In the Loud House, la mia mamma keeps everyone in line - even Lincoln!',
+          speakWord: 'la mia mamma'
         },
-        // 2 - Picture match: zia
+        // 2 - Multiple choice: il mio fratello
         {
-          type: 'picture-match',
-          prompt: 'Which picture is "zia"?',
-          speakWord: 'zia',
-          correctAnswer: 'zia',
-          options: [
-            { value: 'zia', emoji: '\uD83D\uDC69\u200D\uD83E\uDDB1', label: 'zia' },
-            { value: 'zio', emoji: '\uD83D\uDC68\u200D\uD83E\uDDB1', label: 'zio' },
-            { value: 'nonna', emoji: '\uD83D\uDC75', label: 'nonna' },
-            { value: 'cugina', emoji: '\uD83D\uDC67', label: 'cugina' }
-          ]
+          type: 'multiple-choice',
+          prompt: 'The Loud sisters would say "il mio fratello" when talking about Lincoln. What does it mean?',
+          correctAnswer: 'my brother',
+          options: ['my brother', 'my sister', 'my dad', 'my grandpa'],
+          daisySays: 'All ten Loud sisters share just one fratello - il mio fratello Lincoln!',
+          speakWord: 'il mio fratello'
         },
-        // 3 - Listen and pick: zio
+        // 3 - Listen and pick: la mia sorella
         {
           type: 'listen-pick',
-          prompt: 'Listen carefully! What word do you hear?',
-          speakWord: 'zio',
-          correctAnswer: 'zio',
-          options: ['zio', 'zia', 'nonno', 'pap\u00E0']
+          prompt: 'Listen to the phrase! What do you hear?',
+          speakWord: 'la mia sorella',
+          correctAnswer: 'la mia sorella',
+          options: ['la mia sorella', 'il mio fratello', 'la mia mamma', 'la mia nonna']
         },
-        // 4 - Multiple choice: cugina
+        // 4 - Listen and pick: il mio pap\u00E0
         {
-          type: 'multiple-choice',
-          prompt: 'Your zia\'s daughter is your...?',
-          correctAnswer: 'cugina',
-          options: ['cugina', 'sorella', 'bambina', 'zia'],
-          daisySays: 'A cugina is like having a built-in best friend in your family!',
-          speakWord: 'cugina'
+          type: 'listen-pick',
+          prompt: 'Listen carefully to this family phrase! What is it?',
+          speakWord: 'il mio pap\u00E0',
+          correctAnswer: 'il mio pap\u00E0',
+          options: ['il mio pap\u00E0', 'la mia mamma', 'il mio fratello', 'la mia nonna']
         },
-        // 5 - Multiple choice: bambina
-        {
-          type: 'multiple-choice',
-          prompt: 'Baby Lily in the Loud House is a little "bambina". What does that mean?',
-          correctAnswer: 'little girl',
-          options: ['little girl', 'sister', 'cousin (girl)', 'grandma'],
-          daisySays: 'Lily is the tiniest member of the Loud House famiglia!',
-          speakWord: 'bambina'
-        },
-        // 6 - Matching: lesson 2 words
-        {
-          type: 'matching',
-          prompt: 'Match the Italian word to the English word!',
-          pairs: [
-            { left: 'nonno', right: 'grandpa' },
-            { left: 'zia', right: 'aunt' },
-            { left: 'zio', right: 'uncle' },
-            { left: 'famiglia', right: 'family' }
-          ]
-        },
-        // 7 - Fill in the blank: famiglia
+        // 5 - Fill in the blank: la mia _____ (mamma)
         {
           type: 'fill-blank',
-          prompt: 'Spell the Italian word for "family"!',
-          correctAnswer: 'famiglia',
-          sentence: 'The Loud House has a very big ____!',
-          hint: 'It starts with F - and sounds a lot like the English word!'
+          prompt: 'Fill in the missing word! "la mia _____" means "my mum"',
+          correctAnswer: 'mamma',
+          sentence: 'la mia _____',
+          hint: 'The Loud House mamma keeps the whole family together! Starts with M!'
         },
-        // 8 - Picture match: famiglia
+        // 6 - Fill in the blank: il mio _____ (fratello)
         {
-          type: 'picture-match',
-          prompt: 'Which picture shows "famiglia"?',
-          speakWord: 'famiglia',
-          correctAnswer: 'famiglia',
-          options: [
-            { value: 'famiglia', emoji: '\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67', label: 'famiglia' },
-            { value: 'bambina', emoji: '\uD83D\uDC76', label: 'bambina' },
-            { value: 'nonno', emoji: '\uD83D\uDC74', label: 'nonno' },
-            { value: 'zia', emoji: '\uD83D\uDC69\u200D\uD83E\uDDB1', label: 'zia' }
+          type: 'fill-blank',
+          prompt: 'Fill in the missing word! "il mio _____" means "my brother"',
+          correctAnswer: 'fratello',
+          sentence: 'il mio _____',
+          hint: 'Lincoln is the only one of these in the Loud House! Starts with F!'
+        },
+        // 7 - Matching: Italian phrases to English
+        {
+          type: 'matching',
+          prompt: 'Match the Italian phrases to their English meanings!',
+          pairs: [
+            { left: 'la mia mamma', right: 'my mum' },
+            { left: 'il mio pap\u00E0', right: 'my dad' },
+            { left: 'la mia sorella', right: 'my sister' },
+            { left: 'il mio fratello', right: 'my brother' }
+          ]
+        },
+        // 8 - Matching: more phrases
+        {
+          type: 'matching',
+          prompt: 'Match them up! The Loud family needs your help!',
+          pairs: [
+            { left: 'la mia nonna', right: 'my grandma' },
+            { left: 'la mia sorella', right: 'my sister' },
+            { left: 'il mio pap\u00E0', right: 'my dad' },
+            { left: 'la mia mamma', right: 'my mum' }
           ]
         }
       ]
     },
 
     // ==========================================
-    // LESSON 3: The Whole Family! (mixed review of all 11 words)
+    // LESSON 3: Family Sentences! (L3 full sentences)
     // ==========================================
     {
       id: 'famiglia-3',
-      title: 'The Whole Family!',
+      title: 'Family Sentences!',
       vocabIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      phraseIndices: [5, 6, 7, 8, 9],
       exercises: [
-        // 1 - Listen and pick: mamma
+        // 1 - Conversation order: Visiting Nonna
         {
-          type: 'listen-pick',
-          prompt: 'Listen! Who is this family member?',
-          speakWord: 'mamma',
-          correctAnswer: 'mamma',
-          options: ['mamma', 'nonna', 'zia', 'sorella']
+          type: 'conversation-order',
+          prompt: 'The Loud family is visiting Nonna! Put these in the right order!',
+          correctOrder: [
+            'Ciao, Nonna!',
+            'Come stai?',
+            'La mia famiglia \u00E8 grande!',
+            'Ho una sorella!',
+            'Ti voglio bene!',
+            'Arrivederci!'
+          ],
+          daisySays: 'Imagine the whole Loud family arriving at Nonna\'s house - what a noisy visit!'
         },
-        // 2 - Multiple choice: sorella
+        // 2 - Multiple choice: Ti voglio bene, Mamma!
         {
           type: 'multiple-choice',
-          prompt: 'The Loud House has TEN of these! What is a "sorella"?',
-          correctAnswer: 'sister',
-          options: ['sister', 'brother', 'cousin (girl)', 'aunt'],
-          daisySays: 'Lori, Leni, Luna, Luan, Lynn, Lucy, Lana, Lola, Lisa and Lily - that is a LOT of sorelle!',
-          speakWord: 'sorella'
+          prompt: 'What does "Ti voglio bene, Mamma!" mean?',
+          correctAnswer: 'I love you, Mum!',
+          options: ['I love you, Mum!', 'Hello, Mum!', 'Goodbye, Mum!', 'My family is big!'],
+          daisySays: 'This is what the Loud kids say to their mamma before bedtime!',
+          speakWord: 'Ti voglio bene, Mamma!'
         },
-        // 3 - Picture match: fratello
+        // 3 - Multiple choice: La mia famiglia \u00E8 grande!
         {
-          type: 'picture-match',
-          prompt: 'Which picture is "fratello"?',
-          speakWord: 'fratello',
-          correctAnswer: 'fratello',
-          options: [
-            { value: 'fratello', emoji: '\uD83D\uDC66', label: 'fratello' },
-            { value: 'sorella', emoji: '\uD83D\uDC67', label: 'sorella' },
-            { value: 'pap\u00E0', emoji: '\uD83D\uDC68', label: 'pap\u00E0' },
-            { value: 'nonno', emoji: '\uD83D\uDC74', label: 'nonno' }
-          ]
+          type: 'multiple-choice',
+          prompt: 'Lincoln says "La mia famiglia \u00E8 grande!" What does he mean?',
+          correctAnswer: 'My family is big!',
+          options: ['My family is big!', 'I have a sister', 'Hello, Grandma!', 'I love you, Mum!'],
+          daisySays: 'With 13 people in the Loud House, that is one grande famiglia!',
+          speakWord: 'La mia famiglia \u00E8 grande!'
         },
-        // 4 - Matching: mix of lesson 1 and 2
+        // 4 - Listen and pick: Andiamo a casa!
         {
-          type: 'matching',
-          prompt: 'Match the Italian words to English! You know all of these!',
-          pairs: [
-            { left: 'nonna', right: 'grandma' },
-            { left: 'zio', right: 'uncle' },
-            { left: 'bambina', right: 'little girl' },
-            { left: 'cugina', right: 'cousin (girl)' }
-          ]
+          type: 'listen-pick',
+          prompt: 'Listen to this sentence! What do you hear?',
+          speakWord: 'Andiamo a casa!',
+          correctAnswer: 'Andiamo a casa!',
+          options: ['Andiamo a casa!', 'Ciao, Nonna!', 'Ho una sorella', 'Ti voglio bene, Mamma!']
         },
-        // 5 - Fill in the blank: sorella
+        // 5 - Fill in the blank: Ti voglio _____, Mamma! (bene)
         {
           type: 'fill-blank',
-          prompt: 'Spell the Italian word for "sister"!',
+          prompt: 'Fill in the missing word! "Ti voglio _____, Mamma!" means "I love you, Mum!"',
+          correctAnswer: 'bene',
+          sentence: 'Ti voglio _____, Mamma!',
+          hint: 'The Loud kids shout this word to show their love! It means "well" in Italian!'
+        },
+        // 6 - Fill in the blank: Ho una _____ (sorella)
+        {
+          type: 'fill-blank',
+          prompt: 'Fill in the missing word! "Ho una _____" means "I have a sister"',
           correctAnswer: 'sorella',
-          sentence: 'Lincoln has ten ____s in the Loud House!',
-          hint: 'Starts with S and has a double L!'
+          sentence: 'Ho una _____',
+          hint: 'Lincoln has TEN of these in the Loud House! Starts with S!'
         },
-        // 6 - Multiple choice: zia
-        {
-          type: 'multiple-choice',
-          prompt: 'What does "zia" mean in English?',
-          correctAnswer: 'aunt',
-          options: ['aunt', 'uncle', 'grandma', 'cousin (girl)'],
-          daisySays: 'Your mamma\'s sorella is your zia!',
-          speakWord: 'zia'
-        },
-        // 7 - Listen and pick: famiglia
-        {
-          type: 'listen-pick',
-          prompt: 'Listen to this important word! What is it?',
-          speakWord: 'famiglia',
-          correctAnswer: 'famiglia',
-          options: ['famiglia', 'fratello', 'bambina', 'cugina']
-        },
-        // 8 - Matching: full review
+        // 7 - Matching: Italian sentences to English
         {
           type: 'matching',
-          prompt: 'Last challenge! Match them all up!',
+          prompt: 'Match the Italian sentences to their English meanings!',
           pairs: [
-            { left: 'mamma', right: 'mum' },
-            { left: 'pap\u00E0', right: 'dad' },
-            { left: 'nonno', right: 'grandpa' },
-            { left: 'famiglia', right: 'family' }
+            { left: 'Ti voglio bene, Mamma!', right: 'I love you, Mum!' },
+            { left: 'Ciao, Nonna!', right: 'Hello, Grandma!' },
+            { left: 'Ho una sorella', right: 'I have a sister' },
+            { left: 'Andiamo a casa!', right: 'Let\'s go home!' }
+          ]
+        },
+        // 8 - Matching: more sentences
+        {
+          type: 'matching',
+          prompt: 'Last challenge! Match these Loud House sentences!',
+          pairs: [
+            { left: 'La mia famiglia \u00E8 grande!', right: 'My family is big!' },
+            { left: 'Andiamo a casa!', right: 'Let\'s go home!' },
+            { left: 'Ciao, Nonna!', right: 'Hello, Grandma!' },
+            { left: 'Ti voglio bene, Mamma!', right: 'I love you, Mum!' }
           ]
         }
       ]
