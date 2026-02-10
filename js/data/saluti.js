@@ -250,7 +250,16 @@ window.SALUTI_DATA = {
           correctAnswer: 'S\u00EC, per favore',
           options: ['S\u00EC, per favore', 'No, grazie', 'Grazie mille', 'Buongiorno, Mamma!']
         },
-        // 5 - Fill-blank: single word missing from a phrase
+        // 5 - Translate to Italian: grazie
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'thank you',
+          correctAnswer: 'grazie',
+          options: ['grazie', 'prego', 'scusa', 'ciao'],
+          _trackedWord: 'grazie'
+        },
+        // 6 - Fill-blank: single word missing from a phrase
         {
           type: 'fill-blank',
           prompt: 'Lincoln is SO grateful for his sisters\' help. Fill in the missing word!',
@@ -258,7 +267,15 @@ window.SALUTI_DATA = {
           sentence: 'Lincoln says: "Grazie ____!"',
           hint: 'It means "a lot" or "a thousand" - starts with M!'
         },
-        // 6 - Fill-blank: single word missing from a phrase
+        // 7 - Say it: buongiorno
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'buongiorno',
+          correctAnswer: 'buongiorno',
+          daisySays: 'Say good morning like the Loud House kids!'
+        },
+        // 8 - Fill-blank: single word missing from a phrase
         {
           type: 'fill-blank',
           prompt: 'The Loud kids greet Mum in the morning. Fill in the missing word!',
@@ -331,7 +348,16 @@ window.SALUTI_DATA = {
           daisySays: 'Lincoln always replies this way when Clyde asks how he is!',
           speakWord: 'Sto bene, grazie'
         },
-        // 4 - Listen-pick: hear a sentence
+        // 4 - Listen-comprehend: understanding greeting response
+        {
+          type: 'listen-comprehend',
+          sentence: 'Sto bene, grazie!',
+          question: 'How is the speaker feeling?',
+          correctAnswer: 'Fine',
+          options: ['Fine', 'Hungry', 'Tired', 'Sad'],
+          daisySays: 'Listen to how they answer!'
+        },
+        // 5 - Listen-pick: hear a sentence
         {
           type: 'listen-pick',
           prompt: 'Lincoln squeezes past his sisters in the hallway! Listen to what he says!',
@@ -339,7 +365,15 @@ window.SALUTI_DATA = {
           correctAnswer: 'Scusa, per favore',
           options: ['Scusa, per favore', 'Sto bene, grazie!', 'Come stai oggi?', 'Ciao e arrivederci!']
         },
-        // 5 - Fill-blank: single word in sentence context
+        // 6 - Sentence-build: building "I'm fine, thank you"
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "I\'m fine, thank you"',
+          correctOrder: ['Sto', 'bene', 'grazie'],
+          hint: 'I\'m fine, thank you',
+          daisySays: 'Put these greeting words in order!'
+        },
+        // 7 - Fill-blank: single word in sentence context
         {
           type: 'fill-blank',
           prompt: 'Lincoln replies to Clyde\'s greeting. Fill in the missing word!',

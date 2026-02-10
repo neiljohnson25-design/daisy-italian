@@ -386,7 +386,17 @@ window.NUMERI_DATA = {
           options: ['Ci sono quattro fiori', 'Ho tre gatti', 'Vedo cinque stelle', 'Ho dieci dita']
         },
 
-        // 5. Fill in the blank: single word missing
+        // 5. Translate to Italian: sette
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'seven',
+          correctAnswer: 'sette',
+          options: ['sette', 'sei', 'otto', 'cinque'],
+          _trackedWord: 'sette'
+        },
+
+        // 6. Fill in the blank: single word missing
         {
           type: 'fill-blank',
           prompt: 'The demon hunter counts their cats! Fill in the missing number word!',
@@ -395,7 +405,7 @@ window.NUMERI_DATA = {
           hint: 'How many spirit-guardian cats? It\u2019s the number 3 in Italian!'
         },
 
-        // 6. Fill in the blank: single word missing
+        // 7. Fill in the blank: single word missing
         {
           type: 'fill-blank',
           prompt: 'The hunter wiggles all their fingers! Fill in the missing number word!',
@@ -404,7 +414,16 @@ window.NUMERI_DATA = {
           hint: 'How many fingers do you have? It\u2019s the number 10 in Italian!'
         },
 
-        // 7. Matching: Italian phrases to English
+        // 8. Say it: cinque
+        {
+          type: 'say-it',
+          prompt: 'Can you say this number?',
+          italian: 'cinque',
+          correctAnswer: 'cinque',
+          daisySays: 'Say the number five in Italian! High five!'
+        },
+
+        // 9. Matching: Italian phrases to English
         {
           type: 'matching',
           prompt: 'The demon hunters need to decode the ancient scroll! Match each phrase!',
@@ -416,7 +435,7 @@ window.NUMERI_DATA = {
           ]
         },
 
-        // 8. Matching: more phrases
+        // 10. Matching: more phrases
         {
           type: 'matching',
           prompt: 'Final challenge! Match these phrases to complete the demon hunter\u2019s training!',
@@ -466,7 +485,17 @@ window.NUMERI_DATA = {
           }
         },
 
-        // 3. Multiple choice: sentence translation
+        // 3. Listen comprehend: Ho sei anni
+        {
+          type: 'listen-comprehend',
+          sentence: 'Ho sei anni!',
+          question: 'How old is the speaker?',
+          correctAnswer: 'Six years old',
+          options: ['Six years old', 'Seven years old', 'Five years old', 'Eight years old'],
+          daisySays: 'Listen to what age they say!'
+        },
+
+        // 4. Multiple choice: sentence translation
         {
           type: 'multiple-choice',
           prompt: 'The youngest demon hunter introduces herself! What does "Ho sei anni" mean?',
@@ -476,7 +505,7 @@ window.NUMERI_DATA = {
           speakWord: 'Ho sei anni'
         },
 
-        // 4. Multiple choice: sentence translation
+        // 5. Multiple choice: sentence translation
         {
           type: 'multiple-choice',
           prompt: 'The squad leader asks a question! What does "Quanti anni hai?" mean?',
@@ -486,7 +515,16 @@ window.NUMERI_DATA = {
           speakWord: 'Quanti anni hai?'
         },
 
-        // 5. Fill in the blank: single word in sentence
+        // 6. Sentence build: Uno, due, tre, via!
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "One, two, three, go!"',
+          correctOrder: ['Uno', 'due', 'tre', 'via'],
+          hint: 'One, two, three, go!',
+          daisySays: 'Count down like the demon hunters!'
+        },
+
+        // 7. Fill in the blank: single word in sentence
         {
           type: 'fill-blank',
           prompt: 'The little demon hunter tells everyone her age! Fill in the missing number!',
@@ -495,7 +533,7 @@ window.NUMERI_DATA = {
           hint: 'She\u2019s 6 years old! What\u2019s the Italian word for six?'
         },
 
-        // 6. Matching: number sentences to English
+        // 8. Matching: number sentences to English
         {
           type: 'matching',
           prompt: 'Decode the demon hunter\u2019s secret messages! Match each sentence!',

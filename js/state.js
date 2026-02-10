@@ -38,7 +38,8 @@ window.StateManager = class StateManager {
     topicOrder.forEach(function(id, index) {
       topics[id] = {
         unlocked: index < 2, // Colori and Saluti unlocked by default
-        lessons: {}
+        lessons: {},
+        speedBest: 0
       };
       // Each topic has 3 lessons
       for (var l = 1; l <= 3; l++) {
@@ -55,6 +56,9 @@ window.StateManager = class StateManager {
       totalStars: 0,
       currentStreak: 0,
       lastPlayedDate: null,
+      dailyCompleted: null,
+      dailyStreak: 0,
+      wordStats: {},
       topics: topics,
       achievements: []
     };
@@ -125,7 +129,11 @@ window.StateManager = class StateManager {
     // Unlock next topics
     this.checkUnlocks();
 
+    // Check for milestone achievements
+    var milestones = this.checkMilestones(topicId);
+
     this.save();
+    return milestones;
   }
 
   updateStreak() {
@@ -178,6 +186,145 @@ window.StateManager = class StateManager {
     });
     this.save();
     return true;
+  }
+
+  // ---- Word Stats (Adaptive Difficulty) ----
+
+  recordWordAttempt(italian, isCorrect) {
+    if (!italian) return;
+    if (!this.state.wordStats) this.state.wordStats = {};
+    if (!this.state.wordStats[italian]) {
+      this.state.wordStats[italian] = { correct: 0, wrong: 0, lastSeen: null };
+    }
+    if (isCorrect) {
+      this.state.wordStats[italian].correct++;
+    } else {
+      this.state.wordStats[italian].wrong++;
+    }
+    this.state.wordStats[italian].lastSeen = new Date().toISOString().split('T')[0];
+    this.save();
+  }
+
+  getWordStats(italian) {
+    if (!this.state.wordStats) return null;
+    return this.state.wordStats[italian] || null;
+  }
+
+  // ---- Daily Challenge ----
+
+  completeDailyChallenge() {
+    var today = new Date().toISOString().split('T')[0];
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    var yesterdayStr = yesterday.toISOString().split('T')[0];
+
+    if (this.state.dailyCompleted === yesterdayStr) {
+      this.state.dailyStreak = (this.state.dailyStreak || 0) + 1;
+    } else if (this.state.dailyCompleted !== today) {
+      this.state.dailyStreak = 1;
+    }
+    this.state.dailyCompleted = today;
+    this.save();
+  }
+
+  isDailyAvailable() {
+    var today = new Date().toISOString().split('T')[0];
+    return this.state.dailyCompleted !== today;
+  }
+
+  getDailyStreak() {
+    return this.state.dailyStreak || 0;
+  }
+
+  hasAnyCompletedLessons() {
+    for (var tid in this.state.topics) {
+      for (var lid in this.state.topics[tid].lessons) {
+        if (this.state.topics[tid].lessons[lid].completed) return true;
+      }
+    }
+    return false;
+  }
+
+  // ---- Speed Round ----
+
+  getSpeedBest(topicId) {
+    var topic = this.state.topics[topicId];
+    return topic && topic.speedBest ? topic.speedBest : 0;
+  }
+
+  updateSpeedBest(topicId, score) {
+    var topic = this.state.topics[topicId];
+    if (!topic) return false;
+    if (!topic.speedBest) topic.speedBest = 0;
+    if (score > topic.speedBest) {
+      topic.speedBest = score;
+      this.save();
+      return true;
+    }
+    return false;
+  }
+
+  // ---- Milestones ----
+
+  hasAchievement(id) {
+    return this.state.achievements.some(function(a) { return a.id === id; });
+  }
+
+  checkMilestones(topicId) {
+    var newMilestones = [];
+    var total = this.state.totalStars;
+
+    // Star milestones
+    var starMilestones = [
+      { threshold: 1, id: 'first-star', name: 'Your First Star!', message: 'You earned your very first star!' },
+      { threshold: 10, id: '10-stars', name: '10 Stars!', message: 'You have 10 beautiful stars!' },
+      { threshold: 25, id: '25-stars', name: 'Italian Superstar!', message: '25 stars! Incredibile!' },
+      { threshold: 50, id: '50-stars', name: 'Stella d\'Oro!', message: '50 golden stars! Fantastico!' }
+    ];
+
+    var self = this;
+    starMilestones.forEach(function(m) {
+      if (total >= m.threshold && !self.hasAchievement(m.id)) {
+        self.addAchievement(m.id, m.name);
+        newMilestones.push(m);
+      }
+    });
+
+    // Topic completion
+    if (topicId && this.isTopicComplete(topicId)) {
+      var topicAchId = 'topic-' + topicId;
+      if (!this.hasAchievement(topicAchId)) {
+        var topic = window.getTopicById ? window.getTopicById(topicId) : null;
+        var topicName = topic ? topic.titleEN : topicId;
+        var milestone = { id: topicAchId, name: topicName + ' Complete!', message: 'You finished all of ' + topicName + '!' };
+        this.addAchievement(topicAchId, milestone.name);
+        newMilestones.push(milestone);
+      }
+
+      // First topic ever completed
+      if (!this.hasAchievement('first-topic')) {
+        this.addAchievement('first-topic', 'First Topic Finished!');
+        newMilestones.push({ id: 'first-topic', name: 'First Topic Finished!', message: 'You completed your first whole topic!' });
+      }
+    }
+
+    // All topics complete
+    var allComplete = true;
+    for (var tid in this.state.topics) {
+      if (!this.isTopicComplete(tid)) { allComplete = false; break; }
+    }
+    if (allComplete && !this.hasAchievement('all-topics')) {
+      this.addAchievement('all-topics', 'All Topics Complete!');
+      newMilestones.push({ id: 'all-topics', name: 'Bravissima!', message: 'You completed ALL the topics!' });
+    }
+
+    // Streak milestone
+    if (this.state.currentStreak >= 7 && !this.hasAchievement('streak-7')) {
+      this.addAchievement('streak-7', '7 Day Streak!');
+      newMilestones.push({ id: 'streak-7', name: '7 Day Streak!', message: 'You played for 7 days in a row!' });
+    }
+
+    return newMilestones;
   }
 
   // ---- Parent Zone State ----

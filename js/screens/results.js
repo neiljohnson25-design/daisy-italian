@@ -57,6 +57,28 @@ window.renderResultsScreen = function(container, params) {
   // Score
   html += '<p class="results-score">You got ' + correct + ' out of ' + total + ' correct!</p>';
 
+  // Mistake review
+  var mistakes = [];
+  try {
+    var mistakeData = sessionStorage.getItem('daisy-last-mistakes');
+    if (mistakeData) mistakes = JSON.parse(mistakeData);
+  } catch(e) {}
+
+  if (mistakes.length > 0) {
+    html += '<div class="mistakes-review">';
+    html += '<h3 style="color: var(--purple); font-size: var(--font-size-medium); margin-bottom: var(--gap-md);">Let\'s Review!</h3>';
+    mistakes.forEach(function(m) {
+      html += '<div class="mistake-item">';
+      html += '<p class="mistake-prompt">' + (m.prompt || 'Question') + '</p>';
+      html += '<p class="mistake-answer">' + (m.correctAnswer || '') + '</p>';
+      if (m.speakWord) {
+        html += '<button class="btn btn-speaker" style="width: 36px; height: 36px; font-size: 1rem;" onclick="window.app.speech.speak(\'' + (m.speakWord || '').replace(/'/g, "\\'") + '\')">&#128264;</button>';
+      }
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+
   // Reward card (if earned)
   if (showReward) {
     html += '<div class="reward-card" id="reward-card" style="display: none;">';

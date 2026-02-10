@@ -295,6 +295,15 @@ window.FAMIGLIA_DATA = {
           correctAnswer: 'il mio pap\u00E0',
           options: ['il mio pap\u00E0', 'la mia mamma', 'il mio fratello', 'la mia nonna']
         },
+        // NEW: translate-to-italian: nonna
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'grandma',
+          correctAnswer: 'nonna',
+          options: ['nonna', 'mamma', 'zia', 'sorella'],
+          _trackedWord: 'nonna'
+        },
         // 5 - Fill in the blank: la mia _____ (mamma)
         {
           type: 'fill-blank',
@@ -310,6 +319,14 @@ window.FAMIGLIA_DATA = {
           correctAnswer: 'fratello',
           sentence: 'il mio _____',
           hint: 'Lincoln is the only one of these in the Loud House! Starts with F!'
+        },
+        // NEW: say-it: famiglia
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'famiglia',
+          correctAnswer: 'famiglia',
+          daisySays: 'Say family in Italian! The Loud House has a BIG famiglia!'
         },
         // 7 - Matching: Italian phrases to English
         {
@@ -377,6 +394,15 @@ window.FAMIGLIA_DATA = {
           daisySays: 'With 13 people in the Loud House, that is one grande famiglia!',
           speakWord: 'La mia famiglia \u00E8 grande!'
         },
+        // NEW: listen-comprehend
+        {
+          type: 'listen-comprehend',
+          sentence: 'La mia famiglia è grande!',
+          question: 'What is the speaker\'s family like?',
+          correctAnswer: 'Big',
+          options: ['Big', 'Small', 'Funny', 'Quiet'],
+          daisySays: 'Listen to what Lincoln says about his family!'
+        },
         // 4 - Listen and pick: Andiamo a casa!
         {
           type: 'listen-pick',
@@ -392,6 +418,14 @@ window.FAMIGLIA_DATA = {
           correctAnswer: 'bene',
           sentence: 'Ti voglio _____, Mamma!',
           hint: 'The Loud kids shout this word to show their love! It means "well" in Italian!'
+        },
+        // NEW: sentence-build
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "I love you, Mum!"',
+          correctOrder: ['Ti', 'voglio', 'bene', 'Mamma'],
+          hint: 'I love you, Mum!',
+          daisySays: 'Put the words in order to tell Mamma you love her!'
         },
         // 6 - Fill in the blank: Ho una _____ (sorella)
         {

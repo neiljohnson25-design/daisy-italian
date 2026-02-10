@@ -212,7 +212,17 @@ window.CIBO_DATA = {
           options: ['l\'acqua fresca', 'il pane fresco', 'la pizza buona', 'il gelato freddo']
         },
 
-        // 5. Fill-blank - single word missing: la pizza ____
+        // 5. Translate-to-italian - apple
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'apple',
+          correctAnswer: 'mela',
+          options: ['mela', 'banana', 'pomodoro', 'pane'],
+          _trackedWord: 'mela'
+        },
+
+        // 6. Fill-blank - single word missing: la pizza ____
         {
           type: 'fill-blank',
           prompt: 'The pizza is good! Fill in the missing word!',
@@ -221,7 +231,7 @@ window.CIBO_DATA = {
           hint: 'It means "good" - starts with B!'
         },
 
-        // 6. Fill-blank - single word missing: il gelato ____
+        // 7. Fill-blank - single word missing: il gelato ____
         {
           type: 'fill-blank',
           prompt: 'The ice cream is cold! What word is missing?',
@@ -230,7 +240,16 @@ window.CIBO_DATA = {
           hint: 'It means "cold" - starts with F!'
         },
 
-        // 7. Matching - Italian phrases to English
+        // 8. Say-it - formaggio
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'formaggio',
+          correctAnswer: 'formaggio',
+          daisySays: 'Say cheese! Cat loves making cheesy pizza!'
+        },
+
+        // 9. Matching - Italian phrases to English
         {
           type: 'matching',
           prompt: 'Match the Italian food phrases to English!',
@@ -242,7 +261,7 @@ window.CIBO_DATA = {
           ]
         },
 
-        // 8. Matching - more food phrases
+        // 10. Matching - more food phrases
         {
           type: 'matching',
           prompt: 'Sam and Cat are shopping! Match the rest!',
@@ -302,7 +321,17 @@ window.CIBO_DATA = {
           speakWord: 'Mi piace il gelato'
         },
 
-        // 4. Listen-pick - hear a sentence: Ho fame!
+        // 4. Listen-comprehend - Voglio la pizza!
+        {
+          type: 'listen-comprehend',
+          sentence: 'Voglio la pizza!',
+          question: 'What food does the speaker want?',
+          correctAnswer: 'Pizza',
+          options: ['Pizza', 'Ice cream', 'Bread', 'Chocolate'],
+          daisySays: 'Listen to what Sam wants to eat!'
+        },
+
+        // 5. Listen-pick - hear a sentence: Ho fame!
         {
           type: 'listen-pick',
           prompt: 'Sam\'s tummy is rumbling! What sentence do you hear?',
@@ -311,7 +340,7 @@ window.CIBO_DATA = {
           options: ['Ho fame!', 'Voglio la pizza!', 'Mi piace il gelato!', 'La pizza \u00E8 buona!']
         },
 
-        // 5. Fill-blank - single word in sentence: Voglio la ____!
+        // 6. Fill-blank - single word in sentence: Voglio la ____!
         {
           type: 'fill-blank',
           prompt: 'Sam wants pizza! Fill in the missing word!',
@@ -320,7 +349,16 @@ window.CIBO_DATA = {
           hint: 'Sam\'s favourite Italian food! Starts with P.'
         },
 
-        // 6. Fill-blank - single word in sentence: La pizza è ____!
+        // 7. Sentence-build - I want pizza
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "I want pizza"',
+          correctOrder: ['Voglio', 'la', 'pizza'],
+          hint: 'I want pizza',
+          daisySays: 'Put the words in order to order dinner!'
+        },
+
+        // 8. Fill-blank - single word in sentence: La pizza è ____!
         {
           type: 'fill-blank',
           prompt: 'The pizza is good! What word is missing?',
@@ -329,7 +367,7 @@ window.CIBO_DATA = {
           hint: 'It means "good" - starts with B!'
         },
 
-        // 7. Matching - sentences to English
+        // 9. Matching - sentences to English
         {
           type: 'matching',
           prompt: 'Match the Italian sentences to their meanings!',
@@ -341,7 +379,7 @@ window.CIBO_DATA = {
           ]
         },
 
-        // 8. Matching - more sentences and review
+        // 10. Matching - more sentences and review
         {
           type: 'matching',
           prompt: 'Last match! You are a food sentence superstar!',

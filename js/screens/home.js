@@ -34,6 +34,13 @@ window.renderHomeScreen = function(container) {
   // Play button
   html += '<button class="btn btn-play animate-fadeInUp" style="animation-delay: 0.3s;" onclick="window.app.router.navigate(\'/topics\')">PLAY!</button>';
 
+  // Daily Challenge button
+  if (state.hasAnyCompletedLessons() && state.isDailyAvailable()) {
+    html += '<button class="btn btn-daily animate-fadeInUp" style="animation-delay: 0.35s;" onclick="window.app.router.navigate(\'/daily\')">Daisy\'s Daily! &#11088;</button>';
+  } else if (state.hasAnyCompletedLessons() && !state.isDailyAvailable()) {
+    html += '<button class="btn btn-daily-done animate-fadeInUp" style="animation-delay: 0.35s;" disabled>Daily Done! &#9989;</button>';
+  }
+
   // Progress button (if they have some progress)
   if (totalStars > 0) {
     html += '<button class="btn btn-secondary animate-fadeInUp" style="animation-delay: 0.4s; font-size: var(--font-size-body);" onclick="window.app.router.navigate(\'/progress\')">My Progress</button>';

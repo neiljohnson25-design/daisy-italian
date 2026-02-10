@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     { path: '/progress', handler: renderProgressScreen },
     { path: '/parent', handler: renderParentScreen },
     { path: '/say-to-mummy/:topicId', handler: renderSayToMummyScreen },
-    { path: '/rewards', handler: renderRewardsScreen }
+    { path: '/rewards', handler: renderRewardsScreen },
+    { path: '/daily', handler: renderDailyScreen },
+    { path: '/speed-round/:topicId', handler: renderSpeedRoundScreen }
   ];
 
   // Initialise router and resolve current route

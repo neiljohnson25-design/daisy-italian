@@ -340,7 +340,17 @@ window.GIORNI_MESI_DATA = {
           options: ['\u00C8 gennaio!', 'Domani \u00E8 marted\u00EC', 'Oggi \u00E8 luned\u00EC', 'Ieri era domenica']
         },
 
-        // 5. Fill in the blank: single word missing
+        // 5. Translate to Italian: Saturday
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'Saturday',
+          correctAnswer: 'sabato',
+          options: ['sabato', 'domenica', 'lunedì', 'venerdì'],
+          _trackedWord: 'sabato'
+        },
+
+        // 6. Fill in the blank: single word missing
         {
           type: 'fill-blank',
           prompt: 'Aurora rested yesterday. Fill in the missing day!',
@@ -349,7 +359,7 @@ window.GIORNI_MESI_DATA = {
           hint: 'It means Sunday! Aurora\'s favourite rest day starts with D.'
         },
 
-        // 6. Fill in the blank: single word missing
+        // 7. Fill in the blank: single word missing
         {
           type: 'fill-blank',
           prompt: 'Rapunzel is talking about her birthday month. Fill in the missing month!',
@@ -358,7 +368,16 @@ window.GIORNI_MESI_DATA = {
           hint: 'It means March! The month when flowers start to sprout!'
         },
 
-        // 7. Matching: Italian phrases to English
+        // 8. Say it: gennaio
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'gennaio',
+          correctAnswer: 'gennaio',
+          daisySays: 'Say January in Italian! Elsa loves this snowy month!'
+        },
+
+        // 9. Matching: Italian phrases to English
         {
           type: 'matching',
           prompt: 'Match the Italian phrases to the English ones! Help the princesses!',
@@ -370,7 +389,7 @@ window.GIORNI_MESI_DATA = {
           ]
         },
 
-        // 8. Matching: more phrase pairs
+        // 10. Matching: more phrase pairs
         {
           type: 'matching',
           prompt: 'The princesses need one more match! Can you do it?',
@@ -428,7 +447,17 @@ window.GIORNI_MESI_DATA = {
           speakWord: 'Domani andiamo al parco!'
         },
 
-        // 4. Listen and pick: hear a sentence
+        // 4. Listen comprehension: Today is Saturday!
+        {
+          type: 'listen-comprehend',
+          sentence: 'Oggi è sabato!',
+          question: 'What day is it?',
+          correctAnswer: 'Saturday',
+          options: ['Saturday', 'Sunday', 'Friday', 'Monday'],
+          daisySays: 'Listen to what day Cinderella says it is!'
+        },
+
+        // 5. Listen and pick: hear a sentence
         {
           type: 'listen-pick',
           prompt: 'Cinderella is asking a question! Listen - which sentence do you hear?',
@@ -437,7 +466,16 @@ window.GIORNI_MESI_DATA = {
           options: ['Che giorno \u00E8 oggi?', 'Oggi \u00E8 sabato!', 'Domani andiamo al parco!', 'Il mio mese preferito \u00E8 luglio!']
         },
 
-        // 5. Fill in the blank: single word in sentence
+        // 6. Sentence build: Today is Saturday
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "Today is Saturday"',
+          correctOrder: ['Oggi', 'è', 'sabato'],
+          hint: 'Today is Saturday',
+          daisySays: 'Put the words together to say the day!'
+        },
+
+        // 7. Fill in the blank: single word in sentence
         {
           type: 'fill-blank',
           prompt: 'Ariel is telling us her favourite month! Fill in the missing month!',
@@ -446,7 +484,7 @@ window.GIORNI_MESI_DATA = {
           hint: 'Ariel loves the beach - her favourite month is July! Starts with L.'
         },
 
-        // 6. Fill in the blank: single word in sentence
+        // 8. Fill in the blank: single word in sentence
         {
           type: 'fill-blank',
           prompt: 'The princesses are excited about today! Fill in the missing day!',
@@ -455,7 +493,7 @@ window.GIORNI_MESI_DATA = {
           hint: 'The ball is on this day - it means Saturday! Starts with S.'
         },
 
-        // 7. Matching: Italian sentences to English
+        // 9. Matching: Italian sentences to English
         {
           type: 'matching',
           prompt: 'Match the Italian sentences to the English! Help the princesses talk!',
@@ -467,7 +505,7 @@ window.GIORNI_MESI_DATA = {
           ]
         },
 
-        // 8. Matching: more sentence pairs
+        // 10. Matching: more sentence pairs
         {
           type: 'matching',
           prompt: 'The grand princess sentence review! You can do it!',

@@ -211,7 +211,17 @@ window.ANIMALI_DATA = {
           options: ['l\'uccello blu', 'il cavallo bianco', 'il cane grande', 'il gatto piccolo']
         },
 
-        // Exercise 5: Fill-blank - single word missing from phrase
+        // Exercise 5: Translate to Italian - rabbit
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'rabbit',
+          correctAnswer: 'coniglio',
+          options: ['coniglio', 'gatto', 'rana', 'topo'],
+          _trackedWord: 'coniglio'
+        },
+
+        // Exercise 6: Fill-blank - single word missing from phrase
         {
           type: 'fill-blank',
           prompt: 'What kind of cat? Fill in the missing word!',
@@ -220,7 +230,7 @@ window.ANIMALI_DATA = {
           hint: 'It means small! Cinderella\'s little cat - starts with P.'
         },
 
-        // Exercise 6: Fill-blank - single word missing from phrase
+        // Exercise 7: Fill-blank - single word missing from phrase
         {
           type: 'fill-blank',
           prompt: 'What colour is the fish? Fill in the missing word!',
@@ -229,7 +239,16 @@ window.ANIMALI_DATA = {
           hint: 'It means red! Like a goldfish - starts with R.'
         },
 
-        // Exercise 7: Matching - Italian phrases to English
+        // Exercise 8: Say it - butterfly
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'farfalla',
+          correctAnswer: 'farfalla',
+          daisySays: 'Beautiful butterfly! Say it like a princess!'
+        },
+
+        // Exercise 9: Matching - Italian phrases to English
         {
           type: 'matching',
           prompt: 'Match the Italian animal phrases to English!',
@@ -241,7 +260,7 @@ window.ANIMALI_DATA = {
           ]
         },
 
-        // Exercise 8: Matching - more phrase pairs
+        // Exercise 10: Matching - more phrase pairs
         {
           type: 'matching',
           prompt: 'Match the rest of the princess animal phrases!',
@@ -300,7 +319,17 @@ window.ANIMALI_DATA = {
           speakWord: 'Il cavallo \u00E8 bianco'
         },
 
-        // Exercise 4: Listen-pick - hear a sentence
+        // Exercise 4: Listen comprehend - big dog
+        {
+          type: 'listen-comprehend',
+          sentence: 'Ho un cane grande',
+          question: 'What animal does the speaker have?',
+          correctAnswer: 'A big dog',
+          options: ['A big dog', 'A small cat', 'A white horse', 'A blue bird'],
+          daisySays: 'Listen to what animal they are talking about!'
+        },
+
+        // Exercise 5: Listen-pick - hear a sentence
         {
           type: 'listen-pick',
           prompt: 'Ariel is talking about her pet! What sentence do you hear?',
@@ -309,7 +338,7 @@ window.ANIMALI_DATA = {
           options: ['Ho un cane grande', 'Mi piace il gatto', 'Il pesce nuota', 'Vedo un uccello blu']
         },
 
-        // Exercise 5: Fill-blank - single word in sentence
+        // Exercise 6: Fill-blank - single word in sentence
         {
           type: 'fill-blank',
           prompt: 'What does the fish do? Fill in the missing word!',
@@ -318,7 +347,16 @@ window.ANIMALI_DATA = {
           hint: 'Flounder does this all day! It means swims - starts with N.'
         },
 
-        // Exercise 6: Fill-blank - single word in sentence
+        // Exercise 7: Sentence build - I like the cat
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "I like the cat"',
+          correctOrder: ['Mi', 'piace', 'il', 'gatto'],
+          hint: 'I like the cat',
+          daisySays: 'Put the words in order to tell everyone which animal you love!'
+        },
+
+        // Exercise 8: Fill-blank - single word in sentence
         {
           type: 'fill-blank',
           prompt: 'What colour is the horse? Fill in the missing word!',
@@ -327,7 +365,7 @@ window.ANIMALI_DATA = {
           hint: 'Maximus is this colour! It means white - starts with B.'
         },
 
-        // Exercise 7: Matching - sentences to English
+        // Exercise 9: Matching - sentences to English
         {
           type: 'matching',
           prompt: 'Match the Italian animal sentences to English!',
@@ -339,7 +377,7 @@ window.ANIMALI_DATA = {
           ]
         },
 
-        // Exercise 8: Matching - more sentence pairs
+        // Exercise 10: Matching - more sentence pairs
         {
           type: 'matching',
           prompt: 'Match the rest of the princess animal sentences!',

@@ -41,8 +41,17 @@ window.renderExerciseScreen = function(container, params) {
     }
   });
 
+  // Filter out say-it exercises if speech recognition is not supported
+  if (!window.ItalianRecognition || !window.ItalianRecognition.supported) {
+    exercises = exercises.filter(function(ex) { return ex.type !== 'say-it'; });
+  }
+
   // Generate revision exercises from previously completed topics
   var revisionExercises = generateRevisionExercises(topicId, lessonId, 5);
+
+  // Generate cross-topic exercises if available
+  var crossTopicExercises = generateCrossTopicExercises(topicId, 2);
+  revisionExercises = revisionExercises.concat(crossTopicExercises);
 
   if (revisionExercises.length > 0) {
     // Split: first ~60% as warm-up at the start, rest sprinkled into main exercises
@@ -169,6 +178,23 @@ window.renderExerciseScreen = function(container, params) {
       case 'picture-match':
         ExerciseTypes.renderPictureMatch(exercise, area, handleAnswer);
         break;
+      case 'listen-comprehend':
+        ExerciseTypes.renderListenComprehend(exercise, area, handleAnswer);
+        break;
+      case 'translate-to-italian':
+        ExerciseTypes.renderTranslateToItalian(exercise, area, handleAnswer);
+        break;
+      case 'sentence-build':
+        ExerciseTypes.renderSentenceBuild(exercise, area, function(correct, wrongCount) {
+          if (wrongCount > 3) {
+            score -= 5;
+          }
+          handleAnswer(true);
+        });
+        break;
+      case 'say-it':
+        ExerciseTypes.renderSayIt(exercise, area, handleAnswer);
+        break;
       default:
         // Fallback to multiple choice style
         ExerciseTypes.renderMultipleChoice(exercise, area, handleAnswer);
@@ -178,11 +204,18 @@ window.renderExerciseScreen = function(container, params) {
   function handleAnswer(isCorrect) {
     attempts++;
     var daisyEl = document.getElementById('daisy-exercise');
+    var exercise = exercises[currentIndex];
+
+    // Track word stats for adaptive difficulty
+    var trackedWord = exercise._trackedWord || exercise.speakWord || exercise.italian || null;
+    if (trackedWord && attempts === 1) {
+      window.app.state.recordWordAttempt(trackedWord, isCorrect);
+    }
 
     if (isCorrect) {
       var points = attempts === 1 ? 10 : attempts === 2 ? 5 : 2;
       score += points;
-      results.push({ index: currentIndex, points: points, attempts: attempts });
+      results.push({ index: currentIndex, points: points, attempts: attempts, prompt: exercise.prompt, correctAnswer: exercise.correctAnswer, speakWord: trackedWord });
 
       window.app.audio.play('correct');
 
@@ -213,7 +246,7 @@ window.renderExerciseScreen = function(container, params) {
 
       if (attempts >= 3) {
         // Show answer and move on
-        results.push({ index: currentIndex, points: 0, attempts: attempts });
+        results.push({ index: currentIndex, points: 0, attempts: attempts, prompt: exercise.prompt, correctAnswer: exercise.correctAnswer, speakWord: trackedWord });
 
         setTimeout(function() {
           if (daisyEl) {
@@ -253,15 +286,31 @@ window.renderExerciseScreen = function(container, params) {
     var percentage = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
     var stars = percentage >= 90 ? 3 : percentage >= 70 ? 2 : percentage >= 50 ? 1 : 0;
 
-    // Save progress
-    window.app.state.completeLesson(topicId, lessonId, score, stars);
+    // Store mistakes for review on results screen
+    var mistakes = results.filter(function(r) { return r.points === 0; });
+    if (mistakes.length > 0) {
+      try { sessionStorage.setItem('daisy-last-mistakes', JSON.stringify(mistakes)); } catch(e) {}
+    } else {
+      try { sessionStorage.removeItem('daisy-last-mistakes'); } catch(e) {}
+    }
+
+    // Save progress and check milestones
+    var milestones = window.app.state.completeLesson(topicId, lessonId, score, stars);
     window.app.updateStarCounter();
 
-    // Navigate to results
-    window.app.router.navigate('/results/' + topicId + '/' + lessonId +
+    var resultsUrl = '/results/' + topicId + '/' + lessonId +
       '?score=' + score + '&max=' + maxScore + '&stars=' + stars +
       '&correct=' + results.filter(function(r) { return r.points > 0; }).length +
-      '&total=' + results.length);
+      '&total=' + results.length;
+
+    // Show milestone celebration if earned, then navigate
+    if (milestones && milestones.length > 0 && window.MilestoneModal) {
+      MilestoneModal.show(milestones[0], function() {
+        window.app.router.navigate(resultsUrl);
+      });
+    } else {
+      window.app.router.navigate(resultsUrl);
+    }
   }
 
   // Start
@@ -371,8 +420,21 @@ function generateRevisionExercises(currentTopicId, currentLessonId, count) {
 
   if (pool.length < 4) return [];
 
-  // 4. Shuffle the pool
-  pool = ExerciseTypes.shuffleArray(pool);
+  // 4. Prioritise weak words (adaptive difficulty), then shuffle the rest
+  pool.forEach(function(item) {
+    var stats = window.app.state.getWordStats(item.italian);
+    if (stats && (stats.correct + stats.wrong) > 0) {
+      item._errorRate = stats.wrong / (stats.correct + stats.wrong);
+    } else {
+      item._errorRate = -1; // No data, lower priority
+    }
+  });
+  pool.sort(function(a, b) { return b._errorRate - a._errorRate; });
+
+  // Shuffle items with same priority (no stats) to add variety
+  var weakWords = pool.filter(function(p) { return p._errorRate > 0; });
+  var otherWords = ExerciseTypes.shuffleArray(pool.filter(function(p) { return p._errorRate <= 0; }));
+  pool = weakWords.concat(otherWords);
 
   // 5. Generate exercises
   var exerciseCount = Math.min(count, pool.length);
@@ -387,7 +449,7 @@ function generateRevisionExercises(currentTopicId, currentLessonId, count) {
     return candidates.slice(0, 3);
   }
 
-  var templates = ['multiple-choice', 'listen-pick', 'picture-match'];
+  var templates = ['multiple-choice', 'listen-pick', 'picture-match', 'translate-to-italian'];
 
   var mcPrompts = [
     'Quick revision! What does "WORD" mean?',
@@ -425,6 +487,7 @@ function generateRevisionExercises(currentTopicId, currentLessonId, count) {
         correctAnswer: word.english,
         options: ExerciseTypes.shuffleArray([word.english, distractors[0].english, distractors[1].english, distractors[2].english]),
         speakWord: word.italian,
+        _trackedWord: word.italian,
         daisySays: 'Do you remember this one? ' + word.emoji,
         _isRevision: true
       };
@@ -434,8 +497,26 @@ function generateRevisionExercises(currentTopicId, currentLessonId, count) {
         type: 'listen-pick',
         prompt: prompt,
         speakWord: word.italian,
+        _trackedWord: word.italian,
         correctAnswer: word.italian,
         options: ExerciseTypes.shuffleArray([word.italian, distractors[0].italian, distractors[1].italian, distractors[2].italian]),
+        _isRevision: true
+      };
+    } else if (template === 'translate-to-italian') {
+      var ttiPrompts = [
+        'How do you say "WORD" in Italian?',
+        'Revision! What is "WORD" in Italian?',
+        'Do you remember the Italian for "WORD"?'
+      ];
+      var prompt = ttiPrompts[Math.floor(Math.random() * ttiPrompts.length)].replace('WORD', word.english);
+      exercise = {
+        type: 'translate-to-italian',
+        prompt: prompt,
+        english: word.english,
+        correctAnswer: word.italian,
+        _trackedWord: word.italian,
+        options: ExerciseTypes.shuffleArray([word.italian, distractors[0].italian, distractors[1].italian, distractors[2].italian]),
+        daisySays: 'Think in Italian! ' + word.emoji,
         _isRevision: true
       };
     } else {
@@ -444,6 +525,7 @@ function generateRevisionExercises(currentTopicId, currentLessonId, count) {
         type: 'picture-match',
         prompt: prompt,
         speakWord: word.italian,
+        _trackedWord: word.italian,
         correctAnswer: word.italian,
         options: ExerciseTypes.shuffleArray([
           { value: word.italian, emoji: word.emoji, label: word.italian },
@@ -459,4 +541,71 @@ function generateRevisionExercises(currentTopicId, currentLessonId, count) {
   }
 
   return exercises;
+}
+
+// Cross-topic exercise generator - combines vocab from different completed topics
+function generateCrossTopicExercises(currentTopicId, count) {
+  if (!window.CROSS_TOPIC_TEMPLATES) return [];
+
+  var templates = window.CROSS_TOPIC_TEMPLATES;
+  var exercises = [];
+
+  templates.forEach(function(template) {
+    // Check if both required topics have at least one completed lesson
+    var allMet = template.requires.every(function(tid) {
+      for (var l = 1; l <= 3; l++) {
+        var progress = window.app.state.getLessonProgress(tid, tid + '-' + l);
+        if (progress && progress.completed) return true;
+      }
+      return false;
+    });
+
+    if (!allMet) return;
+
+    // Pick random phrases from this template
+    var phrases = ExerciseTypes.shuffleArray(template.phrases.slice());
+    phrases.slice(0, 1).forEach(function(phrase) {
+      // Get distractors from same template group
+      var distractors = template.phrases.filter(function(p) {
+        return p.italian !== phrase.italian;
+      });
+      if (distractors.length < 2) return;
+      distractors = ExerciseTypes.shuffleArray(distractors).slice(0, 3);
+
+      // Pad distractors if needed
+      while (distractors.length < 3) {
+        distractors.push({ italian: distractors[0].italian + '?', english: distractors[0].english + '?', emoji: '❓' });
+      }
+
+      var exerciseType = Math.random() < 0.5 ? 'multiple-choice' : 'translate-to-italian';
+
+      if (exerciseType === 'multiple-choice') {
+        exercises.push({
+          type: 'multiple-choice',
+          prompt: 'What does "' + phrase.italian + '" mean?',
+          correctAnswer: phrase.english,
+          options: ExerciseTypes.shuffleArray([phrase.english, distractors[0].english, distractors[1].english, distractors[2].english]),
+          speakWord: phrase.italian,
+          _trackedWord: phrase.italian,
+          daisySays: 'Two topics in one! ' + phrase.emoji,
+          _isRevision: true,
+          _isCrossTopic: true
+        });
+      } else {
+        exercises.push({
+          type: 'translate-to-italian',
+          prompt: 'How do you say "' + phrase.english + '" in Italian?',
+          english: phrase.english,
+          correctAnswer: phrase.italian,
+          _trackedWord: phrase.italian,
+          options: ExerciseTypes.shuffleArray([phrase.italian, distractors[0].italian, distractors[1].italian, distractors[2].italian]),
+          daisySays: 'Mix it up! ' + phrase.emoji,
+          _isRevision: true,
+          _isCrossTopic: true
+        });
+      }
+    });
+  });
+
+  return ExerciseTypes.shuffleArray(exercises).slice(0, count);
 }

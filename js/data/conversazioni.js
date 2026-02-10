@@ -253,7 +253,17 @@ window.CONVERSAZIONI_DATA = {
           hint: 'The polite way to ask! It means "Can I have". Cat always uses her manners!'
         },
 
-        // 5. Matching: likes and wants
+        // 5. Translate to Italian: Ho fame
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'I\'m hungry',
+          correctAnswer: 'Ho fame',
+          options: ['Ho fame', 'Ho sete', 'Mi piace', 'Voglio'],
+          _trackedWord: 'Ho fame'
+        },
+
+        // 6. Matching: likes and wants
         {
           type: 'matching',
           prompt: 'Match the Italian to the English! Sam and Cat need your help!',
@@ -265,7 +275,16 @@ window.CONVERSAZIONI_DATA = {
           ]
         },
 
-        // 6. Multiple choice: Ho fame
+        // 7. Say it: Mi piace
+        {
+          type: 'say-it',
+          prompt: 'Can you say this phrase?',
+          italian: 'Mi piace',
+          correctAnswer: 'Mi piace',
+          daisySays: 'Tell Nonna what you like! Say it in Italian!'
+        },
+
+        // 8. Multiple choice: Ho fame
         {
           type: 'multiple-choice',
           prompt: 'Sam\'s tummy is rumbling! What does "Ho fame" mean?',
@@ -339,7 +358,17 @@ window.CONVERSAZIONI_DATA = {
           options: ['Mi piace', 'Non mi piace', 'Ho sete', 'Come stai?']
         },
 
-        // 4. Fill in the blank: Posso avere
+        // 4. Listen comprehend: Ho fame
+        {
+          type: 'listen-comprehend',
+          sentence: 'Ho fame!',
+          question: 'What does the speaker need?',
+          correctAnswer: 'Food',
+          options: ['Food', 'Water', 'Sleep', 'A friend'],
+          daisySays: 'Listen to what Sam is saying about her tummy!'
+        },
+
+        // 5. Fill in the blank: Posso avere
         {
           type: 'fill-blank',
           prompt: 'Ask Nonna for some water, the polite way!',
@@ -360,7 +389,16 @@ window.CONVERSAZIONI_DATA = {
           ]
         },
 
-        // 6. Multiple choice: Mi chiamo
+        // 6. Sentence build: Mi chiamo Daisy
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "My name is Daisy"',
+          correctOrder: ['Mi', 'chiamo', 'Daisy'],
+          hint: 'My name is Daisy',
+          daisySays: 'Put the words in order to introduce yourself!'
+        },
+
+        // 7. Multiple choice: Mi chiamo
         {
           type: 'multiple-choice',
           prompt: 'A new cousin arrives at the family party! They ask "Come ti chiami?" - what do you say?',

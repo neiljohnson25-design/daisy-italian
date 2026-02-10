@@ -277,7 +277,17 @@ window.CORPO_DATA = {
           options: ['la mia bocca', 'la mia testa', 'le mie mani', 'i miei piedi']
         },
 
-        // 5. Fill-blank: single word missing from phrase
+        // 5. Translate to Italian: hands
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'hands',
+          correctAnswer: 'mani',
+          options: ['mani', 'piedi', 'testa', 'bocca'],
+          _trackedWord: 'mani'
+        },
+
+        // 6. Fill-blank: single word missing from phrase
         {
           type: 'fill-blank',
           prompt: 'The demon hunter wiggles their fingers! Fill in the body part!',
@@ -286,7 +296,7 @@ window.CORPO_DATA = {
           hint: 'It means hands! Starts with M.'
         },
 
-        // 6. Fill-blank: single word missing from phrase
+        // 7. Fill-blank: single word missing from phrase
         {
           type: 'fill-blank',
           prompt: 'The hunter puts on the magic headband! Fill in the body part!',
@@ -295,7 +305,16 @@ window.CORPO_DATA = {
           hint: 'It means head! Starts with T.'
         },
 
-        // 7. Matching: Italian phrases to English
+        // 8. Say it: orecchie
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'orecchie',
+          correctAnswer: 'orecchie',
+          daisySays: 'Say ears in Italian! The demon hunters use these to listen!'
+        },
+
+        // 9. Matching: Italian phrases to English
         {
           type: 'matching',
           prompt: 'Match the Italian body phrases to their English meanings!',
@@ -307,7 +326,7 @@ window.CORPO_DATA = {
           ]
         },
 
-        // 8. Matching: more body phrases
+        // 10. Matching: more body phrases
         {
           type: 'matching',
           prompt: 'Final round! Match these demon hunter body phrases!',
@@ -367,7 +386,17 @@ window.CORPO_DATA = {
           speakWord: 'Alza le braccia'
         },
 
-        // 4. Listen-pick: hear a sentence
+        // 4. Listen comprehend: Muovi le mani!
+        {
+          type: 'listen-comprehend',
+          sentence: 'Muovi le mani!',
+          question: 'What should you move?',
+          correctAnswer: 'Your hands',
+          options: ['Your hands', 'Your feet', 'Your head', 'Your arms'],
+          daisySays: 'Listen to the dance trainer\'s command!'
+        },
+
+        // 5. Listen-pick: hear a sentence
         {
           type: 'listen-pick',
           prompt: 'The dance trainer gives a command! What sentence do you hear?',
@@ -376,7 +405,7 @@ window.CORPO_DATA = {
           options: ['Batti i piedi!', 'Muovi le mani!', 'Tocca la testa!', 'Alza le braccia!']
         },
 
-        // 5. Fill-blank: single word in sentence
+        // 6. Fill-blank: single word in sentence
         {
           type: 'fill-blank',
           prompt: 'The trainer says to move something! Fill in the body part!',
@@ -385,7 +414,16 @@ window.CORPO_DATA = {
           hint: 'It means hands! Starts with M.'
         },
 
-        // 6. Fill-blank: single word in sentence
+        // 7. Sentence build: Touch your head!
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "Touch your head!"',
+          correctOrder: ['Tocca', 'la', 'testa'],
+          hint: 'Touch your head!',
+          daisySays: 'Put the command in order!'
+        },
+
+        // 8. Fill-blank: single word in sentence
         {
           type: 'fill-blank',
           prompt: 'The demon hunter must touch something! Fill in the body part!',
@@ -394,7 +432,7 @@ window.CORPO_DATA = {
           hint: 'It means head! Starts with T.'
         },
 
-        // 7. Matching: action sentences to English
+        // 9. Matching: action sentences to English
         {
           type: 'matching',
           prompt: 'Match the demon hunter commands to their English meanings!',
@@ -406,7 +444,7 @@ window.CORPO_DATA = {
           ]
         },
 
-        // 8. Matching: more sentence pairs
+        // 10. Matching: more sentence pairs
         {
           type: 'matching',
           prompt: 'Final battle dance! Match all the commands!',

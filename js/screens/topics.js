@@ -77,6 +77,17 @@ window.renderTopicsScreen = function(container) {
       html += '<div class="mummy-badge" onclick="event.stopPropagation(); window.app.router.navigate(\'/say-to-mummy/' + topic.id + '\')">🗣️ Say to Mummy!</div>';
     }
 
+    // Speed Round button (if any lesson completed)
+    var hasCompletedLesson = false;
+    for (var cl = 1; cl <= 3; cl++) {
+      var clProgress = state.getLessonProgress(topic.id, topic.id + '-' + cl);
+      if (clProgress && clProgress.completed) { hasCompletedLesson = true; break; }
+    }
+    if (hasCompletedLesson) {
+      var speedBest = state.getSpeedBest(topic.id);
+      html += '<div class="speed-badge" onclick="event.stopPropagation(); window.app.router.navigate(\'/speed-round/' + topic.id + '\')">&#9889; Speed' + (speedBest > 0 ? ' (' + speedBest + ')' : '') + '</div>';
+    }
+
     html += '</div>';
   });
 

@@ -301,7 +301,17 @@ window.COLORI_DATA = {
           ]
         },
 
-        // 6. Listen-pick: il gatto nero
+        // 6. Translate to Italian: purple
+        {
+          type: 'translate-to-italian',
+          prompt: 'How do you say this in Italian?',
+          english: 'purple',
+          correctAnswer: 'viola',
+          options: ['viola', 'rosa', 'nero', 'bianco'],
+          _trackedWord: 'viola'
+        },
+
+        // 7. Listen-pick: il gatto nero
         {
           type: 'listen-pick',
           prompt: 'A spooky animal! What phrase do you hear?',
@@ -310,7 +320,16 @@ window.COLORI_DATA = {
           options: ['il gatto nero', 'il cielo blu', 'la rosa rossa', 'il sole giallo']
         },
 
-        // 7. Fill-blank: the green grass
+        // 8. Say it: arancione
+        {
+          type: 'say-it',
+          prompt: 'Can you say this word?',
+          italian: 'arancione',
+          correctAnswer: 'arancione',
+          daisySays: 'The colour of the fire sword! Say it loud!'
+        },
+
+        // 9. Fill-blank: the green grass
         {
           type: 'fill-blank',
           prompt: 'The grass in the park is green! Fill in the colour!',
@@ -319,7 +338,7 @@ window.COLORI_DATA = {
           hint: 'It\'s the colour of the healing potion! Starts with V.'
         },
 
-        // 8. Matching: single colour words review (viola, rosa, nero, bianco)
+        // 10. Matching: single colour words review (viola, rosa, nero, bianco)
         {
           type: 'matching',
           prompt: 'You also learned new colours! Match them up!',
@@ -368,7 +387,17 @@ window.COLORI_DATA = {
           speakWord: 'Mi piace il rosso'
         },
 
-        // 3. Listen-pick: hear a sentence
+        // 3. Listen comprehend: Mi piace il rosso
+        {
+          type: 'listen-comprehend',
+          sentence: 'Mi piace il rosso!',
+          question: 'What colour does the speaker like?',
+          correctAnswer: 'Red',
+          options: ['Red', 'Blue', 'Green', 'Yellow'],
+          daisySays: 'Listen carefully to what they say they like!'
+        },
+
+        // 4. Listen-pick: hear a sentence
         {
           type: 'listen-pick',
           prompt: 'The hunters are talking! What sentence do you hear?',
@@ -377,7 +406,7 @@ window.COLORI_DATA = {
           options: ['Il cielo \u00E8 azzurro', 'L\'erba \u00E8 verde', 'Mi piace il rosso', 'Vedo un fiore arancione']
         },
 
-        // 4. Fill-blank: word in sentence context
+        // 5. Fill-blank: word in sentence context
         {
           type: 'fill-blank',
           prompt: 'What colour is your favourite? Fill in the missing word!',
@@ -386,7 +415,7 @@ window.COLORI_DATA = {
           hint: 'It means pink! Starts with R.'
         },
 
-        // 5. Matching: sentences to English
+        // 6. Matching: sentences to English
         {
           type: 'matching',
           prompt: 'Match the Italian sentences to their meanings!',
@@ -398,7 +427,16 @@ window.COLORI_DATA = {
           ]
         },
 
-        // 6. Multiple choice: how do you say...
+        // 7. Sentence build: Mi piace il rosso
+        {
+          type: 'sentence-build',
+          prompt: 'Build: "I like red"',
+          correctOrder: ['Mi', 'piace', 'il', 'rosso'],
+          hint: 'I like red',
+          daisySays: 'Put the words in the right order!'
+        },
+
+        // 8. Multiple choice: how do you say...
         {
           type: 'multiple-choice',
           prompt: 'How do you say "I see an orange flower!" in Italian?',
@@ -408,7 +446,7 @@ window.COLORI_DATA = {
           speakWord: 'Vedo un fiore arancione'
         },
 
-        // 7. Fill-blank: word in sentence
+        // 9. Fill-blank: word in sentence
         {
           type: 'fill-blank',
           prompt: 'Describe what you see! Fill in the colour!',
@@ -417,7 +455,7 @@ window.COLORI_DATA = {
           hint: 'The colour of the portal! Starts with V.'
         },
 
-        // 8. Matching: new vocab (marrone, grigio, azzurro) + review
+        // 10. Matching: new vocab (marrone, grigio, azzurro) + review
         {
           type: 'matching',
           prompt: 'Final mission! Match ALL these colours!',

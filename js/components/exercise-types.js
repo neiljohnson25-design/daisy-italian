@@ -611,6 +611,275 @@ window.ExerciseTypes = {
     });
   },
 
+  // ---- Listening Comprehension ----
+  renderListenComprehend: function(exercise, area, onAnswer) {
+    var html = '';
+
+    // Big speaker button
+    html += '<div class="text-center" style="margin-bottom: var(--gap-lg);">';
+    html += '<button class="btn btn-speaker listen-comprehend-speaker" style="width: 80px; height: 80px; font-size: 2rem;">&#128264;</button>';
+    html += '<p style="margin-top: var(--gap-sm); color: var(--grey-dark); font-weight: 600;">Listen to the sentence</p>';
+    html += '</div>';
+
+    // Question
+    html += '<p style="text-align: center; font-weight: 700; color: var(--purple); font-size: var(--font-size-medium); margin-bottom: var(--gap-md);">' + exercise.question + '</p>';
+
+    // Options (same as multiple-choice)
+    html += '<div class="options-grid">';
+    exercise.options.forEach(function(opt) {
+      html += '<button class="option-btn" data-answer="' + opt.replace(/"/g, '&quot;') + '">' + opt + '</button>';
+    });
+    html += '</div>';
+
+    area.innerHTML = html;
+
+    // Auto-play sentence
+    setTimeout(function() { window.app.speech.speak(exercise.sentence); }, 500);
+
+    // Speaker replay
+    area.querySelector('.listen-comprehend-speaker').addEventListener('click', function() {
+      window.app.speech.speak(exercise.sentence);
+    });
+
+    // Option handlers
+    var buttons = area.querySelectorAll('.option-btn');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (btn.classList.contains('disabled')) return;
+        var answer = btn.getAttribute('data-answer');
+        var isCorrect = answer === exercise.correctAnswer;
+
+        buttons.forEach(function(b) { b.classList.add('disabled'); });
+        if (isCorrect) {
+          btn.classList.add('correct');
+        } else {
+          btn.classList.add('incorrect');
+          buttons.forEach(function(b) {
+            if (b.getAttribute('data-answer') === exercise.correctAnswer) {
+              b.classList.add('revealed');
+            }
+          });
+        }
+        setTimeout(function() { onAnswer(isCorrect); }, 800);
+      });
+    });
+  },
+
+  // ---- Translate to Italian (English → Italian) ----
+  renderTranslateToItalian: function(exercise, area, onAnswer) {
+    var html = '';
+
+    // English word in highlighted card
+    html += '<div class="text-center" style="margin-bottom: var(--gap-lg);">';
+    html += '<div style="background: linear-gradient(135deg, var(--blue-light), #e0f2fe); padding: var(--gap-md) var(--gap-lg); border-radius: var(--radius-lg); display: inline-block;">';
+    html += '<p style="font-size: var(--font-size-large); font-weight: 800; color: #1e40af;">' + exercise.english + '</p>';
+    html += '</div>';
+    html += '</div>';
+
+    // Italian options
+    html += '<div class="options-grid">';
+    var shuffled = this.shuffleArray(exercise.options.slice());
+    shuffled.forEach(function(opt) {
+      html += '<button class="option-btn" data-answer="' + opt.replace(/"/g, '&quot;') + '">' + opt + '</button>';
+    });
+    html += '</div>';
+
+    area.innerHTML = html;
+
+    // Option handlers
+    var buttons = area.querySelectorAll('.option-btn');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (btn.classList.contains('disabled')) return;
+        var answer = btn.getAttribute('data-answer');
+        var isCorrect = answer === exercise.correctAnswer;
+
+        buttons.forEach(function(b) { b.classList.add('disabled'); });
+        if (isCorrect) {
+          btn.classList.add('correct');
+          window.app.speech.speak(exercise.correctAnswer);
+        } else {
+          btn.classList.add('incorrect');
+          buttons.forEach(function(b) {
+            if (b.getAttribute('data-answer') === exercise.correctAnswer) {
+              b.classList.add('revealed');
+            }
+          });
+        }
+        setTimeout(function() { onAnswer(isCorrect); }, 800);
+      });
+    });
+  },
+
+  // ---- Sentence Building ----
+  renderSentenceBuild: function(exercise, area, onAnswer) {
+    var correctOrder = exercise.correctOrder;
+    var shuffled = this.shuffleArray(correctOrder.slice());
+    var placed = [];
+    var wrongAttempts = 0;
+
+    var html = '';
+
+    // Hint
+    if (exercise.hint) {
+      html += '<p style="text-align: center; color: var(--grey-dark); font-weight: 600; font-style: italic; margin-bottom: var(--gap-md);">' + exercise.hint + '</p>';
+    }
+
+    // Placed area
+    html += '<div id="sentence-placed" class="sentence-build-placed"></div>';
+
+    // Word tiles
+    html += '<div id="sentence-tiles" class="sentence-build-tiles"></div>';
+
+    // Clear button
+    html += '<div class="text-center" style="margin-top: var(--gap-sm);">';
+    html += '<button class="btn btn-icon" id="clear-sentence" style="font-size: 1rem; width: 40px; height: 40px;" title="Clear">&#10006;</button>';
+    html += '</div>';
+
+    area.innerHTML = html;
+
+    var placedArea = document.getElementById('sentence-placed');
+    var tilesArea = document.getElementById('sentence-tiles');
+
+    function render() {
+      // Render tiles
+      tilesArea.innerHTML = '';
+      shuffled.forEach(function(word, idx) {
+        if (placed.indexOf(idx) !== -1) return;
+        var tile = document.createElement('button');
+        tile.className = 'word-tile';
+        tile.textContent = word;
+        tile.setAttribute('data-idx', idx);
+        tile.addEventListener('click', function() {
+          placed.push(idx);
+          window.app.audio.play('click');
+          render();
+          if (placed.length === correctOrder.length) {
+            checkAnswer();
+          }
+        });
+        tilesArea.appendChild(tile);
+      });
+
+      // Render placed
+      placedArea.innerHTML = '';
+      if (placed.length === 0) {
+        placedArea.innerHTML = '<p style="color: var(--grey); font-style: italic; text-align: center; padding: var(--gap-sm);">Tap words to build the sentence...</p>';
+      } else {
+        placed.forEach(function(idx) {
+          var wordEl = document.createElement('span');
+          wordEl.className = 'placed-word';
+          wordEl.textContent = shuffled[idx];
+          placedArea.appendChild(wordEl);
+        });
+      }
+    }
+
+    function checkAnswer() {
+      var attempt = placed.map(function(idx) { return shuffled[idx]; });
+      var isCorrect = attempt.join(' ') === correctOrder.join(' ');
+
+      if (isCorrect) {
+        placedArea.style.borderColor = 'var(--green)';
+        placedArea.style.background = 'var(--green-light)';
+        window.app.speech.speak(correctOrder.join(' '));
+      } else {
+        wrongAttempts++;
+        placedArea.style.borderColor = 'var(--red)';
+        placedArea.classList.add('animate-shake');
+        setTimeout(function() {
+          placed = [];
+          placedArea.style.borderColor = '';
+          placedArea.classList.remove('animate-shake');
+          render();
+        }, 800);
+      }
+
+      setTimeout(function() { onAnswer(isCorrect); }, isCorrect ? 800 : 900);
+    }
+
+    document.getElementById('clear-sentence').addEventListener('click', function() {
+      placed = [];
+      render();
+    });
+
+    render();
+  },
+
+  // ---- Say It (Pronunciation Practice) ----
+  renderSayIt: function(exercise, area, onAnswer) {
+    // Check browser support
+    if (!window.ItalianRecognition || !window.ItalianRecognition.supported) {
+      area.innerHTML = '<p style="text-align: center; color: var(--grey);">Pronunciation practice needs Chrome browser.</p>';
+      setTimeout(function() { onAnswer(true); }, 1500);
+      return;
+    }
+
+    var attemptCount = 0;
+    var html = '';
+
+    // Italian word
+    html += '<div class="text-center" style="margin-bottom: var(--gap-lg);">';
+    html += '<p style="font-size: var(--font-size-huge); font-weight: 900; color: var(--purple);">' + exercise.italian + '</p>';
+    html += '</div>';
+
+    // Speaker button
+    html += '<div class="text-center" style="margin-bottom: var(--gap-lg);">';
+    html += '<button class="btn btn-speaker say-it-speaker" style="width: 60px; height: 60px; font-size: 1.5rem;">&#128264;</button>';
+    html += '<p style="color: var(--grey-dark); font-size: var(--font-size-small); margin-top: var(--gap-xs);">Listen first</p>';
+    html += '</div>';
+
+    // Microphone button
+    html += '<div class="text-center">';
+    html += '<button class="btn btn-microphone" id="mic-btn">&#127908; Say it!</button>';
+    html += '</div>';
+
+    // Status
+    html += '<p id="say-it-status" class="text-center" style="margin-top: var(--gap-md); font-weight: 700; font-size: var(--font-size-body);"></p>';
+
+    area.innerHTML = html;
+
+    // Auto-play
+    setTimeout(function() { window.app.speech.speak(exercise.italian); }, 400);
+
+    area.querySelector('.say-it-speaker').addEventListener('click', function() {
+      window.app.speech.speak(exercise.italian);
+    });
+
+    var micBtn = document.getElementById('mic-btn');
+    var statusEl = document.getElementById('say-it-status');
+
+    micBtn.addEventListener('click', function() {
+      if (micBtn.disabled) return;
+      micBtn.disabled = true;
+      statusEl.textContent = 'Listening...';
+      statusEl.style.color = 'var(--purple)';
+      micBtn.style.opacity = '0.6';
+
+      window.ItalianRecognition.listen(exercise.italian, function(isCorrect, transcript) {
+        micBtn.disabled = false;
+        micBtn.style.opacity = '1';
+        attemptCount++;
+
+        if (isCorrect) {
+          statusEl.textContent = 'Bravissima! You said it!';
+          statusEl.style.color = 'var(--green)';
+          setTimeout(function() { onAnswer(true); }, 1200);
+        } else {
+          if (attemptCount >= 3) {
+            statusEl.textContent = 'Good try! The word is: ' + exercise.italian;
+            statusEl.style.color = 'var(--orange)';
+            window.app.speech.speak(exercise.italian);
+            setTimeout(function() { onAnswer(false); }, 2000);
+          } else {
+            statusEl.textContent = transcript ? 'I heard: "' + transcript + '" — Try again!' : 'I couldn\'t hear you — Try again!';
+            statusEl.style.color = 'var(--red)';
+          }
+        }
+      });
+    });
+  },
+
   // ---- Utilities ----
   shuffleArray: function(arr) {
     var shuffled = arr.slice();
