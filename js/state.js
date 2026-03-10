@@ -33,7 +33,8 @@ window.StateManager = class StateManager {
 
   getDefaultState() {
     var topics = {};
-    var topicOrder = ['colori', 'saluti', 'animali', 'cibo', 'famiglia', 'numeri', 'giorni-mesi', 'corpo', 'conversazioni'];
+    var topicOrder = ['colori', 'saluti', 'animali', 'cibo', 'famiglia', 'numeri', 'giorni-mesi', 'corpo', 'conversazioni',
+      'vestiti', 'la-casa', 'emozioni', 'al-parco', 'verbi', 'stagioni', 'a-scuola', 'trasporti', 'allo-zoo'];
 
     topicOrder.forEach(function(id, index) {
       topics[id] = {
@@ -157,20 +158,37 @@ window.StateManager = class StateManager {
   }
 
   checkUnlocks() {
-    var topicOrder = ['colori', 'saluti', 'animali', 'cibo', 'famiglia', 'numeri', 'giorni-mesi', 'corpo', 'conversazioni'];
+    // Original 9 topics: cascade unlock (earn any star to unlock the next)
+    var basicTopics = ['colori', 'saluti', 'animali', 'cibo', 'famiglia', 'numeri', 'giorni-mesi', 'corpo', 'conversazioni'];
     var hasAnyStar = false;
 
-    for (var i = 0; i < topicOrder.length; i++) {
-      var id = topicOrder[i];
+    for (var i = 0; i < basicTopics.length; i++) {
+      var id = basicTopics[i];
       var topic = this.state.topics[id];
 
       if (hasAnyStar && !topic.unlocked) {
         topic.unlocked = true;
       }
 
-      // Check if this topic has any stars
       if (this.getTopicStars(id) > 0) {
         hasAnyStar = true;
+      }
+    }
+
+    // Advanced topics: unlock based on total star thresholds
+    var advancedThresholds = {
+      'vestiti': 15, 'la-casa': 15,
+      'emozioni': 18, 'al-parco': 18,
+      'verbi': 20, 'stagioni': 20,
+      'a-scuola': 22, 'trasporti': 22,
+      'allo-zoo': 24
+    };
+
+    var total = this.state.totalStars;
+    for (var advId in advancedThresholds) {
+      var advTopic = this.state.topics[advId];
+      if (advTopic && !advTopic.unlocked && total >= advancedThresholds[advId]) {
+        advTopic.unlocked = true;
       }
     }
   }
@@ -279,7 +297,9 @@ window.StateManager = class StateManager {
       { threshold: 1, id: 'first-star', name: 'Your First Star!', message: 'You earned your very first star!' },
       { threshold: 10, id: '10-stars', name: '10 Stars!', message: 'You have 10 beautiful stars!' },
       { threshold: 25, id: '25-stars', name: 'Italian Superstar!', message: '25 stars! Incredibile!' },
-      { threshold: 50, id: '50-stars', name: 'Stella d\'Oro!', message: '50 golden stars! Fantastico!' }
+      { threshold: 50, id: '50-stars', name: 'Stella d\'Oro!', message: '50 golden stars! Fantastico!' },
+      { threshold: 75, id: '75-stars', name: 'Campionessa!', message: '75 stars! You are a champion!' },
+      { threshold: 100, id: '100-stars', name: 'Cento Stelle!', message: '100 stars! Che meraviglia!' }
     ];
 
     var self = this;
@@ -359,7 +379,16 @@ window.StateManager = class StateManager {
         'numeri': { text: '', claimed: false },
         'giorni-mesi': { text: '', claimed: false },
         'corpo': { text: '', claimed: false },
-        'conversazioni': { text: '', claimed: false }
+        'conversazioni': { text: '', claimed: false },
+        'vestiti': { text: '', claimed: false },
+        'la-casa': { text: '', claimed: false },
+        'emozioni': { text: '', claimed: false },
+        'al-parco': { text: '', claimed: false },
+        'verbi': { text: '', claimed: false },
+        'stagioni': { text: '', claimed: false },
+        'a-scuola': { text: '', claimed: false },
+        'trasporti': { text: '', claimed: false },
+        'allo-zoo': { text: '', claimed: false }
       },
       characterImages: {
         'kpop-demon-hunters': null,

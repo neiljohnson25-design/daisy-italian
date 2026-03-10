@@ -189,7 +189,16 @@ window.getTopicData = function(topicId) {
     'numeri': window.NUMERI_DATA,
     'giorni-mesi': window.GIORNI_MESI_DATA,
     'corpo': window.CORPO_DATA,
-    'conversazioni': window.CONVERSAZIONI_DATA
+    'conversazioni': window.CONVERSAZIONI_DATA,
+    'vestiti': window.VESTITI_DATA,
+    'la-casa': window.LA_CASA_DATA,
+    'emozioni': window.EMOZIONI_DATA,
+    'al-parco': window.AL_PARCO_DATA,
+    'verbi': window.VERBI_DATA,
+    'stagioni': window.STAGIONI_DATA,
+    'a-scuola': window.A_SCUOLA_DATA,
+    'trasporti': window.TRASPORTI_DATA,
+    'allo-zoo': window.ALLO_ZOO_DATA
   };
   return map[topicId] || null;
 };

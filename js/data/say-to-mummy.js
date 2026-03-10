@@ -226,5 +226,259 @@ window.SAY_TO_MUMMY = {
       english: 'I love you!',
       context: 'The best thing to say to Mummy!'
     }
+  ],
+
+  // ---- Advanced Topics ----
+
+  'vestiti': [
+    {
+      italian: 'Mamma, dove sono le mie scarpe?',
+      english: 'Mummy, where are my shoes?',
+      context: 'Ask Mummy when you can\'t find your shoes'
+    },
+    {
+      italian: 'Mi piace questo vestito!',
+      english: 'I like this dress!',
+      context: 'Tell Mummy when shopping for clothes'
+    },
+    {
+      italian: 'Fa freddo, prendo la giacca!',
+      english: 'It\'s cold, I\'ll get my jacket!',
+      context: 'Tell Mummy before going outside'
+    },
+    {
+      italian: 'Posso mettere il pigiama?',
+      english: 'Can I put on my pyjamas?',
+      context: 'Ask Mummy at bedtime'
+    },
+    {
+      italian: 'La mia maglietta preferita è rosa!',
+      english: 'My favourite t-shirt is pink!',
+      context: 'Tell Mummy about your favourite clothes'
+    }
+  ],
+
+  'la-casa': [
+    {
+      italian: 'Mamma, sono in camera mia!',
+      english: 'Mummy, I\'m in my bedroom!',
+      context: 'Tell Mummy where you are'
+    },
+    {
+      italian: 'Posso guardare la televisione?',
+      english: 'Can I watch television?',
+      context: 'Ask Mummy after homework'
+    },
+    {
+      italian: 'Andiamo in giardino!',
+      english: 'Let\'s go to the garden!',
+      context: 'Suggest going outside to play'
+    },
+    {
+      italian: 'Il gatto è sul divano!',
+      english: 'The cat is on the sofa!',
+      context: 'Tell Mummy where the pet is'
+    },
+    {
+      italian: 'Apri la finestra, per favore!',
+      english: 'Open the window, please!',
+      context: 'Ask Mummy when it\'s hot inside'
+    }
+  ],
+
+  'emozioni': [
+    {
+      italian: 'Sono felice oggi!',
+      english: 'I\'m happy today!',
+      context: 'Tell Mummy how you feel in the morning'
+    },
+    {
+      italian: 'Sono stanca, Mamma!',
+      english: 'I\'m tired, Mummy!',
+      context: 'Tell Mummy when you need a rest'
+    },
+    {
+      italian: 'Perché sei triste?',
+      english: 'Why are you sad?',
+      context: 'Ask Mummy if she looks sad'
+    },
+    {
+      italian: 'Sono eccitata per domani!',
+      english: 'I\'m excited for tomorrow!',
+      context: 'Tell Mummy before a special day'
+    },
+    {
+      italian: 'Non ho paura!',
+      english: 'I\'m not scared!',
+      context: 'Be brave and tell Mummy!'
+    }
+  ],
+
+  'al-parco': [
+    {
+      italian: 'Andiamo al parco, Mamma!',
+      english: 'Let\'s go to the park, Mummy!',
+      context: 'Ask Mummy to go to the park'
+    },
+    {
+      italian: 'Guarda, un fiore rosa!',
+      english: 'Look, a pink flower!',
+      context: 'Point at flowers in the park'
+    },
+    {
+      italian: 'Posso andare sullo scivolo?',
+      english: 'Can I go on the slide?',
+      context: 'Ask Mummy at the playground'
+    },
+    {
+      italian: 'Giochiamo con la palla!',
+      english: 'Let\'s play with the ball!',
+      context: 'Suggest a game at the park'
+    },
+    {
+      italian: 'Il sole è caldo oggi!',
+      english: 'The sun is hot today!',
+      context: 'Talk about the weather at the park'
+    }
+  ],
+
+  'verbi': [
+    {
+      italian: 'Voglio giocare!',
+      english: 'I want to play!',
+      context: 'Tell Mummy what you want to do'
+    },
+    {
+      italian: 'Mi piace cantare!',
+      english: 'I like singing!',
+      context: 'Tell Mummy about your hobbies'
+    },
+    {
+      italian: 'Posso leggere un libro?',
+      english: 'Can I read a book?',
+      context: 'Ask Mummy at bedtime'
+    },
+    {
+      italian: 'Andiamo a nuotare!',
+      english: 'Let\'s go swimming!',
+      context: 'Suggest an activity to Mummy'
+    },
+    {
+      italian: 'Voglio disegnare un fiore!',
+      english: 'I want to draw a flower!',
+      context: 'Tell Mummy about your art'
+    }
+  ],
+
+  'stagioni': [
+    {
+      italian: 'Mamma, fa freddo oggi!',
+      english: 'Mummy, it\'s cold today!',
+      context: 'Tell Mummy about the weather'
+    },
+    {
+      italian: 'Mi piace la primavera!',
+      english: 'I like spring!',
+      context: 'Tell Mummy your favourite season'
+    },
+    {
+      italian: 'Piove! Prendo l\'ombrello!',
+      english: 'It\'s raining! I\'ll get the umbrella!',
+      context: 'Be helpful when it rains'
+    },
+    {
+      italian: 'Nevica! Andiamo fuori!',
+      english: 'It\'s snowing! Let\'s go outside!',
+      context: 'Get excited about snow'
+    },
+    {
+      italian: 'Che bello l\'arcobaleno!',
+      english: 'How beautiful, a rainbow!',
+      context: 'Point out the rainbow to Mummy'
+    }
+  ],
+
+  'a-scuola': [
+    {
+      italian: 'Mamma, dov\'è il mio zaino?',
+      english: 'Mummy, where is my backpack?',
+      context: 'Ask Mummy before school'
+    },
+    {
+      italian: 'La maestra è molto gentile!',
+      english: 'The teacher is very kind!',
+      context: 'Tell Mummy about your teacher'
+    },
+    {
+      italian: 'Ho un nuovo amico a scuola!',
+      english: 'I have a new friend at school!',
+      context: 'Tell Mummy about your friends'
+    },
+    {
+      italian: 'Ho dimenticato il quaderno!',
+      english: 'I forgot my notebook!',
+      context: 'Tell Mummy if you forgot something'
+    },
+    {
+      italian: 'Mi piace disegnare a scuola!',
+      english: 'I like drawing at school!',
+      context: 'Tell Mummy about your favourite activity'
+    }
+  ],
+
+  'trasporti': [
+    {
+      italian: 'Andiamo in macchina, Mamma!',
+      english: 'Let\'s go by car, Mummy!',
+      context: 'Suggest how to travel'
+    },
+    {
+      italian: 'Guarda, un treno!',
+      english: 'Look, a train!',
+      context: 'Point out vehicles you see'
+    },
+    {
+      italian: 'Mi piace la bicicletta!',
+      english: 'I like the bicycle!',
+      context: 'Tell Mummy about your favourite transport'
+    },
+    {
+      italian: 'L\'aereo è nel cielo!',
+      english: 'The aeroplane is in the sky!',
+      context: 'Point up when you see a plane'
+    },
+    {
+      italian: 'Posso andare in monopattino?',
+      english: 'Can I ride the scooter?',
+      context: 'Ask Mummy to ride your scooter'
+    }
+  ],
+
+  'allo-zoo': [
+    {
+      italian: 'Andiamo allo zoo, Mamma!',
+      english: 'Let\'s go to the zoo, Mummy!',
+      context: 'Ask Mummy for a zoo trip'
+    },
+    {
+      italian: 'Guarda, la giraffa è altissima!',
+      english: 'Look, the giraffe is super tall!',
+      context: 'Point at the tallest animal'
+    },
+    {
+      italian: 'Mi piace il delfino!',
+      english: 'I like the dolphin!',
+      context: 'Tell Mummy your favourite zoo animal'
+    },
+    {
+      italian: 'Il pinguino è molto carino!',
+      english: 'The penguin is very cute!',
+      context: 'Tell Mummy about the cute animals'
+    },
+    {
+      italian: 'La scimmia mangia la banana!',
+      english: 'The monkey is eating a banana!',
+      context: 'Describe what the animals are doing'
+    }
   ]
 };

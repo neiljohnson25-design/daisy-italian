@@ -92,6 +92,108 @@ window.TOPICS = [
     themeColor: '#FFC93C',
     description: 'Learn to talk with your Italian family!',
     daisySays: 'Sam and Cat are always chatting! Let\'s learn to talk in Italian!'
+  },
+
+  // ---- Advanced Topics (unlock with stars) ----
+
+  {
+    id: 'vestiti',
+    titleIT: 'Vestiti',
+    titleEN: 'Clothes',
+    icon: '👗',
+    theme: 'disney-princesses',
+    themeColor: '#FF69B4',
+    unlockStars: 15,
+    description: 'Learn clothes in Italian using your colours!',
+    daisySays: 'Every princess needs a beautiful outfit! Let\'s learn clothes in Italian!'
+  },
+  {
+    id: 'la-casa',
+    titleIT: 'La Casa',
+    titleEN: 'At Home',
+    icon: '🏠',
+    theme: 'loud-house',
+    themeColor: '#4ECDC4',
+    unlockStars: 15,
+    description: 'Learn rooms and furniture in Italian!',
+    daisySays: 'The Loud House has so many rooms! Let\'s learn about the house in Italian!'
+  },
+  {
+    id: 'emozioni',
+    titleIT: 'Emozioni',
+    titleEN: 'Feelings',
+    icon: '😊',
+    theme: 'sam-and-cat',
+    themeColor: '#E91E8C',
+    unlockStars: 18,
+    description: 'Express your feelings in Italian!',
+    daisySays: 'Sam and Cat have so many feelings! Let\'s learn to express them in Italian!'
+  },
+  {
+    id: 'al-parco',
+    titleIT: 'Al Parco',
+    titleEN: 'At the Park',
+    icon: '🌳',
+    theme: 'disney-princesses',
+    themeColor: '#22C55E',
+    unlockStars: 18,
+    description: 'Learn nature and park words in Italian!',
+    daisySays: 'The princesses love exploring the garden! Let\'s learn park words!'
+  },
+  {
+    id: 'verbi',
+    titleIT: 'Verbi',
+    titleEN: 'Actions',
+    icon: '🏃',
+    theme: 'kpop-demon-hunters',
+    themeColor: '#7C3AED',
+    unlockStars: 20,
+    description: 'Learn action words in Italian!',
+    daisySays: 'Demon hunters are always in action! Let\'s learn what they DO in Italian!'
+  },
+  {
+    id: 'stagioni',
+    titleIT: 'Stagioni e Tempo',
+    titleEN: 'Seasons & Weather',
+    icon: '☀️',
+    theme: 'loud-house',
+    themeColor: '#F97316',
+    unlockStars: 20,
+    description: 'Learn seasons and weather in Italian!',
+    daisySays: 'In the Loud House, every season is an adventure! Let\'s learn about weather!'
+  },
+  {
+    id: 'a-scuola',
+    titleIT: 'A Scuola',
+    titleEN: 'At School',
+    icon: '📚',
+    theme: 'sam-and-cat',
+    themeColor: '#3B82F6',
+    unlockStars: 22,
+    description: 'Learn school words in Italian!',
+    daisySays: 'Time for Italian school! Let\'s learn about the classroom!'
+  },
+  {
+    id: 'trasporti',
+    titleIT: 'Trasporti',
+    titleEN: 'Transport',
+    icon: '🚗',
+    theme: 'kpop-demon-hunters',
+    themeColor: '#EF4444',
+    unlockStars: 22,
+    description: 'Learn vehicles and transport in Italian!',
+    daisySays: 'The demon hunters travel by every vehicle! Let\'s learn transport words!'
+  },
+  {
+    id: 'allo-zoo',
+    titleIT: 'Allo Zoo',
+    titleEN: 'At the Zoo',
+    icon: '🦁',
+    theme: 'disney-princesses',
+    themeColor: '#D97706',
+    unlockStars: 24,
+    description: 'Learn exotic zoo animals in Italian!',
+    daisySays: 'The princesses visit the royal zoo! Let\'s learn amazing animal names!'
   }
 ];
 

@@ -69,5 +69,68 @@ window.CROSS_TOPIC_TEMPLATES = [
       { italian: 'ciao nonna', english: 'hi grandma', emoji: '😊' },
       { italian: 'arrivederci nonno', english: 'goodbye grandpa', emoji: '👋' }
     ]
+  },
+
+  // ---- Advanced Cross-Topic Templates ----
+
+  {
+    requires: ['vestiti', 'stagioni'],
+    phrases: [
+      { italian: 'il cappello per il sole', english: 'the hat for the sun', emoji: '🎩' },
+      { italian: 'la giacca per l\'inverno', english: 'the jacket for winter', emoji: '🧥' },
+      { italian: 'il costume per l\'estate', english: 'the swimsuit for summer', emoji: '👙' },
+      { italian: 'la sciarpa per il freddo', english: 'the scarf for the cold', emoji: '🧣' },
+      { italian: 'i guanti per la neve', english: 'the gloves for the snow', emoji: '🧤' }
+    ]
+  },
+  {
+    requires: ['emozioni', 'famiglia'],
+    phrases: [
+      { italian: 'la mamma è felice', english: 'mum is happy', emoji: '😊' },
+      { italian: 'il papà è stanco', english: 'dad is tired', emoji: '😴' },
+      { italian: 'la nonna è gentile', english: 'grandma is kind', emoji: '🥰' },
+      { italian: 'il fratello è arrabbiato', english: 'the brother is angry', emoji: '😠' },
+      { italian: 'la sorella è contenta', english: 'the sister is pleased', emoji: '😄' }
+    ]
+  },
+  {
+    requires: ['verbi', 'cibo'],
+    phrases: [
+      { italian: 'mangiare la pizza', english: 'to eat the pizza', emoji: '🍕' },
+      { italian: 'bere il latte', english: 'to drink the milk', emoji: '🥛' },
+      { italian: 'voglio il gelato', english: 'I want the ice cream', emoji: '🍦' },
+      { italian: 'mi piace il cioccolato', english: 'I like chocolate', emoji: '🍫' },
+      { italian: 'mangiare la mela', english: 'to eat the apple', emoji: '🍎' }
+    ]
+  },
+  {
+    requires: ['trasporti', 'colori'],
+    phrases: [
+      { italian: 'la macchina rossa', english: 'the red car', emoji: '🚗' },
+      { italian: 'l\'autobus giallo', english: 'the yellow bus', emoji: '🚌' },
+      { italian: 'la bicicletta verde', english: 'the green bicycle', emoji: '🚲' },
+      { italian: 'il treno blu', english: 'the blue train', emoji: '🚂' },
+      { italian: 'il razzo arancione', english: 'the orange rocket', emoji: '🚀' }
+    ]
+  },
+  {
+    requires: ['a-scuola', 'emozioni'],
+    phrases: [
+      { italian: 'sono felice a scuola', english: 'I am happy at school', emoji: '😊' },
+      { italian: 'la maestra è gentile', english: 'the teacher is kind', emoji: '🥰' },
+      { italian: 'il mio amico è contento', english: 'my friend is pleased', emoji: '😄' },
+      { italian: 'sono eccitato per la scuola', english: 'I am excited for school', emoji: '🤩' },
+      { italian: 'sono stanco dopo la scuola', english: 'I am tired after school', emoji: '😴' }
+    ]
+  },
+  {
+    requires: ['allo-zoo', 'numeri'],
+    phrases: [
+      { italian: 'due giraffe', english: 'two giraffes', emoji: '🦒' },
+      { italian: 'tre pinguini', english: 'three penguins', emoji: '🐧' },
+      { italian: 'cinque scimmie', english: 'five monkeys', emoji: '🐒' },
+      { italian: 'quattro delfini', english: 'four dolphins', emoji: '🐬' },
+      { italian: 'sei tartarughe', english: 'six turtles', emoji: '🐢' }
+    ]
   }
 ];
