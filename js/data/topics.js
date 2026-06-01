@@ -94,6 +94,39 @@ window.TOPICS = [
     daisySays: 'Sam and Cat are always chatting! Let\'s learn to talk in Italian!'
   },
 
+  // ---- Holiday Topics (no unlock - ready for the trip!) ----
+
+  {
+    id: 'gelato',
+    titleIT: 'Gelato',
+    titleEN: 'Ice Cream',
+    icon: '🍦',
+    theme: 'sam-and-cat',
+    themeColor: '#F472B6',
+    description: 'Order ice cream like a pro in Italy!',
+    daisySays: 'Sam and Cat are at the gelateria! Let\'s learn to order ice cream!'
+  },
+  {
+    id: 'in-vacanza',
+    titleIT: 'In Vacanza',
+    titleEN: 'On Holiday',
+    icon: '🏖️',
+    theme: 'loud-house',
+    themeColor: '#38BDF8',
+    description: 'Say what you need on holiday in Italy!',
+    daisySays: 'The Loud family is on holiday! Let\'s learn what to say!'
+  },
+  {
+    id: 'buone-maniere',
+    titleIT: 'Buone Maniere',
+    titleEN: 'Good Manners',
+    icon: '👑',
+    theme: 'disney-princesses',
+    themeColor: '#C084FC',
+    description: 'Be polite and say thank you in Italian!',
+    daisySays: 'Every princess has perfect manners! Let\'s learn to be polite in Italian!'
+  },
+
   // ---- Advanced Topics (unlock with stars) ----
 
   {

@@ -198,7 +198,10 @@ window.getTopicData = function(topicId) {
     'stagioni': window.STAGIONI_DATA,
     'a-scuola': window.A_SCUOLA_DATA,
     'trasporti': window.TRASPORTI_DATA,
-    'allo-zoo': window.ALLO_ZOO_DATA
+    'allo-zoo': window.ALLO_ZOO_DATA,
+    'gelato': window.GELATO_DATA,
+    'in-vacanza': window.IN_VACANZA_DATA,
+    'buone-maniere': window.BUONE_MANIERE_DATA
   };
   return map[topicId] || null;
 };
